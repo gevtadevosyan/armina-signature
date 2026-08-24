@@ -69,7 +69,7 @@
         </div>
       </div>
       <div class="plate" style="padding: 10px">
-        <image-slot id="hero" shape="rect" style="width: 100%; height: clamp(260px, 46vw, 460px)" placeholder="Hero photograph — Mount Ararat or a monastery at dawn"></image-slot>
+        <image-slot id="hero" shape="rect" style="width: 100%; height: clamp(260px, 46vw, 460px)" placeholder="Hero photograph — Mount Ararat or a monastery at dawn" src="assets/photos/hero.jpg" credit="Serouj Ourishian / Wikimedia Commons (CC BY-SA 4.0)" credit-href="https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Araratian_plain_(cropped).jpg"></image-slot>
       </div>
     </section>
 
@@ -86,7 +86,7 @@
         <sc-for list="{{ tours }}" as="t" hint-placeholder-count="6">
           <article class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: transparent">
             <div style="padding: 10px 10px 0">
-              <image-slot id="{{ t.slot }}" shape="rect" style="width: 100%; height: 196px" placeholder="{{ t.photo }}"></image-slot>
+              <image-slot id="{{ t.slot }}" shape="rect" style="width: 100%; height: 196px" placeholder="{{ t.photo }}" src="{{ t.src }}" credit="{{ t.credit }}" credit-href="{{ t.creditHref }}"></image-slot>
             </div>
             <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1">
               <div class="card-kicker" style="font-variant-numeric: tabular-nums">{{ t.dur }}</div>
@@ -115,7 +115,7 @@
         <sc-for list="{{ packages }}" as="p" hint-placeholder-count="3">
           <article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: center; border-top: 1px solid var(--color-divider); padding-top: 34px">
             <div class="plate" style="padding: 9px">
-              <image-slot id="{{ p.slot }}" shape="rect" style="width: 100%; height: clamp(210px, 34vw, 300px)" placeholder="{{ p.photo }}"></image-slot>
+              <image-slot id="{{ p.slot }}" shape="rect" style="width: 100%; height: clamp(210px, 34vw, 300px)" placeholder="{{ p.photo }}" src="{{ p.src }}" credit="{{ p.credit }}" credit-href="{{ p.creditHref }}"></image-slot>
             </div>
             <div>
               <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ p.days }}</div>
@@ -303,26 +303,32 @@ const S = {
 
 const TOURS = [
   { slot: "tour-garni", price: 75, photo: "Garni temple above the Azat gorge",
+    src: "assets/photos/tour-garni.jpg", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg",
     en: { dur: "1 day · 8 hours", title: "Garni & Geghard", body: "The Hellenistic temple on the cliff above the Azat gorge, the rock-hewn monastery of Geghard, and lavash baked in a village tonir." },
     ru: { dur: "1 день · 8 часов", title: "Гарни и Гегард", body: "Эллинистический храм на скале над ущельем Азат, высеченный в скале монастырь Гегард и лаваш из деревенского тонира." },
     hy: { dur: "1 օր · 8 ժամ", title: "Գառնի և Գեղարդ", body: "Ազատի կիրճի վերևում կանգնած հելլենիստական տաճարը, ժայռի մեջ փորված Գեղարդի վանքը և գյուղական թոնրի լավաշը։" } },
   { slot: "tour-ararat", price: 80, photo: "Khor Virap monastery with Ararat behind",
+    src: "assets/photos/tour-ararat.jpg", credit: "Andrew Behesnilian / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Khor_Virap_Monastery_and_Mount_Ararat,_Armenia.jpg",
     en: { dur: "1 day · 9 hours", title: "Khor Virap & Areni", body: "The monastery facing Ararat across the border, the Areni-1 cave where the world's oldest winery was found, and a tasting at a family cellar." },
     ru: { dur: "1 день · 9 часов", title: "Хор Вирап и Арени", body: "Монастырь напротив Арарата, пещера Арени-1 с древнейшей винодельней мира и дегустация в семейном погребе." },
     hy: { dur: "1 օր · 9 ժամ", title: "Խոր Վիրապ և Արենի", body: "Արարատին դեմ հանդիման վանքը, Արենի-1 քարանձավը՝ աշխարհի հնագույն գինեգործարանով, և համտես ընտանեկան մառանում։" } },
   { slot: "tour-tatev", price: 120, photo: "Wings of Tatev cableway over the Vorotan gorge",
+    src: "assets/photos/tour-tatev.jpg", credit: "Armineaghayan / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Տաթևեր_Ճոպանուղի.JPG",
     en: { dur: "1 day · 12 hours", title: "Tatev & Karahunj", body: "The longest reversible cableway in the world, a ninth-century monastery on the edge of the Vorotan gorge, and the standing stones of Karahunj." },
     ru: { dur: "1 день · 12 часов", title: "Татев и Карахундж", body: "Самая длинная в мире реверсивная канатная дорога, монастырь IX века над Воротанским ущельем и мегалиты Карахунджа." },
     hy: { dur: "1 օր · 12 ժամ", title: "Տաթև և Քարահունջ", body: "Աշխարհի ամենաերկար ճոպանուղին, Որոտանի կիրճի եզրին կանգնած IX դարի վանքը և Քարահունջի կանգուն քարերը։" } },
   { slot: "tour-sevan", price: 85, photo: "Sevanavank peninsula on Lake Sevan",
+    src: "assets/photos/tour-sevan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg",
     en: { dur: "1 day · 9 hours", title: "Lake Sevan & Dilijan", body: "Sevanavank on its peninsula, the forest monastery of Haghartsin, and the restored old street of Dilijan for coffee." },
     ru: { dur: "1 день · 9 часов", title: "Севан и Дилижан", body: "Севанаванк на полуострове, лесной монастырь Агарцин и восстановленная старая улица Дилижана с кофе." },
     hy: { dur: "1 օր · 9 ժամ", title: "Սևան և Դիլիջան", body: "Սևանավանքը թերակղզու վրա, Հաղարծնի անտառային վանքը և Դիլիջանի վերականգնված հին փողոցը՝ սուրճի համար։" } },
   { slot: "tour-aragats", price: 90, photo: "Amberd fortress on the slopes of Aragats",
+    src: "assets/photos/tour-aragats.jpg", credit: "Marek.wypych / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Amberd_Fortress_with_Mount_Ararat_in_background_1.jpg",
     en: { dur: "1 day · 8 hours", title: "Aragats & Amberd", body: "The alphabet monument, a mediaeval fortress on the southern slope of Mount Aragats, and lunch by the alpine Lake Kari at 3,200 m." },
     ru: { dur: "1 день · 8 часов", title: "Арагац и Амберд", body: "Памятник алфавиту, средневековая крепость на южном склоне Арагаца и обед у высокогорного озера Кари на 3200 м." },
     hy: { dur: "1 օր · 8 ժամ", title: "Արագած և Ամբերդ", body: "Այբուբենի հուշարձանը, Արագածի հարավային լանջի միջնադարյան ամրոցը և ճաշ Քարի լճի մոտ՝ 3200 մ բարձրության վրա։" } },
   { slot: "tour-yerevan", price: 45, photo: "Cascade steps and Republic Square, Yerevan",
+    src: "assets/photos/tour-yerevan.jpg",
     en: { dur: "Half day · 4 hours", title: "Yerevan on foot", body: "Republic Square, the Cascade, the Matenadaran manuscript library and the Vernissage market, walked with a guide who grew up here." },
     ru: { dur: "Полдня · 4 часа", title: "Ереван пешком", body: "Площадь Республики, Каскад, Матенадаран и рынок Вернисаж — пешком с гидом, выросшим в этом городе." },
     hy: { dur: "Կես օր · 4 ժամ", title: "Երևանը ոտքով", body: "Հանրապետության հրապարակը, Կասկադը, Մատենադարանը և Վերնիսաժը՝ քայլելով այստեղ մեծացած ուղեկցորդի հետ։" } }
@@ -330,6 +336,7 @@ const TOURS = [
 
 const PACKAGES = [
   { slot: "pkg-classic", price: 1290, photo: "Monastery courtyard at golden hour",
+    src: "assets/photos/pkg-classic.jpg", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Geghard_Monastery,_Armenia.jpg",
     en: { days: "7 days / 6 nights", title: "Classic Armenia", body: "Yerevan as your base for three nights, then south through Areni, Tatev and Goris, back by way of Lake Sevan and Dilijan. The country's essentials without a single rushed morning.",
       includes: ["4★ hotels, 6 nights", "Airport transfers", "Private car and driver", "Licensed English guide", "Daily breakfast", "All entrance fees"] },
     ru: { days: "7 дней / 6 ночей", title: "Классическая Армения", body: "Три ночи в Ереване, затем юг — Арени, Татев, Горис — и возвращение через Севан и Дилижан. Всё главное, без ни одного торопливого утра.",
@@ -337,6 +344,7 @@ const PACKAGES = [
     hy: { days: "7 օր / 6 գիշեր", title: "Դասական Հայաստան", body: "Երեք գիշեր Երևանում, ապա հարավ՝ Արենի, Տաթև, Գորիս, և վերադարձ Սևանով ու Դիլիջանով։ Երկրի ամենակարևորը՝ առանց ոչ մի շտապ առավոտի։",
       includes: ["4★ հյուրանոցներ, 6 գիշեր", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ", "Լիցենզավորված ուղեկցորդ", "Ամենօրյա նախաճաշ", "Բոլոր մուտքի տոմսերը"] } },
   { slot: "pkg-highlands", price: 940, photo: "Mountain road through the Vayots Dzor highlands",
+    src: "assets/photos/pkg-highlands.jpg", credit: "Art Anderson / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vardenyats_Pass,_Armenia_-_panoramio.jpg",
     en: { days: "5 days / 4 nights", title: "Highlands & Monasteries", body: "Four nights, four monasteries and the roads between them: Geghard, Noravank, Tatev and Haghpat, with a night in a guesthouse above the Debed canyon.",
       includes: ["3★–4★ hotels and one guesthouse", "Airport transfers", "Private car and driver", "Licensed guide", "Daily breakfast, two dinners"] },
     ru: { days: "5 дней / 4 ночи", title: "Горы и монастыри", body: "Четыре ночи, четыре монастыря и дороги между ними: Гегард, Нораванк, Татев и Ахпат, с ночёвкой в гостевом доме над каньоном Дебед.",
@@ -344,6 +352,7 @@ const PACKAGES = [
     hy: { days: "5 օր / 4 գիշեր", title: "Լեռներ և վանքեր", body: "Չորս գիշեր, չորս վանք և նրանց միջև ընկած ճանապարհները՝ Գեղարդ, Նորավանք, Տաթև և Հաղպատ, մեկ գիշեր Դեբեդի կիրճի վերևի հյուրատանը։",
       includes: ["3★–4★ հյուրանոցներ և մեկ հյուրատուն", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ", "Լիցենզավորված ուղեկցորդ", "Նախաճաշ և երկու ընթրիք"] } },
   { slot: "pkg-grand", price: 1980, photo: "Vineyard terraces in Vayots Dzor",
+    src: "assets/photos/pkg-grand.jpg", credit: "Ավետիսյան91 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Natural_landscape_and_vineyard_in_Rind_village_01.jpg",
     en: { days: "10 days / 9 nights", title: "Grand Armenia", body: "The whole country, north to south: Lori's canyons, Gyumri's stone streets, Aragats, Yerevan, the wine villages of Vayots Dzor and the Syunik mountains, ending with two unscheduled days you spend as you like.",
       includes: ["4★ hotels and boutique stays", "Airport transfers", "Private car and driver, 10 days", "Licensed guide", "Wine and brandy tastings", "Daily breakfast, four dinners"] },
     ru: { days: "10 дней / 9 ночей", title: "Большая Армения", body: "Вся страна с севера на юг: каньоны Лори, каменные улицы Гюмри, Арагац, Ереван, винные села Вайоц Дзора и горы Сюника — и два свободных дня в конце.",
@@ -422,11 +431,13 @@ class Component extends DCLogic {
           (code === lang ? "var(--color-accent-700)" : "var(--color-neutral-600)")
       })),
       tours: TOURS.map((t) => ({
-        slot: t.slot, photo: t.photo, dur: t[lang].dur, title: t[lang].title, body: t[lang].body,
+        slot: t.slot, photo: t.photo, src: t.src, credit: t.credit, creditHref: t.creditHref,
+        dur: t[lang].dur, title: t[lang].title, body: t[lang].body,
         price: fmt(t.price), wa: this.wa(t.en.title + " — " + brand)
       })),
       packages: PACKAGES.map((p) => ({
-        slot: p.slot, photo: p.photo, days: p[lang].days, title: p[lang].title, body: p[lang].body,
+        slot: p.slot, photo: p.photo, src: p.src, credit: p.credit, creditHref: p.creditHref,
+        days: p[lang].days, title: p[lang].title, body: p[lang].body,
         includes: p[lang].includes, price: fmt(p.price), wa: this.wa(p.en.title + " — " + brand)
       })),
       services: SERVICES.map((s) => ({ num: s.num, title: s[lang].title, body: s[lang].body })),
