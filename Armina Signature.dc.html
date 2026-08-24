@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="_ds/classical-9ea2d012-127b-4a86-a24f-7676bebcc3c9/styles.css">
+<script src="_ds/classical-9ea2d012-127b-4a86-a24f-7676bebcc3c9/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+  a { color: var(--color-accent-700); text-decoration: none; }
+  a:hover { color: var(--color-accent-600); }
+  ::selection { background: var(--color-accent-200); }
+  .om-navrow { scrollbar-width: none; }
+  .om-navrow::-webkit-scrollbar { display: none; }
+  :root {
+    --font-heading: "Cormorant Garamond", "Noto Serif Armenian", Georgia, serif;
+    --font-body: "Lora", "Noto Serif Armenian", Georgia, serif;
+  }
+</style>
+</helmet>
+
+<div style="background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); min-height: 100vh">
+
+  <header style="position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-divider)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 10px 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px">
+      <a href="#top" style="display: flex; align-items: center; flex: 0 1 auto; min-width: 0">
+        <img src="assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: clamp(34px, 8vw, 46px); width: auto; max-width: 100%; display: block">
+      </a>
+      <div style="display: flex; align-items: center; gap: 12px; flex: 0 0 auto">
+        <div style="display: flex; align-items: center; gap: 0; font-size: 12px; letter-spacing: 0.1em; font-variant-numeric: tabular-nums">
+          <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
+            <button type="button" onClick="{{ l.pick }}" style="{{ l.style }}">{{ l.label }}</button>
+          </sc-for>
+        </div>
+        <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.05em; white-space: nowrap; padding: 7px 14px">WhatsApp</a>
+      </div>
+    </div>
+    <nav class="om-navrow" style="max-width: 1200px; margin: 0 auto; padding: 8px 20px 10px; display: flex; align-items: center; gap: 20px; overflow-x: auto; white-space: nowrap; font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--color-neutral-800)">
+        <a href="#tours" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navTours }}</a>
+        <a href="#packages" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navPackages }}</a>
+        <a href="#services" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navServices }}</a>
+        <a href="#about" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navAbout }}</a>
+        <a href="#contact" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navContact }}</a>
+    </nav>
+  </header>
+
+  <main id="top" style="max-width: 1200px; margin: 0 auto; padding: 0 24px">
+
+    <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 56px; align-items: center; padding: clamp(48px, 7vw, 104px) 0">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.heroKicker }}</div>
+        <h1 style="font-family: var(--font-heading); font-weight: 400; font-size: clamp(44px, 6.4vw, 86px); line-height: 1.02; margin: 22px 0 0; letter-spacing: -0.01em; text-wrap: balance">{{ c.heroTitle }}</h1>
+        <div style="height: 1px; background: var(--color-accent); width: 84px; margin: 30px 0 26px"></div>
+        <p style="font-family: var(--font-heading); font-style: italic; font-size: clamp(20px, 2.2vw, 26px); color: var(--color-neutral-800); margin: 0 0 20px">{{ c.heroSlogan }}</p>
+        <p style="font-size: 16.5px; line-height: 1.75; max-width: 46ch; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0">{{ c.heroLead }}</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 34px">
+          <a class="btn btn-primary" href="#tours" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaTours }}</a>
+          <a class="btn btn-ghost" href="#contact" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaPlan }}</a>
+        </div>
+      </div>
+      <div class="plate" style="padding: 10px">
+        <image-slot id="hero" shape="rect" style="width: 100%; height: clamp(260px, 46vw, 460px)" placeholder="Hero photograph — Mount Ararat or a monastery at dawn"></image-slot>
+      </div>
+    </section>
+
+    <section id="tours" style="padding: clamp(40px, 5vw, 72px) 0 0; scroll-margin-top: 96px">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">01 — {{ c.secToursKicker }}</div>
+          <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secTours }}</h2>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secToursLead }}</p>
+      </div>
+      <div class="hr" style="margin: 30px 0 40px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px">
+        <sc-for list="{{ tours }}" as="t" hint-placeholder-count="6">
+          <article class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: transparent">
+            <div style="padding: 10px 10px 0">
+              <image-slot id="{{ t.slot }}" shape="rect" style="width: 100%; height: 196px" placeholder="{{ t.photo }}"></image-slot>
+            </div>
+            <div style="padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1">
+              <div class="card-kicker" style="font-variant-numeric: tabular-nums">{{ t.dur }}</div>
+              <h3 class="card-title" style="font-family: var(--font-heading); font-weight: 500; font-size: 26px; margin: 0; line-height: 1.15">{{ t.title }}</h3>
+              <p style="font-size: 15px; line-height: 1.7; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0; flex: 1">{{ t.body }}</p>
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-divider); padding-top: 14px; margin-top: 4px">
+                <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700); font-variant-numeric: tabular-nums">{{ t.price }}</span>
+                <a href="{{ t.wa }}" target="_blank" rel="noopener" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="packages" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">02 — {{ c.secPackagesKicker }}</div>
+          <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secPackages }}</h2>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secPackagesLead }}</p>
+      </div>
+      <div class="hr" style="margin: 30px 0 40px"></div>
+      <div style="display: flex; flex-direction: column; gap: 34px">
+        <sc-for list="{{ packages }}" as="p" hint-placeholder-count="3">
+          <article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: center; border-top: 1px solid var(--color-divider); padding-top: 34px">
+            <div class="plate" style="padding: 9px">
+              <image-slot id="{{ p.slot }}" shape="rect" style="width: 100%; height: clamp(210px, 34vw, 300px)" placeholder="{{ p.photo }}"></image-slot>
+            </div>
+            <div>
+              <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ p.days }}</div>
+              <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(28px, 3vw, 40px); margin: 14px 0 16px; line-height: 1.1">{{ p.title }}</h3>
+              <p style="font-size: 16px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 20px; max-width: 52ch">{{ p.body }}</p>
+              <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-neutral-700); margin-bottom: 12px">{{ c.includes }}</div>
+              <ul style="list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px 24px">
+                <sc-for list="{{ p.includes }}" as="inc" hint-placeholder-count="5">
+                  <li style="font-size: 14.5px; line-height: 1.55; color: var(--color-neutral-800); border-bottom: 1px solid var(--color-divider); padding-bottom: 7px">{{ inc }}</li>
+                </sc-for>
+              </ul>
+              <div style="display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap">
+                <span style="font-family: var(--font-heading); font-size: 28px; font-variant-numeric: tabular-nums">{{ p.price }}</span>
+                <a class="btn btn-primary" href="{{ p.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="services" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">03 — {{ c.secServicesKicker }}</div>
+          <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secServices }}</h2>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secServicesLead }}</p>
+      </div>
+      <div class="hr" style="margin: 30px 0 40px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 34px 40px">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <div style="padding: 16px 0 0; border-top: 1px solid var(--color-divider)">
+            <div style="font-family: var(--font-heading); font-size: 15px; color: var(--color-accent); font-variant-numeric: tabular-nums; letter-spacing: 0.1em">{{ s.num }}</div>
+            <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 25px; margin: 12px 0 12px; line-height: 1.2">{{ s.title }}</h3>
+            <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="about" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
+      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">04 — {{ c.secAboutKicker }}</div>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secAbout }}</h2>
+      <div class="hr" style="margin: 30px 0 40px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 46px; align-items: start">
+        <div style="display: flex; flex-direction: column; gap: 18px">
+          <p style="font-family: var(--font-heading); font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3; margin: 0; color: var(--color-neutral-900)">{{ c.aboutLead }}</p>
+          <p style="font-size: 16px; line-height: 1.8; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0">{{ c.aboutP1 }}</p>
+          <p style="font-size: 16px; line-height: 1.8; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0">{{ c.aboutP2 }}</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 26px">
+          <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-700)">{{ c.secWhy }}</div>
+          <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
+            <div style="display: grid; grid-template-columns: 46px 1fr; gap: 14px; border-top: 1px solid var(--color-divider); padding-top: 18px">
+              <div style="font-family: var(--font-heading); font-size: 22px; color: var(--color-accent); font-variant-numeric: tabular-nums">{{ w.num }}</div>
+              <div>
+                <h4 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; margin: 0 0 6px">{{ w.title }}</h4>
+                <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); margin: 0">{{ w.body }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding: clamp(52px, 6vw, 96px) 0 clamp(48px, 6vw, 88px); scroll-margin-top: 96px">
+      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">05 — {{ c.secContactKicker }}</div>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secContact }}</h2>
+      <div class="hr" style="margin: 30px 0 40px"></div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 44px; align-items: start">
+        <div>
+          <p style="font-size: 16.5px; line-height: 1.8; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0 0 28px; max-width: 46ch">{{ c.contactLead }}</p>
+          <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaWhatsApp }}</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
+            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelEmail }}</div>
+            <a href="mailto:info@armina-signature.travel" style="font-family: var(--font-heading); font-size: 23px">info@armina-signature.travel</a>
+          </div>
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
+            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelWhatsApp }}</div>
+            <a href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-heading); font-size: 23px; font-variant-numeric: tabular-nums">{{ phoneDisplay }}</a>
+          </div>
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
+            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelOffice }}</div>
+            <div style="font-family: var(--font-heading); font-size: 23px">{{ c.office }}</div>
+          </div>
+          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
+            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelHours }}</div>
+            <div style="font-size: 15.5px; line-height: 1.7; color: var(--color-neutral-800); font-variant-numeric: tabular-nums">{{ c.hours }}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1b3a6b"></rect><text x="50" y="62" font-family="Georgia, serif" font-size="34" fill="#b68235" text-anchor="middle">AS</text></svg></template>
+
+  <footer style="border-top: 1px solid var(--color-divider); background: var(--color-surface)">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap">
+      <img src="assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: 54px; width: auto; display: block">
+      <p style="font-family: var(--font-heading); font-style: italic; font-size: 19px; color: var(--color-neutral-800); margin: 0">{{ c.heroSlogan }}</p>
+      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: var(--color-neutral-600); font-variant-numeric: tabular-nums">© 2026 Armina Signature Travel</div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ru&quot;,&quot;hy&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ru'|'hy'&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+374 10 000 000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;currency&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;$&quot;,&quot;€&quot;,&quot;֏&quot;],&quot;default&quot;:&quot;$&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;}}">
+const S = {
+  en: {
+    navTours: "Tours", navPackages: "Packages", navServices: "Services", navAbout: "About", navContact: "Contact",
+    heroKicker: "Incoming tours in Armenia · Since 2016",
+    heroTitle: "Armenia, travelled properly.",
+    heroSlogan: "Your journey, our signature.",
+    heroLead: "We are a licensed incoming tour operator based in Yerevan. Private guides, curated hotels and unhurried itineraries across monasteries, mountain roads, vineyards and the workshops of a very old country.",
+    ctaTours: "Browse tours", ctaPlan: "Plan a journey", ctaWhatsApp: "Message us on WhatsApp",
+    secToursKicker: "Day tours", secTours: "Signature tours",
+    secToursLead: "Each departure is private: your own car, your own guide, your own pace. Prices are per person for two travellers and include transport, guiding and entrances.",
+    secPackagesKicker: "Multi-day", secPackages: "Tour packages",
+    secPackagesLead: "Complete journeys with accommodation, transfers and guiding arranged end to end. Nothing to book on arrival but dinner.",
+    secServicesKicker: "Services", secServices: "Beyond the itinerary",
+    secServicesLead: "Everything a journey needs, arranged separately or folded into a package.",
+    secAboutKicker: "About us", secAbout: "The company",
+    aboutLead: "A small team of Armenian guides, drivers and planners who would rather run twelve journeys well than a hundred quickly.",
+    aboutP1: "Armina Signature Travel was founded in Yerevan to receive guests coming into Armenia. We work only inbound, which means every route we sell is one we drive ourselves, every hotel is one we have slept in, and every guide is someone we know by name.",
+    aboutP2: "We hold a tour operator licence, carry full liability insurance for our vehicles, and answer messages personally — before, during and after your trip.",
+    secWhy: "Why travel with us",
+    secContactKicker: "Contact", secContact: "Start planning",
+    contactLead: "Tell us your dates, how many of you are travelling and what you would like to see. We answer within a few hours with a draft itinerary and a clear price, with no obligation.",
+    labelEmail: "Email", labelWhatsApp: "WhatsApp", labelOffice: "Office", labelHours: "Hours",
+    office: "Yerevan, Armenia", hours: "Mon–Sat 09:00–19:00 (GMT+4) · WhatsApp answered daily",
+    includes: "Included", enquire: "Enquire", from: "From"
+  },
+  ru: {
+    navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
+    heroKicker: "Въездной туризм в Армению · с 2016 года",
+    heroTitle: "Армения, как её стоит увидеть.",
+    heroSlogan: "Ваше путешествие — наша подпись.",
+    heroLead: "Мы лицензированный туроператор по въездному туризму из Еревана. Частные гиды, отобранные отели и неспешные маршруты по монастырям, горным дорогам, винодельням и мастерским очень древней страны.",
+    ctaTours: "Смотреть туры", ctaPlan: "Составить маршрут", ctaWhatsApp: "Написать в WhatsApp",
+    secToursKicker: "Однодневные туры", secTours: "Авторские туры",
+    secToursLead: "Каждый выезд индивидуальный: своя машина, свой гид, свой темп. Цены указаны на человека при двух путешествующих и включают транспорт, работу гида и входные билеты.",
+    secPackagesKicker: "Многодневные", secPackages: "Пакетные туры",
+    secPackagesLead: "Готовые путешествия с проживанием, трансферами и гидом от начала до конца. По приезде остаётся выбрать только ужин.",
+    secServicesKicker: "Услуги", secServices: "Кроме маршрута",
+    secServicesLead: "Всё, что нужно в поездке, — отдельно или в составе пакета.",
+    secAboutKicker: "О нас", secAbout: "Компания",
+    aboutLead: "Небольшая команда армянских гидов, водителей и организаторов, которой ближе двенадцать хорошо проведённых поездок, чем сто быстрых.",
+    aboutP1: "Armina Signature Travel основана в Ереване для приёма гостей, приезжающих в Армению. Мы работаем только на въезд: каждый маршрут мы проезжаем сами, в каждом отеле сами ночевали, каждого гида знаем по имени.",
+    aboutP2: "У нас есть лицензия туроператора и полная страховка на автомобили, а на сообщения мы отвечаем лично — до, во время и после поездки.",
+    secWhy: "Почему мы",
+    secContactKicker: "Контакты", secContact: "Начнём планировать",
+    contactLead: "Напишите даты, число путешественников и то, что хотели бы увидеть. В течение нескольких часов пришлём черновой маршрут и понятную цену — без обязательств.",
+    labelEmail: "Почта", labelWhatsApp: "WhatsApp", labelOffice: "Офис", labelHours: "Часы работы",
+    office: "Ереван, Армения", hours: "Пн–Сб 09:00–19:00 (GMT+4) · WhatsApp ежедневно",
+    includes: "Входит в стоимость", enquire: "Запрос", from: "от"
+  },
+  hy: {
+    navTours: "Տուրեր", navPackages: "Փաթեթներ", navServices: "Ծառայություններ", navAbout: "Մեր մասին", navContact: "Կապ",
+    heroKicker: "Ներգնա տուրեր Հայաստանում · 2016-ից",
+    heroTitle: "Հայաստանը՝ ինչպես հարկն է։",
+    heroSlogan: "Ձեր ճանապարհը՝ մեր ստորագրությունը։",
+    heroLead: "Մենք Երևանում գործող լիցենզավորված ներգնա տուրօպերատոր ենք։ Անհատական ուղեկցորդներ, ընտրված հյուրանոցներ և հանգիստ երթուղիներ՝ վանքերով, լեռնային ճանապարհներով, խաղողի այգիներով և հին երկրի արհեստանոցներով։",
+    ctaTours: "Դիտել տուրերը", ctaPlan: "Կազմել երթուղի", ctaWhatsApp: "Գրել WhatsApp-ով",
+    secToursKicker: "Օրական տուրեր", secTours: "Ընտրանի տուրեր",
+    secToursLead: "Յուրաքանչյուր մեկնում անհատական է՝ ձեր մեքենան, ձեր ուղեկցորդը, ձեր տեմպը։ Գները մեկ անձի համար են երկու ճամփորդի դեպքում և ներառում են տրանսպորտը, ուղեկցորդին և մուտքի տոմսերը։",
+    secPackagesKicker: "Բազմօրյա", secPackages: "Փաթեթային տուրեր",
+    secPackagesLead: "Ամբողջական ճամփորդություններ՝ կազմակերպված կացությամբ, տրանսֆերով և ուղեկցորդով։ Ժամանելուց հետո մնում է ընտրել միայն ընթրիքը։",
+    secServicesKicker: "Ծառայություններ", secServices: "Երթուղուց դուրս",
+    secServicesLead: "Այն ամենը, ինչ պետք է ճամփորդությանը՝ առանձին կամ փաթեթի կազմում։",
+    secAboutKicker: "Մեր մասին", secAbout: "Ընկերությունը",
+    aboutLead: "Հայ ուղեկցորդների, վարորդների և կազմակերպիչների փոքր թիմ, որ նախընտրում է տասներկու լավ անցկացված ճամփորդություն, քան հարյուր՝ արագ։",
+    aboutP1: "Armina Signature Travel-ը հիմնադրվել է Երևանում՝ Հայաստան այցելող հյուրերն ընդունելու համար։ Աշխատում ենք միայն ներգնա ուղղությամբ․ ամեն երթուղի ինքներս ենք անցնում, ամեն հյուրանոցում ինքներս ենք գիշերել, ամեն ուղեկցորդին անունով ենք ճանաչում։",
+    aboutP2: "Ունենք տուրօպերատորի լիցենզիա և ավտոմեքենաների ամբողջական ապահովագրություն, իսկ հաղորդագրություններին պատասխանում ենք անձամբ՝ ճամփորդությունից առաջ, ընթացքում և հետո։",
+    secWhy: "Ինչու՞ մենք",
+    secContactKicker: "Կապ", secContact: "Սկսենք պլանավորել",
+    contactLead: "Գրեք ձեր ամսաթվերը, ճամփորդների թիվը և այն, ինչ կցանկանաք տեսնել։ Մի քանի ժամում կուղարկենք նախնական երթուղի և հստակ գին՝ առանց պարտավորության։",
+    labelEmail: "Էլ. փոստ", labelWhatsApp: "WhatsApp", labelOffice: "Գրասենյակ", labelHours: "Ժամեր",
+    office: "Երևան, Հայաստան", hours: "Երկ–Շաբ 09:00–19:00 (GMT+4) · WhatsApp՝ ամեն օր",
+    includes: "Ներառված է", enquire: "Հարցում", from: "-ից"
+  }
+};
+
+const TOURS = [
+  { slot: "tour-garni", price: 75, photo: "Garni temple above the Azat gorge",
+    en: { dur: "1 day · 8 hours", title: "Garni & Geghard", body: "The Hellenistic temple on the cliff above the Azat gorge, the rock-hewn monastery of Geghard, and lavash baked in a village tonir." },
+    ru: { dur: "1 день · 8 часов", title: "Гарни и Гегард", body: "Эллинистический храм на скале над ущельем Азат, высеченный в скале монастырь Гегард и лаваш из деревенского тонира." },
+    hy: { dur: "1 օր · 8 ժամ", title: "Գառնի և Գեղարդ", body: "Ազատի կիրճի վերևում կանգնած հելլենիստական տաճարը, ժայռի մեջ փորված Գեղարդի վանքը և գյուղական թոնրի լավաշը։" } },
+  { slot: "tour-ararat", price: 80, photo: "Khor Virap monastery with Ararat behind",
+    en: { dur: "1 day · 9 hours", title: "Khor Virap & Areni", body: "The monastery facing Ararat across the border, the Areni-1 cave where the world's oldest winery was found, and a tasting at a family cellar." },
+    ru: { dur: "1 день · 9 часов", title: "Хор Вирап и Арени", body: "Монастырь напротив Арарата, пещера Арени-1 с древнейшей винодельней мира и дегустация в семейном погребе." },
+    hy: { dur: "1 օր · 9 ժամ", title: "Խոր Վիրապ և Արենի", body: "Արարատին դեմ հանդիման վանքը, Արենի-1 քարանձավը՝ աշխարհի հնագույն գինեգործարանով, և համտես ընտանեկան մառանում։" } },
+  { slot: "tour-tatev", price: 120, photo: "Wings of Tatev cableway over the Vorotan gorge",
+    en: { dur: "1 day · 12 hours", title: "Tatev & Karahunj", body: "The longest reversible cableway in the world, a ninth-century monastery on the edge of the Vorotan gorge, and the standing stones of Karahunj." },
+    ru: { dur: "1 день · 12 часов", title: "Татев и Карахундж", body: "Самая длинная в мире реверсивная канатная дорога, монастырь IX века над Воротанским ущельем и мегалиты Карахунджа." },
+    hy: { dur: "1 օր · 12 ժամ", title: "Տաթև և Քարահունջ", body: "Աշխարհի ամենաերկար ճոպանուղին, Որոտանի կիրճի եզրին կանգնած IX դարի վանքը և Քարահունջի կանգուն քարերը։" } },
+  { slot: "tour-sevan", price: 85, photo: "Sevanavank peninsula on Lake Sevan",
+    en: { dur: "1 day · 9 hours", title: "Lake Sevan & Dilijan", body: "Sevanavank on its peninsula, the forest monastery of Haghartsin, and the restored old street of Dilijan for coffee." },
+    ru: { dur: "1 день · 9 часов", title: "Севан и Дилижан", body: "Севанаванк на полуострове, лесной монастырь Агарцин и восстановленная старая улица Дилижана с кофе." },
+    hy: { dur: "1 օր · 9 ժամ", title: "Սևան և Դիլիջան", body: "Սևանավանքը թերակղզու վրա, Հաղարծնի անտառային վանքը և Դիլիջանի վերականգնված հին փողոցը՝ սուրճի համար։" } },
+  { slot: "tour-aragats", price: 90, photo: "Amberd fortress on the slopes of Aragats",
+    en: { dur: "1 day · 8 hours", title: "Aragats & Amberd", body: "The alphabet monument, a mediaeval fortress on the southern slope of Mount Aragats, and lunch by the alpine Lake Kari at 3,200 m." },
+    ru: { dur: "1 день · 8 часов", title: "Арагац и Амберд", body: "Памятник алфавиту, средневековая крепость на южном склоне Арагаца и обед у высокогорного озера Кари на 3200 м." },
+    hy: { dur: "1 օր · 8 ժամ", title: "Արագած և Ամբերդ", body: "Այբուբենի հուշարձանը, Արագածի հարավային լանջի միջնադարյան ամրոցը և ճաշ Քարի լճի մոտ՝ 3200 մ բարձրության վրա։" } },
+  { slot: "tour-yerevan", price: 45, photo: "Cascade steps and Republic Square, Yerevan",
+    en: { dur: "Half day · 4 hours", title: "Yerevan on foot", body: "Republic Square, the Cascade, the Matenadaran manuscript library and the Vernissage market, walked with a guide who grew up here." },
+    ru: { dur: "Полдня · 4 часа", title: "Ереван пешком", body: "Площадь Республики, Каскад, Матенадаран и рынок Вернисаж — пешком с гидом, выросшим в этом городе." },
+    hy: { dur: "Կես օր · 4 ժամ", title: "Երևանը ոտքով", body: "Հանրապետության հրապարակը, Կասկադը, Մատենադարանը և Վերնիսաժը՝ քայլելով այստեղ մեծացած ուղեկցորդի հետ։" } }
+];
+
+const PACKAGES = [
+  { slot: "pkg-classic", price: 1290, photo: "Monastery courtyard at golden hour",
+    en: { days: "7 days / 6 nights", title: "Classic Armenia", body: "Yerevan as your base for three nights, then south through Areni, Tatev and Goris, back by way of Lake Sevan and Dilijan. The country's essentials without a single rushed morning.",
+      includes: ["4★ hotels, 6 nights", "Airport transfers", "Private car and driver", "Licensed English guide", "Daily breakfast", "All entrance fees"] },
+    ru: { days: "7 дней / 6 ночей", title: "Классическая Армения", body: "Три ночи в Ереване, затем юг — Арени, Татев, Горис — и возвращение через Севан и Дилижан. Всё главное, без ни одного торопливого утра.",
+      includes: ["Отели 4★, 6 ночей", "Трансферы из аэропорта", "Личный автомобиль с водителем", "Лицензированный гид", "Завтраки", "Все входные билеты"] },
+    hy: { days: "7 օր / 6 գիշեր", title: "Դասական Հայաստան", body: "Երեք գիշեր Երևանում, ապա հարավ՝ Արենի, Տաթև, Գորիս, և վերադարձ Սևանով ու Դիլիջանով։ Երկրի ամենակարևորը՝ առանց ոչ մի շտապ առավոտի։",
+      includes: ["4★ հյուրանոցներ, 6 գիշեր", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ", "Լիցենզավորված ուղեկցորդ", "Ամենօրյա նախաճաշ", "Բոլոր մուտքի տոմսերը"] } },
+  { slot: "pkg-highlands", price: 940, photo: "Mountain road through the Vayots Dzor highlands",
+    en: { days: "5 days / 4 nights", title: "Highlands & Monasteries", body: "Four nights, four monasteries and the roads between them: Geghard, Noravank, Tatev and Haghpat, with a night in a guesthouse above the Debed canyon.",
+      includes: ["3★–4★ hotels and one guesthouse", "Airport transfers", "Private car and driver", "Licensed guide", "Daily breakfast, two dinners"] },
+    ru: { days: "5 дней / 4 ночи", title: "Горы и монастыри", body: "Четыре ночи, четыре монастыря и дороги между ними: Гегард, Нораванк, Татев и Ахпат, с ночёвкой в гостевом доме над каньоном Дебед.",
+      includes: ["Отели 3★–4★ и один гостевой дом", "Трансферы из аэропорта", "Личный автомобиль с водителем", "Лицензированный гид", "Завтраки и два ужина"] },
+    hy: { days: "5 օր / 4 գիշեր", title: "Լեռներ և վանքեր", body: "Չորս գիշեր, չորս վանք և նրանց միջև ընկած ճանապարհները՝ Գեղարդ, Նորավանք, Տաթև և Հաղպատ, մեկ գիշեր Դեբեդի կիրճի վերևի հյուրատանը։",
+      includes: ["3★–4★ հյուրանոցներ և մեկ հյուրատուն", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ", "Լիցենզավորված ուղեկցորդ", "Նախաճաշ և երկու ընթրիք"] } },
+  { slot: "pkg-grand", price: 1980, photo: "Vineyard terraces in Vayots Dzor",
+    en: { days: "10 days / 9 nights", title: "Grand Armenia", body: "The whole country, north to south: Lori's canyons, Gyumri's stone streets, Aragats, Yerevan, the wine villages of Vayots Dzor and the Syunik mountains, ending with two unscheduled days you spend as you like.",
+      includes: ["4★ hotels and boutique stays", "Airport transfers", "Private car and driver, 10 days", "Licensed guide", "Wine and brandy tastings", "Daily breakfast, four dinners"] },
+    ru: { days: "10 дней / 9 ночей", title: "Большая Армения", body: "Вся страна с севера на юг: каньоны Лори, каменные улицы Гюмри, Арагац, Ереван, винные села Вайоц Дзора и горы Сюника — и два свободных дня в конце.",
+      includes: ["Отели 4★ и бутик-размещение", "Трансферы из аэропорта", "Личный автомобиль с водителем, 10 дней", "Лицензированный гид", "Дегустации вина и коньяка", "Завтраки и четыре ужина"] },
+    hy: { days: "10 օր / 9 գիշեր", title: "Մեծ Հայաստան", body: "Ողջ երկիրը՝ հյուսիսից հարավ․ Լոռու կիրճերը, Գյումրու քարե փողոցները, Արագածը, Երևանը, Վայոց ձորի գինու գյուղերը և Սյունիքի լեռները, վերջում՝ երկու ազատ օր։",
+      includes: ["4★ հյուրանոցներ և բուտիկ կացարաններ", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ, 10 օր", "Լիցենզավորված ուղեկցորդ", "Գինու և կոնյակի համտեսներ", "Նախաճաշ և չորս ընթրիք"] } }
+];
+
+const SERVICES = [
+  { num: "01",
+    en: { title: "Accommodation", body: "Hotels, boutique stays and village guesthouses we have stayed in ourselves, booked at operator rates and matched to the route rather than the map." },
+    ru: { title: "Проживание", body: "Отели, бутик-размещение и деревенские гостевые дома, в которых мы жили сами, — по операторским тарифам и под маршрут, а не под карту." },
+    hy: { title: "Կացություն", body: "Հյուրանոցներ, բուտիկ կացարաններ և գյուղական հյուրատներ, որտեղ ինքներս ենք մնացել՝ օպերատորի գներով և երթուղուն համապատասխան։" } },
+  { num: "02",
+    en: { title: "Transfers", body: "Airport meetings at any hour with a name board, intercity transfers, and border crossings to Georgia arranged with the paperwork done in advance." },
+    ru: { title: "Трансферы", body: "Встреча в аэропорту в любое время с табличкой, междугородние трансферы и переезды к границе с Грузией с заранее оформленными документами." },
+    hy: { title: "Տրանսֆերներ", body: "Օդանավակայանում դիմավորում ցանկացած ժամի, միջքաղաքային տրանսֆերներ և Վրաստանի սահման՝ նախապես պատրաստված փաստաթղթերով։" } },
+  { num: "03",
+    en: { title: "Private tours", body: "Any route in this list, or one we build for you: photography, hiking, wine, Armenian heritage, or a single long drive to somewhere you read about." },
+    ru: { title: "Индивидуальные туры", body: "Любой маршрут из списка или составленный для вас: фотография, походы, вино, армянское наследие или одна долгая поездка туда, о чём вы прочитали." },
+    hy: { title: "Անհատական տուրեր", body: "Ցանկից ցանկացած երթուղի կամ ձեզ համար կազմված նոր՝ լուսանկարչություն, արահետներ, գինի, հայկական ժառանգություն կամ մեկ երկար ուղևորություն։" } },
+  { num: "04",
+    en: { title: "Car rental", body: "Sedans, SUVs for the mountain passes and vans for groups — with or without a driver, insured, delivered to your hotel or the terminal." },
+    ru: { title: "Аренда авто", body: "Седаны, внедорожники для горных перевалов и минивэны для групп — с водителем или без, застрахованные, с доставкой в отель или терминал." },
+    hy: { title: "Ավտովարձույթ", body: "Սեդաններ, ամենագնացներ լեռնային անցումների և վաներ խմբերի համար՝ վարորդով կամ առանց, ապահովագրված, հասցեով։" } }
+];
+
+const WHY = [
+  { num: "01",
+    en: { title: "Local, not remote", body: "Our office, guides and cars are all in Armenia. Nothing is subcontracted to an agency you never meet." },
+    ru: { title: "Мы на месте", body: "Офис, гиды и автомобили — в Армении. Ничего не передаётся агентству, которого вы никогда не увидите." },
+    hy: { title: "Տեղում, ոչ հեռվից", body: "Գրասենյակը, ուղեկցորդները և մեքենաները Հայաստանում են։ Ոչինչ չի փոխանցվում անծանոթ գործակալության։" } },
+  { num: "02",
+    en: { title: "Private by default", body: "Every tour departs for your party alone. No coach, no waiting for eleven strangers at each stop." },
+    ru: { title: "Всегда индивидуально", body: "Каждый тур проводится только для вашей группы. Без автобуса и ожидания одиннадцати незнакомцев на каждой остановке." },
+    hy: { title: "Միշտ անհատական", body: "Ամեն տուր անցկացվում է միայն ձեր խմբի համար։ Առանց ավտոբուսի և ամեն կանգառում սպասելու։" } },
+  { num: "03",
+    en: { title: "Licensed and insured", body: "A registered tour operator with insured vehicles and guides certified in English, Russian and Armenian." },
+    ru: { title: "Лицензия и страховка", body: "Зарегистрированный туроператор, застрахованные автомобили и гиды с сертификацией на английском, русском и армянском." },
+    hy: { title: "Լիցենզավորված և ապահովագրված", body: "Գրանցված տուրօպերատոր՝ ապահովագրված մեքենաներով և անգլերեն, ռուսերեն ու հայերեն հավաստագրված ուղեկցորդներով։" } },
+  { num: "04",
+    en: { title: "Answered in hours", body: "One person handles your trip from first message to departure, and stays reachable while you are here." },
+    ru: { title: "Ответ за часы", body: "Один человек ведёт вашу поездку от первого письма до отъезда и остаётся на связи, пока вы здесь." },
+    hy: { title: "Պատասխան ժամերի ընթացքում", body: "Մեկ մարդ վարում է ձեր ճամփորդությունը՝ առաջին նամակից մինչև մեկնում, և հասանելի է մնում այստեղ ձեր գտնվելու ընթացքում։" } }
+];
+
+class Component extends DCLogic {
+  state = { lang: null };
+
+  get lang() {
+    return this.state.lang || this.props.defaultLang || "en";
+  }
+
+  wa(text) {
+    const digits = String(this.props.whatsappNumber || "+374 10 000 000").replace(/[^0-9]/g, "");
+    return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text);
+  }
+
+  renderVals() {
+    const lang = this.lang;
+    const c = S[lang] || S.en;
+    const cur = this.props.currency || "$";
+    const money = (n) => (lang === "hy" ? cur + n : cur + n);
+    const fmt = (n) => (lang === "hy" ? money(n) + c.from : c.from + " " + money(n));
+    const brand = "Armina Signature Travel";
+
+    return {
+      c,
+      waLink: this.wa(brand + " — " + c.secContact),
+      phoneDisplay: this.props.whatsappNumber || "+374 10 000 000",
+      langs: [["en", "EN"], ["ru", "RU"], ["hy", "ՀՅ"]].map(([code, label]) => ({
+        label,
+        pick: () => this.setState({ lang: code }),
+        style: "background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; padding: 4px 7px; border-bottom: 1px solid " +
+          (code === lang ? "var(--color-accent)" : "transparent") + "; color: " +
+          (code === lang ? "var(--color-accent-700)" : "var(--color-neutral-600)")
+      })),
+      tours: TOURS.map((t) => ({
+        slot: t.slot, photo: t.photo, dur: t[lang].dur, title: t[lang].title, body: t[lang].body,
+        price: fmt(t.price), wa: this.wa(t.en.title + " — " + brand)
+      })),
+      packages: PACKAGES.map((p) => ({
+        slot: p.slot, photo: p.photo, days: p[lang].days, title: p[lang].title, body: p[lang].body,
+        includes: p[lang].includes, price: fmt(p.price), wa: this.wa(p.en.title + " — " + brand)
+      })),
+      services: SERVICES.map((s) => ({ num: s.num, title: s[lang].title, body: s[lang].body })),
+      why: WHY.map((w) => ({ num: w.num, title: w[lang].title, body: w[lang].body }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
