@@ -93,7 +93,7 @@
               <h3 class="card-title" style="font-family: var(--font-heading); font-weight: 500; font-size: 26px; margin: 0; line-height: 1.15">{{ t.title }}</h3>
               <p style="font-size: 15px; line-height: 1.7; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0; flex: 1">{{ t.body }}</p>
               <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-divider); padding-top: 14px; margin-top: 4px">
-                <span style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-neutral-700); font-variant-numeric: tabular-nums">{{ t.price }}</span>
+                <span style="font-size: 13px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
                 <a href="{{ t.wa }}" target="_blank" rel="noopener" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
               </div>
             </div>
@@ -128,7 +128,7 @@
                 </sc-for>
               </ul>
               <div style="display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap">
-                <span style="font-family: var(--font-heading); font-size: 28px; font-variant-numeric: tabular-nums">{{ p.price }}</span>
+                <span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700); max-width: 26ch">{{ c.priceQuestion }}</span>
                 <a class="btn btn-primary" href="{{ p.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
               </div>
             </div>
@@ -219,13 +219,23 @@
     <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap">
       <img src="assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: 54px; width: auto; display: block">
       <p style="font-family: var(--font-heading); font-style: italic; font-size: 19px; color: var(--color-neutral-800); margin: 0">{{ c.heroSlogan }}</p>
-      <div style="font-size: 12.5px; letter-spacing: 0.1em; color: var(--color-neutral-600); font-variant-numeric: tabular-nums">© 2026 Armina Signature Travel</div>
+      <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap">
+        <div style="display: flex; align-items: center; gap: 14px">
+          <a href="https://www.instagram.com/armina_signature_travel?igsi=d2Q4bHJtZHAwdm94" target="_blank" rel="noopener" aria-label="Instagram" style="color: var(--color-neutral-600); display: inline-flex" style-hover="color: var(--color-accent-600)">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"></circle></svg>
+          </a>
+          <a href="https://www.facebook.com/share/1BnSCSXiWn/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook" style="color: var(--color-neutral-600); display: inline-flex" style-hover="color: var(--color-accent-600)">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"></circle><path d="M13.8 21.5v-7.2h2.4l.36-2.8h-2.76V9.6c0-.81.22-1.36 1.39-1.36h1.48V5.73c-.26-.035-1.14-.11-2.17-.11-2.15 0-3.62 1.31-3.62 3.72v2.08H8.4v2.8h2.48v7.28"></path></svg>
+          </a>
+        </div>
+        <div style="font-size: 12.5px; letter-spacing: 0.1em; color: var(--color-neutral-600); font-variant-numeric: tabular-nums">© 2026 Armina Signature Travel</div>
+      </div>
     </div>
   </footer>
 </div>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ru&quot;,&quot;hy&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ru'|'hy'&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+374 10 000 000&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;currency&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;$&quot;,&quot;€&quot;,&quot;֏&quot;],&quot;default&quot;:&quot;$&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ru&quot;,&quot;hy&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ru'|'hy'&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+37494965509&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 const S = {
   en: {
     navTours: "Tours", navPackages: "Packages", navServices: "Services", navAbout: "About", navContact: "Contact",
@@ -249,7 +259,7 @@ const S = {
     contactLead: "Tell us your dates, how many of you are travelling and what you would like to see. We answer within a few hours with a draft itinerary and a clear price, with no obligation.",
     labelEmail: "Email", labelWhatsApp: "WhatsApp", labelOffice: "Office", labelHours: "Hours",
     office: "Yerevan, Armenia", hours: "Mon–Sat 09:00–19:00 (GMT+4) · WhatsApp answered daily",
-    includes: "Included", enquire: "Enquire", from: "From"
+    includes: "Included", enquire: "Enquire", priceQuestion: "How many of you are travelling?"
   },
   ru: {
     navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
@@ -273,7 +283,7 @@ const S = {
     contactLead: "Напишите даты, число путешественников и то, что хотели бы увидеть. В течение нескольких часов пришлём черновой маршрут и понятную цену — без обязательств.",
     labelEmail: "Почта", labelWhatsApp: "WhatsApp", labelOffice: "Офис", labelHours: "Часы работы",
     office: "Ереван, Армения", hours: "Пн–Сб 09:00–19:00 (GMT+4) · WhatsApp ежедневно",
-    includes: "Входит в стоимость", enquire: "Запрос", from: "от"
+    includes: "Входит в стоимость", enquire: "Запрос", priceQuestion: "Сколько вас будет?"
   },
   hy: {
     navTours: "Տուրեր", navPackages: "Փաթեթներ", navServices: "Ծառայություններ", navAbout: "Մեր մասին", navContact: "Կապ",
@@ -297,37 +307,37 @@ const S = {
     contactLead: "Գրեք ձեր ամսաթվերը, ճամփորդների թիվը և այն, ինչ կցանկանաք տեսնել։ Մի քանի ժամում կուղարկենք նախնական երթուղի և հստակ գին՝ առանց պարտավորության։",
     labelEmail: "Էլ. փոստ", labelWhatsApp: "WhatsApp", labelOffice: "Գրասենյակ", labelHours: "Ժամեր",
     office: "Երևան, Հայաստան", hours: "Երկ–Շաբ 09:00–19:00 (GMT+4) · WhatsApp՝ ամեն օր",
-    includes: "Ներառված է", enquire: "Հարցում", from: "-ից"
+    includes: "Ներառված է", enquire: "Հարցում", priceQuestion: "Քանի՞ հոգով եք ճամփորդում։"
   }
 };
 
 const TOURS = [
-  { slot: "tour-garni", price: 75, photo: "Garni temple above the Azat gorge",
+  { slot: "tour-garni", photo: "Garni temple above the Azat gorge",
     src: "assets/photos/tour-garni.jpg", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg",
     en: { dur: "1 day · 8 hours", title: "Garni & Geghard", body: "The Hellenistic temple on the cliff above the Azat gorge, the rock-hewn monastery of Geghard, and lavash baked in a village tonir." },
     ru: { dur: "1 день · 8 часов", title: "Гарни и Гегард", body: "Эллинистический храм на скале над ущельем Азат, высеченный в скале монастырь Гегард и лаваш из деревенского тонира." },
     hy: { dur: "1 օր · 8 ժամ", title: "Գառնի և Գեղարդ", body: "Ազատի կիրճի վերևում կանգնած հելլենիստական տաճարը, ժայռի մեջ փորված Գեղարդի վանքը և գյուղական թոնրի լավաշը։" } },
-  { slot: "tour-ararat", price: 80, photo: "Khor Virap monastery with Ararat behind",
+  { slot: "tour-ararat", photo: "Khor Virap monastery with Ararat behind",
     src: "assets/photos/tour-ararat.jpg", credit: "Andrew Behesnilian / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Khor_Virap_Monastery_and_Mount_Ararat,_Armenia.jpg",
     en: { dur: "1 day · 9 hours", title: "Khor Virap & Areni", body: "The monastery facing Ararat across the border, the Areni-1 cave where the world's oldest winery was found, and a tasting at a family cellar." },
     ru: { dur: "1 день · 9 часов", title: "Хор Вирап и Арени", body: "Монастырь напротив Арарата, пещера Арени-1 с древнейшей винодельней мира и дегустация в семейном погребе." },
     hy: { dur: "1 օր · 9 ժամ", title: "Խոր Վիրապ և Արենի", body: "Արարատին դեմ հանդիման վանքը, Արենի-1 քարանձավը՝ աշխարհի հնագույն գինեգործարանով, և համտես ընտանեկան մառանում։" } },
-  { slot: "tour-tatev", price: 120, photo: "Wings of Tatev cableway over the Vorotan gorge",
+  { slot: "tour-tatev", photo: "Wings of Tatev cableway over the Vorotan gorge",
     src: "assets/photos/tour-tatev.jpg", credit: "Armineaghayan / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Տաթևեր_Ճոպանուղի.JPG",
     en: { dur: "1 day · 12 hours", title: "Tatev & Karahunj", body: "The longest reversible cableway in the world, a ninth-century monastery on the edge of the Vorotan gorge, and the standing stones of Karahunj." },
     ru: { dur: "1 день · 12 часов", title: "Татев и Карахундж", body: "Самая длинная в мире реверсивная канатная дорога, монастырь IX века над Воротанским ущельем и мегалиты Карахунджа." },
     hy: { dur: "1 օր · 12 ժամ", title: "Տաթև և Քարահունջ", body: "Աշխարհի ամենաերկար ճոպանուղին, Որոտանի կիրճի եզրին կանգնած IX դարի վանքը և Քարահունջի կանգուն քարերը։" } },
-  { slot: "tour-sevan", price: 85, photo: "Sevanavank peninsula on Lake Sevan",
+  { slot: "tour-sevan", photo: "Sevanavank peninsula on Lake Sevan",
     src: "assets/photos/tour-sevan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg",
     en: { dur: "1 day · 9 hours", title: "Lake Sevan & Dilijan", body: "Sevanavank on its peninsula, the forest monastery of Haghartsin, and the restored old street of Dilijan for coffee." },
     ru: { dur: "1 день · 9 часов", title: "Севан и Дилижан", body: "Севанаванк на полуострове, лесной монастырь Агарцин и восстановленная старая улица Дилижана с кофе." },
     hy: { dur: "1 օր · 9 ժամ", title: "Սևան և Դիլիջան", body: "Սևանավանքը թերակղզու վրա, Հաղարծնի անտառային վանքը և Դիլիջանի վերականգնված հին փողոցը՝ սուրճի համար։" } },
-  { slot: "tour-aragats", price: 90, photo: "Amberd fortress on the slopes of Aragats",
+  { slot: "tour-aragats", photo: "Amberd fortress on the slopes of Aragats",
     src: "assets/photos/tour-aragats.jpg", credit: "Marek.wypych / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Amberd_Fortress_with_Mount_Ararat_in_background_1.jpg",
     en: { dur: "1 day · 8 hours", title: "Aragats & Amberd", body: "The alphabet monument, a mediaeval fortress on the southern slope of Mount Aragats, and lunch by the alpine Lake Kari at 3,200 m." },
     ru: { dur: "1 день · 8 часов", title: "Арагац и Амберд", body: "Памятник алфавиту, средневековая крепость на южном склоне Арагаца и обед у высокогорного озера Кари на 3200 м." },
     hy: { dur: "1 օր · 8 ժամ", title: "Արագած և Ամբերդ", body: "Այբուբենի հուշարձանը, Արագածի հարավային լանջի միջնադարյան ամրոցը և ճաշ Քարի լճի մոտ՝ 3200 մ բարձրության վրա։" } },
-  { slot: "tour-yerevan", price: 45, photo: "Cascade steps and Republic Square, Yerevan",
+  { slot: "tour-yerevan", photo: "Cascade steps and Republic Square, Yerevan",
     src: "assets/photos/tour-yerevan.jpg",
     en: { dur: "Half day · 4 hours", title: "Yerevan on foot", body: "Republic Square, the Cascade, the Matenadaran manuscript library and the Vernissage market, walked with a guide who grew up here." },
     ru: { dur: "Полдня · 4 часа", title: "Ереван пешком", body: "Площадь Республики, Каскад, Матенадаран и рынок Вернисаж — пешком с гидом, выросшим в этом городе." },
@@ -335,7 +345,7 @@ const TOURS = [
 ];
 
 const PACKAGES = [
-  { slot: "pkg-classic", price: 1290, photo: "Monastery courtyard at golden hour",
+  { slot: "pkg-classic", photo: "Monastery courtyard at golden hour",
     src: "assets/photos/pkg-classic.jpg", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Geghard_Monastery,_Armenia.jpg",
     en: { days: "7 days / 6 nights", title: "Classic Armenia", body: "Yerevan as your base for three nights, then south through Areni, Tatev and Goris, back by way of Lake Sevan and Dilijan. The country's essentials without a single rushed morning.",
       includes: ["4★ hotels, 6 nights", "Airport transfers", "Private car and driver", "Licensed English guide", "Daily breakfast", "All entrance fees"] },
@@ -343,7 +353,7 @@ const PACKAGES = [
       includes: ["Отели 4★, 6 ночей", "Трансферы из аэропорта", "Личный автомобиль с водителем", "Лицензированный гид", "Завтраки", "Все входные билеты"] },
     hy: { days: "7 օր / 6 գիշեր", title: "Դասական Հայաստան", body: "Երեք գիշեր Երևանում, ապա հարավ՝ Արենի, Տաթև, Գորիս, և վերադարձ Սևանով ու Դիլիջանով։ Երկրի ամենակարևորը՝ առանց ոչ մի շտապ առավոտի։",
       includes: ["4★ հյուրանոցներ, 6 գիշեր", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ", "Լիցենզավորված ուղեկցորդ", "Ամենօրյա նախաճաշ", "Բոլոր մուտքի տոմսերը"] } },
-  { slot: "pkg-highlands", price: 940, photo: "Mountain road through the Vayots Dzor highlands",
+  { slot: "pkg-highlands", photo: "Mountain road through the Vayots Dzor highlands",
     src: "assets/photos/pkg-highlands.jpg", credit: "Art Anderson / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vardenyats_Pass,_Armenia_-_panoramio.jpg",
     en: { days: "5 days / 4 nights", title: "Highlands & Monasteries", body: "Four nights, four monasteries and the roads between them: Geghard, Noravank, Tatev and Haghpat, with a night in a guesthouse above the Debed canyon.",
       includes: ["3★–4★ hotels and one guesthouse", "Airport transfers", "Private car and driver", "Licensed guide", "Daily breakfast, two dinners"] },
@@ -351,7 +361,7 @@ const PACKAGES = [
       includes: ["Отели 3★–4★ и один гостевой дом", "Трансферы из аэропорта", "Личный автомобиль с водителем", "Лицензированный гид", "Завтраки и два ужина"] },
     hy: { days: "5 օր / 4 գիշեր", title: "Լեռներ և վանքեր", body: "Չորս գիշեր, չորս վանք և նրանց միջև ընկած ճանապարհները՝ Գեղարդ, Նորավանք, Տաթև և Հաղպատ, մեկ գիշեր Դեբեդի կիրճի վերևի հյուրատանը։",
       includes: ["3★–4★ հյուրանոցներ և մեկ հյուրատուն", "Օդանավակայանի տրանսֆերներ", "Անհատական մեքենա և վարորդ", "Լիցենզավորված ուղեկցորդ", "Նախաճաշ և երկու ընթրիք"] } },
-  { slot: "pkg-grand", price: 1980, photo: "Vineyard terraces in Vayots Dzor",
+  { slot: "pkg-grand", photo: "Vineyard terraces in Vayots Dzor",
     src: "assets/photos/pkg-grand.jpg", credit: "Ավետիսյան91 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Natural_landscape_and_vineyard_in_Rind_village_01.jpg",
     en: { days: "10 days / 9 nights", title: "Grand Armenia", body: "The whole country, north to south: Lori's canyons, Gyumri's stone streets, Aragats, Yerevan, the wine villages of Vayots Dzor and the Syunik mountains, ending with two unscheduled days you spend as you like.",
       includes: ["4★ hotels and boutique stays", "Airport transfers", "Private car and driver, 10 days", "Licensed guide", "Wine and brandy tastings", "Daily breakfast, four dinners"] },
@@ -407,22 +417,19 @@ class Component extends DCLogic {
   }
 
   wa(text) {
-    const digits = String(this.props.whatsappNumber || "+374 10 000 000").replace(/[^0-9]/g, "");
+    const digits = String(this.props.whatsappNumber || "+37494965509").replace(/[^0-9]/g, "");
     return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text);
   }
 
   renderVals() {
     const lang = this.lang;
     const c = S[lang] || S.en;
-    const cur = this.props.currency || "$";
-    const money = (n) => (lang === "hy" ? cur + n : cur + n);
-    const fmt = (n) => (lang === "hy" ? money(n) + c.from : c.from + " " + money(n));
     const brand = "Armina Signature Travel";
 
     return {
       c,
       waLink: this.wa(brand + " — " + c.secContact),
-      phoneDisplay: this.props.whatsappNumber || "+374 10 000 000",
+      phoneDisplay: this.props.whatsappNumber || "+37494965509",
       langs: [["en", "EN"], ["ru", "RU"], ["hy", "ՀՅ"]].map(([code, label]) => ({
         label,
         pick: () => this.setState({ lang: code }),
@@ -433,12 +440,12 @@ class Component extends DCLogic {
       tours: TOURS.map((t) => ({
         slot: t.slot, photo: t.photo, src: t.src, credit: t.credit, creditHref: t.creditHref,
         dur: t[lang].dur, title: t[lang].title, body: t[lang].body,
-        price: fmt(t.price), wa: this.wa(t.en.title + " — " + brand)
+        wa: this.wa(t.en.title + " — " + brand)
       })),
       packages: PACKAGES.map((p) => ({
         slot: p.slot, photo: p.photo, src: p.src, credit: p.credit, creditHref: p.creditHref,
         days: p[lang].days, title: p[lang].title, body: p[lang].body,
-        includes: p[lang].includes, price: fmt(p.price), wa: this.wa(p.en.title + " — " + brand)
+        includes: p[lang].includes, wa: this.wa(p.en.title + " — " + brand)
       })),
       services: SERVICES.map((s) => ({ num: s.num, title: s[lang].title, body: s[lang].body })),
       why: WHY.map((w) => ({ num: w.num, title: w[lang].title, body: w[lang].body }))
