@@ -12,7 +12,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-aragats.jpg | Amberd fortress with Mount Ararat | Marek.wypych | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Amberd_Fortress_with_Mount_Ararat_in_background_1.jpg |
 | tour-yerevan.jpg | Cascade of Yerevan | Benoît Prieur | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Cascade_of_Yerevan.JPG |
 | pkg-classic.jpg | Lake Sevan with mountains behind | Xelgen (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sevank_lake_and_clouds_coming_through_the_mountain_chain,_September_21,_2023.jpg |
-| pkg-highlands.jpg | Green highland pass, Vardenyats, Vayots Dzor | Ավետիսյան91 (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Landscape_from_Vardenyats_mountain_pass_02.jpg |
-| pkg-grand.jpg | Noravank canyon, Vayots Dzor | Karen Aghababyan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Noravank_IBA_K.Aghababyan.jpg |
+| pkg-highlands.jpg | Dimats mountain, Dilijan National Park | 23artashes (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dimats_mountain_ԱԹ_09.jpg |
+| pkg-grand.jpg | Road through the Noravank canyon, Vayots Dzor | Marcin Konsek | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2014_Prowincja_Wajoc_Dzor,_Wąwóz_Gnishik_(Wąwóz_Norawank)_(04).jpg |
 
 Images were resized/re-compressed for web delivery (`sips`); originals are unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above.
