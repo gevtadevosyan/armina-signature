@@ -11,7 +11,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-sevan.jpg | Sevanavank on Lake Sevan | Diego Delso (delso.photo) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg |
 | tour-aragats.jpg | Amberd fortress with Mount Ararat | Marek.wypych | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Amberd_Fortress_with_Mount_Ararat_in_background_1.jpg |
 | tour-yerevan.jpg | Cascade of Yerevan | Benoît Prieur | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Cascade_of_Yerevan.JPG |
-| pkg-classic.jpg | Geghard Monastery | Vyacheslav Argenberg | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Geghard_Monastery,_Armenia.jpg |
+| pkg-classic.jpg | Sevanavank monastery on Lake Sevan (aerial) | Vahag851 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sevanavank_Monastery_at_the_coast_of_Lake_Sevan._Armenia._DJI_0017-8.jpg |
 | pkg-highlands.jpg | Vardenyats mountain pass, Vayots Dzor | Art Anderson | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Vardenyats_Pass,_Armenia_-_panoramio.jpg |
 | pkg-grand.jpg | Vineyard, Rind village, Vayots Dzor | Ավետիսյան91 (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Natural_landscape_and_vineyard_in_Rind_village_01.jpg |
 
