@@ -119,13 +119,7 @@
             </div>
             <div>
               <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(28px, 3vw, 40px); margin: 0 0 16px; line-height: 1.1">{{ p.title }}</h3>
-              <p style="font-size: 16px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 20px; max-width: 52ch">{{ p.body }}</p>
-              <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-neutral-700); margin-bottom: 12px">{{ c.includes }}</div>
-              <ul style="list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px 24px">
-                <sc-for list="{{ p.includes }}" as="inc" hint-placeholder-count="5">
-                  <li style="font-size: 14.5px; line-height: 1.55; color: var(--color-neutral-800); border-bottom: 1px solid var(--color-divider); padding-bottom: 7px">{{ inc }}</li>
-                </sc-for>
-              </ul>
+              <p style="font-size: 16px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 28px; max-width: 58ch">{{ p.body }}</p>
               <div style="display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap">
                 <span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700); max-width: 26ch">{{ c.priceQuestion }}</span>
                 <a class="btn btn-primary" href="{{ p.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
@@ -258,7 +252,7 @@ const S = {
     contactLead: "Tell us your dates, how many of you are travelling and what you would like to see. We answer within a few hours with a draft itinerary and a clear price, with no obligation.",
     labelEmail: "Email", labelWhatsApp: "WhatsApp", labelOffice: "Office", labelHours: "Hours",
     office: "Yerevan, Armenia", hours: "Mon–Sat 09:00–19:00 (GMT+4) · WhatsApp answered daily",
-    includes: "Included", enquire: "Enquire", priceQuestion: "How many of you are travelling?"
+    enquire: "Enquire", priceQuestion: "How many of you are travelling?"
   },
   ru: {
     navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
@@ -282,7 +276,7 @@ const S = {
     contactLead: "Напишите даты, число путешественников и то, что хотели бы увидеть. В течение нескольких часов пришлём черновой маршрут и понятную цену — без обязательств.",
     labelEmail: "Почта", labelWhatsApp: "WhatsApp", labelOffice: "Офис", labelHours: "Часы работы",
     office: "Ереван, Армения", hours: "Пн–Сб 09:00–19:00 (GMT+4) · WhatsApp ежедневно",
-    includes: "Входит в стоимость", enquire: "Запрос", priceQuestion: "Сколько вас будет?"
+    enquire: "Запрос", priceQuestion: "Сколько вас будет?"
   }
 };
 
@@ -316,22 +310,16 @@ const TOURS = [
 const PACKAGES = [
   { slot: "pkg-classic", photo: "Monastery courtyard at golden hour",
     src: "assets/photos/pkg-classic.jpg", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Geghard_Monastery,_Armenia.jpg",
-    en: { title: "Classic Armenia", body: "Yerevan as your base for three nights, then south through Areni, Tatev and Goris, back by way of Lake Sevan and Dilijan. The country's essentials without a single rushed morning.",
-      includes: ["4★ hotels, 6 nights", "Airport transfers", "Private car and driver", "Licensed English guide", "Daily breakfast", "All entrance fees"] },
-    ru: { title: "Классическая Армения", body: "Три ночи в Ереване, затем юг — Арени, Татев, Горис — и возвращение через Севан и Дилижан. Всё главное, без ни одного торопливого утра.",
-      includes: ["Отели 4★, 6 ночей", "Трансферы из аэропорта", "Личный автомобиль с водителем", "Лицензированный гид", "Завтраки", "Все входные билеты"] } },
+    en: { title: "Classic Armenia", body: "Yerevan as your base, then south through Areni, Tatev and Goris, back by way of Lake Sevan and Dilijan. The country's essentials without a single rushed morning, with 4★ hotels, a private car and driver, and a licensed English-speaking guide throughout, breakfast and all entrance fees included." },
+    ru: { title: "Классическая Армения", body: "Ереван как база, затем юг — Арени, Татев, Горис — и возвращение через Севан и Дилижан. Всё главное, без ни одного торопливого утра: отели 4★, личный автомобиль с водителем и лицензированный гид на всём пути, с завтраками и всеми входными билетами в стоимости." } },
   { slot: "pkg-highlands", photo: "Mountain road through the Vayots Dzor highlands",
     src: "assets/photos/pkg-highlands.jpg", credit: "Art Anderson / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vardenyats_Pass,_Armenia_-_panoramio.jpg",
-    en: { title: "Highlands & Monasteries", body: "Four nights, four monasteries and the roads between them: Geghard, Noravank, Tatev and Haghpat, with a night in a guesthouse above the Debed canyon.",
-      includes: ["3★–4★ hotels and one guesthouse", "Airport transfers", "Private car and driver", "Licensed guide", "Daily breakfast, two dinners"] },
-    ru: { title: "Горы и монастыри", body: "Четыре ночи, четыре монастыря и дороги между ними: Гегард, Нораванк, Татев и Ахпат, с ночёвкой в гостевом доме над каньоном Дебед.",
-      includes: ["Отели 3★–4★ и один гостевой дом", "Трансферы из аэропорта", "Личный автомобиль с водителем", "Лицензированный гид", "Завтраки и два ужина"] } },
+    en: { title: "Highlands & Monasteries", body: "Four monasteries and the roads between them — Geghard, Noravank, Tatev and Haghpat — with a stay in a guesthouse above the Debed canyon. A private car and driver, a licensed guide, 3★–4★ hotels, breakfast daily and two dinners included." },
+    ru: { title: "Горы и монастыри", body: "Четыре монастыря и дороги между ними — Гегард, Нораванк, Татев и Ахпат — с остановкой в гостевом доме над каньоном Дебед. Личный автомобиль с водителем, лицензированный гид, отели 3★–4★, завтраки и два ужина включены." } },
   { slot: "pkg-grand", photo: "Vineyard terraces in Vayots Dzor",
     src: "assets/photos/pkg-grand.jpg", credit: "Ավետիսյան91 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Natural_landscape_and_vineyard_in_Rind_village_01.jpg",
-    en: { title: "Grand Armenia", body: "The whole country, north to south: Lori's canyons, Gyumri's stone streets, Aragats, Yerevan, the wine villages of Vayots Dzor and the Syunik mountains, ending with two unscheduled days you spend as you like.",
-      includes: ["4★ hotels and boutique stays", "Airport transfers", "Private car and driver, 10 days", "Licensed guide", "Wine and brandy tastings", "Daily breakfast, four dinners"] },
-    ru: { title: "Большая Армения", body: "Вся страна с севера на юг: каньоны Лори, каменные улицы Гюмри, Арагац, Ереван, винные села Вайоц Дзора и горы Сюника — и два свободных дня в конце.",
-      includes: ["Отели 4★ и бутик-размещение", "Трансферы из аэропорта", "Личный автомобиль с водителем, 10 дней", "Лицензированный гид", "Дегустации вина и коньяка", "Завтраки и четыре ужина"] } }
+    en: { title: "Grand Armenia", body: "The whole country, north to south: Lori's canyons, Gyumri's stone streets, Aragats, Yerevan, the wine villages of Vayots Dzor and the Syunik mountains, ending with free time you spend as you like. A private car and driver throughout, a licensed guide, 4★ and boutique hotels, wine and brandy tastings, breakfast daily and four dinners included." },
+    ru: { title: "Большая Армения", body: "Вся страна с севера на юг: каньоны Лори, каменные улицы Гюмри, Арагац, Ереван, винные села Вайоц Дзора и горы Сюника — и свободное время в конце, которое вы проведёте по своему усмотрению. Личный автомобиль с водителем на всём пути, лицензированный гид, отели 4★ и бутик-размещение, дегустации вина и коньяка, завтраки и четыре ужина включены." } }
 ];
 
 const SERVICES = [
@@ -400,7 +388,7 @@ class Component extends DCLogic {
       packages: PACKAGES.map((p) => ({
         slot: p.slot, photo: p.photo, src: p.src, credit: p.credit, creditHref: p.creditHref,
         title: p[lang].title, body: p[lang].body,
-        includes: p[lang].includes, wa: this.wa(p.en.title + " — " + brand)
+        wa: this.wa(p.en.title + " — " + brand)
       })),
       services: SERVICES.map((s) => ({ num: s.num, title: s[lang].title, body: s[lang].body })),
       why: WHY.map((w) => ({ num: w.num, title: w[lang].title, body: w[lang].body }))
