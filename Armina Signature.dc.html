@@ -98,6 +98,7 @@
                   <li style="font-size: 13px; line-height: 1.5; color: var(--color-neutral-800)">{{ h }}</li>
                 </sc-for>
               </ul>
+              <button type="button" onClick="{{ t.openDetails }}" style="align-self: flex-start; background: transparent; border: 0; padding: 0; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-600); border-bottom: 1px solid var(--color-divider)" style-hover="color: var(--color-accent-600); border-bottom-color: var(--color-accent)">{{ c.viewDetails }}</button>
               <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-divider); padding-top: 14px; margin-top: 4px">
                 <span style="font-size: 13px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
                 <a href="{{ t.wa }}" target="_blank" rel="noopener" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
@@ -231,6 +232,36 @@
       </div>
     </div>
   </footer>
+
+  <sc-if value="{{ modal }}">
+    <div onClick="{{ modal.close }}" style="position: fixed; inset: 0; background: rgba(20, 18, 14, 0.66); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: clamp(16px, 4vw, 48px) 16px; overflow-y: auto">
+      <div onClick="{{ modal.stop }}" style="background: var(--color-bg); max-width: 720px; width: 100%; position: relative; margin: auto 0">
+        <button type="button" onClick="{{ modal.close }}" aria-label="Close" style="position: absolute; top: 8px; right: 8px; background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 24px; line-height: 1; color: var(--color-neutral-600); z-index: 2; padding: 8px">×</button>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px">
+          <sc-for list="{{ modal.gallery }}" as="g" hint-placeholder-count="3">
+            <image-slot shape="rect" style="width: 100%; height: 160px" placeholder="{{ g.alt }}" src="{{ g.src }}" credit="{{ g.credit }}" credit-href="{{ g.creditHref }}"></image-slot>
+          </sc-for>
+        </div>
+        <div style="padding: 28px 32px 32px">
+          <div class="card-kicker" style="font-variant-numeric: tabular-nums">{{ modal.dur }}</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(26px, 4vw, 34px); margin: 12px 0 20px; line-height: 1.15">{{ modal.title }}</h3>
+          <sc-for list="{{ modal.story }}" as="p" hint-placeholder-count="6">
+            <p style="font-size: 15.5px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 16px">{{ p }}</p>
+          </sc-for>
+          <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-neutral-700); margin: 8px 0 12px">{{ c.highlights }}</div>
+          <ul style="list-style: none; padding: 0; margin: 0 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px 24px">
+            <sc-for list="{{ modal.highlights }}" as="h" hint-placeholder-count="9">
+              <li style="font-size: 14px; line-height: 1.5; color: var(--color-neutral-800); border-bottom: 1px solid var(--color-divider); padding-bottom: 6px">{{ h }}</li>
+            </sc-for>
+          </ul>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap">
+            <span style="font-size: 14px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
+            <a class="btn btn-primary" href="{{ modal.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
 </div>
 
 </x-dc>
@@ -258,7 +289,7 @@ const S = {
     contactLead: "Tell us your dates, how many of you are travelling and what you would like to see. We answer within a few hours with a draft itinerary and a clear price, with no obligation.",
     labelEmail: "Email", labelWhatsApp: "WhatsApp", labelOffice: "Office", labelHours: "Hours",
     office: "Yerevan, Armenia", hours: "Mon–Sat 09:00–19:00 (GMT+4) · WhatsApp answered daily",
-    enquire: "Enquire", priceQuestion: "How many of you are travelling?", highlights: "Highlights"
+    enquire: "Enquire", priceQuestion: "How many of you are travelling?", highlights: "Highlights", viewDetails: "Full itinerary"
   },
   ru: {
     navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
@@ -282,47 +313,197 @@ const S = {
     contactLead: "Напишите даты, число путешественников и то, что хотели бы увидеть. В течение нескольких часов пришлём черновой маршрут и понятную цену — без обязательств.",
     labelEmail: "Почта", labelWhatsApp: "WhatsApp", labelOffice: "Офис", labelHours: "Часы работы",
     office: "Ереван, Армения", hours: "Пн–Сб 09:00–19:00 (GMT+4) · WhatsApp ежедневно",
-    enquire: "Запрос", priceQuestion: "Сколько вас будет?", highlights: "Основные моменты"
+    enquire: "Запрос", priceQuestion: "Сколько вас будет?", highlights: "Основные моменты", viewDetails: "Полная программа"
   }
 };
 
 const TOURS = [
   { slot: "tour-garni", photo: "Garni temple above the Azat gorge",
     src: "assets/photos/tour-garni.jpg", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg",
+    gallery: [
+      { src: "assets/photos/tour-garni.jpg", alt: "Garni temple above the Azat gorge", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg" },
+      { src: "assets/photos/tour-garni-2.jpg", alt: "Charents' Arch with a view of Mount Ararat", credit: "Beko / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg" },
+      { src: "assets/photos/tour-garni-3.jpg", alt: "The Symphony of Stones basalt columns", credit: "mk4oto / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Symphony_of_Stones,_Armenia.jpg" }
+    ],
     en: { dur: "1 day · 9 hours", title: "Garni, Geghard & Symphony of Stones", body: "Charents' Arch for a view of Ararat, the Hellenistic temple at Garni, the basalt columns of the Symphony of Stones, the rock-hewn monastery of Geghard, and lavash baked in a village tonir.",
-      highlights: ["Charents' Arch", "Garni Temple", "Symphony of Stones", "Geghard Monastery", "Lavash baking experience"] },
+      highlights: ["Charents' Arch", "Garni Temple", "Symphony of Stones", "Geghard Monastery", "Lavash baking experience"],
+      story: [
+        "Discover some of Armenia's most iconic landmarks and experience the country's rich cultural heritage on this unforgettable day tour.",
+        "Our journey begins with a scenic stop at Charents' Arch, a beautiful viewpoint dedicated to the renowned Armenian poet Yeghishe Charents. From here, enjoy breathtaking panoramic views of Mount Ararat and the surrounding landscape — a perfect introduction to your Armenian adventure.",
+        "We then continue to the magnificent Garni Temple, the only standing Greco-Roman colonnaded temple in Armenia. This remarkable first-century monument offers a fascinating glimpse into Armenia's pre-Christian history and architectural heritage.",
+        "From Garni, we continue to the spectacular Symphony of Stones, a natural wonder featuring impressive basalt columns formed by volcanic activity. The dramatic rock formations create a unique landscape resembling the pipes of a giant organ.",
+        "We then head to the historic Geghard Monastery, a UNESCO World Heritage Site partially carved into the surrounding cliffs and one of Armenia's most remarkable medieval monuments. Explore its ancient churches, rock-cut chambers, and peaceful surroundings.",
+        "To complete the experience, we'll stop at a local village to discover the traditional Armenian art of lavash baking. See how this famous Armenian flatbread is prepared, take part in the baking process, and enjoy a fresh tasting experience.",
+        "Experience Armenia through its breathtaking viewpoints, ancient landmarks, dramatic landscapes, and authentic local traditions — all in one memorable journey."
+      ],
+      highlightsFull: ["Hotel pickup and drop-off", "Professional English-speaking guide", "Entrance tickets", "Visit to Charents' Arch", "Visit to Garni Temple", "Visit to the Symphony of Stones", "Visit to Geghard Monastery", "Traditional lavash baking experience", "Lavash tasting"] },
     ru: { dur: "1 день · 9 часов", title: "Гарни, Гегард и Симфония камней", body: "Арка Чаренца с видом на Арарат, эллинистический храм Гарни, базальтовые колонны Симфонии камней, высеченный в скале монастырь Гегард и лаваш из деревенского тонира.",
-      highlights: ["Арка Чаренца", "Храм Гарни", "Симфония камней", "Монастырь Гегард", "Мастер-класс по выпечке лаваша"] } },
+      highlights: ["Арка Чаренца", "Храм Гарни", "Симфония камней", "Монастырь Гегард", "Мастер-класс по выпечке лаваша"],
+      story: [
+        "Откройте для себя самые знаковые достопримечательности Армении и познакомьтесь с богатым культурным наследием страны во время этого незабываемого однодневного тура.",
+        "Наше путешествие начинается с живописной остановки у Арки Чаренца — прекрасной смотровой площадки, посвящённой выдающемуся армянскому поэту Егише Чаренцу. Отсюда открывается захватывающий панорамный вид на гору Арарат и окружающие пейзажи — идеальное начало вашего путешествия по Армении.",
+        "Далее мы отправимся к великолепному храму Гарни — единственному сохранившемуся в Армении греко-римскому колонному храму. Этот удивительный памятник I века позволяет прикоснуться к дохристианской истории и архитектурному наследию Армении.",
+        "Из Гарни мы продолжим путь к впечатляющей природной достопримечательности — Симфонии камней. Здесь вас ждут величественные базальтовые колонны, сформированные в результате вулканической активности. Их необычная форма напоминает трубы огромного органа, создавая уникальный природный ландшафт.",
+        "Затем мы посетим исторический монастырь Гегард, внесённый в список Всемирного наследия ЮНЕСКО. Частично высеченный прямо в окружающих скалах, Гегард является одним из самых выдающихся средневековых памятников Армении. Вы сможете увидеть древние церкви, высеченные в скале помещения и насладиться атмосферой этого уникального места.",
+        "В завершение путешествия мы посетим местную деревню, где познакомимся с традиционным армянским искусством выпечки лаваша. Вы увидите, как готовится знаменитый армянский хлеб, сможете принять участие в процессе выпечки и попробовать свежеприготовленный лаваш.",
+        "Откройте Армению через её захватывающие панорамные виды, древние памятники, впечатляющие природные пейзажи и аутентичные местные традиции — всё это в одном незабываемом путешествии."
+      ],
+      highlightsFull: ["Трансфер из отеля и обратно", "Профессиональный англоговорящий гид", "Входные билеты", "Посещение Арки Чаренца", "Посещение храма Гарни", "Посещение Симфонии камней", "Посещение монастыря Гегард", "Традиционный мастер-класс по выпечке лаваша", "Дегустация свежего лаваша"] } },
   { slot: "tour-sevan", photo: "Sevanavank peninsula on Lake Sevan",
     src: "assets/photos/tour-sevan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg",
+    gallery: [
+      { src: "assets/photos/tour-sevan.jpg", alt: "Sevanavank peninsula on Lake Sevan", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg" },
+      { src: "assets/photos/tour-sevan-2.jpg", alt: "Old Dilijan's historic street", credit: "Textfabrikant / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Old_Dilijan,_Sharambeyan_Street,_April_2026.jpg" },
+      { src: "assets/photos/tour-sevan-3.jpg", alt: "Lake Parz forest lake", credit: "Serouj / Wikimedia Commons (Public domain)", creditHref: "https://commons.wikimedia.org/wiki/File:Clear_Lake_(Parz_lich).jpg" }
+    ],
     en: { dur: "1 day · 10 hours", title: "Sevan, Dilijan & Lake Parz", body: "A coffee stop at Lake Sevan, the craft streets of Old Dilijan, the forest waters of Lake Parz, and a visit to a local deer farm.",
-      highlights: ["Lake Sevan", "Old Dilijan", "Lake Parz", "Deer Farm"] },
+      highlights: ["Lake Sevan", "Old Dilijan", "Lake Parz", "Deer Farm"],
+      story: [
+        "Discover the natural beauty and peaceful atmosphere of northern Armenia on an unforgettable day trip from Yerevan to Lake Sevan and Dilijan.",
+        "Our journey begins with a scenic drive from Yerevan, with a relaxing coffee break at Lake Sevan. Enjoy your coffee while taking in the breathtaking views of one of Armenia's largest and most beautiful lakes, surrounded by mountains.",
+        "We then continue to Dilijan, known as one of Armenia's most picturesque towns and often referred to as the \"Armenian Switzerland.\" We will explore Old Dilijan, where you can admire traditional architecture, historic streets, local craft shops, and the charming atmosphere of the old town.",
+        "Our next destination is the beautiful Lake Parz, a peaceful forest lake surrounded by lush greenery. Take a relaxing walk around the lake and enjoy the fresh mountain air and tranquil natural surroundings.",
+        "We will then visit a local Deer Farm, where you can observe and learn about these beautiful animals in a natural forest environment. This is a wonderful experience for nature and animal lovers.",
+        "After enjoying the peaceful landscapes of Dilijan, we will begin our journey back to Yerevan, taking in the scenic views along the way.",
+        "Experience the beauty of Lake Sevan, the charm of Old Dilijan, the peaceful forests of Lake Parz, and a memorable encounter with deer — all in one unforgettable journey through northern Armenia."
+      ],
+      highlightsFull: ["Hotel pickup and drop-off", "Scenic drive from Yerevan", "Coffee break at Lake Sevan", "Visit to Lake Sevan", "Explore Old Dilijan", "Visit to Lake Parz", "Visit to the Deer Farm", "Professional English-speaking guide", "Entrance tickets"] },
     ru: { dur: "1 день · 10 часов", title: "Севан, Дилижан и озеро Парз", body: "Кофейная остановка у озера Севан, ремесленные улочки Старого Дилижана, лесное озеро Парз и посещение оленьей фермы.",
-      highlights: ["Озеро Севан", "Старый Дилижан", "Озеро Парз", "Оленья ферма"] } },
+      highlights: ["Озеро Севан", "Старый Дилижан", "Озеро Парз", "Оленья ферма"],
+      story: [
+        "Откройте для себя природную красоту и спокойную атмосферу северной Армении во время незабываемой однодневной поездки из Еревана к озеру Севан и в Дилижан.",
+        "Наше путешествие начинается с живописной поездки из Еревана, с приятной кофейной остановкой у озера Севан. Насладитесь чашечкой кофе и великолепным видом на одно из крупнейших и самых красивых озёр Армении, окружённое горами.",
+        "Затем мы отправимся в Дилижан, один из самых живописных городов Армении, который часто называют «армянской Швейцарией». Мы прогуляемся по Старому Дилижану, где вы сможете увидеть традиционную архитектуру, исторические улицы, местные ремесленные лавки и почувствовать особенное очарование старого города.",
+        "Следующей остановкой станет прекрасное озеро Парз — тихое лесное озеро, окружённое густой зеленью. Здесь вы сможете совершить спокойную прогулку, насладиться свежим горным воздухом и красотой окружающей природы.",
+        "После этого мы посетим местную оленью ферму, где вы сможете увидеть этих красивых животных и узнать больше об их жизни в естественной лесной среде. Это особенно понравится любителям природы и животных.",
+        "После знакомства с живописными пейзажами Дилижана мы отправимся обратно в Ереван, наслаждаясь красивыми видами по дороге.",
+        "Откройте для себя красоту озера Севан, очарование Старого Дилижана, спокойные леса озера Парз и удивительный мир оленей — всё в одном незабываемом путешествии по северной Армении."
+      ],
+      highlightsFull: ["Трансфер из отеля и обратно", "Живописная поездка из Еревана", "Кофейная остановка у озера Севан", "Посещение озера Севан", "Прогулка по Старому Дилижану", "Посещение озера Парз", "Посещение оленьей фермы", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-yerevan", photo: "Cascade steps and Republic Square, Yerevan",
     src: "assets/photos/tour-yerevan.jpg",
+    gallery: [
+      { src: "assets/photos/tour-yerevan.jpg", alt: "Cascade steps and Republic Square, Yerevan", credit: "", creditHref: "" },
+      { src: "assets/photos/tour-yerevan-2.jpg", alt: "Vernissage Market, Yerevan", credit: "Deb Collins / Wikimedia Commons (CC BY 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vernissage_market,_Yerevan.jpg" },
+      { src: "assets/photos/tour-yerevan-3.jpg", alt: "Yerevan Opera House and Swan Lake", credit: "Armenak Margarian / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Exterior_of_Opera_house_of_Yerevan_2019-05-16.jpg" }
+    ],
     en: { dur: "1 day · 6 hours", title: "Yerevan on foot", body: "A local food market, the Vernissage craft market, Republic Square and Pushkin Street's art quarter, a coffee break in an old courtyard, and a walk past the Opera House to the Cascade.",
-      highlights: ["Local food market", "Vernissage Market", "Republic Square", "Pushkin Street & Art Quarter", "Traditional courtyard & coffee", "Cascade Complex"] },
+      highlights: ["Local food market", "Vernissage Market", "Republic Square", "Pushkin Street & Art Quarter", "Traditional courtyard & coffee", "Cascade Complex"],
+      story: [
+        "Experience Yerevan like a local and discover the city's history, culture, art, and everyday life on a relaxed walking tour through its most fascinating neighborhoods and landmarks.",
+        "We will pick you up from your hotel by car and begin our experience at a local food market, where you can discover and taste a variety of traditional Armenian products and get an authentic introduction to local flavors.",
+        "From there, we will continue to Vernissage Market, one of Yerevan's best-known open-air markets, where you can explore Armenian handicrafts, traditional artwork, souvenirs, and handmade treasures.",
+        "We will then begin our walking tour through the heart of the city, starting at Republic Square and continuing to Pushkin Street, home to Yerevan's vibrant Art Quarter, where local artists, galleries, cafés, and creative spaces come together.",
+        "Next, we will discover one of the oldest streets of Yerevan and step into a traditional local courtyard, where you can enjoy a cup of authentic Armenian coffee and experience a more intimate side of the city.",
+        "Our walk continues through Anzvour Square, Swan Lake, and the magnificent Opera House. We will also visit Saryan Park, see the Yerevan State Conservatory, and discover the Komitas Statue, dedicated to one of Armenia's most influential musical figures.",
+        "The tour concludes at the iconic Cascade Complex, one of the most recognizable landmarks and symbols of Yerevan, with a wonderful view over the city — the perfect ending to our journey through the capital."
+      ],
+      highlightsFull: ["Hotel pickup and transportation to the starting point", "Local food market experience", "Visit to Vernissage Market", "Republic Square", "Pushkin Street and Yerevan's Art Quarter", "One of Yerevan's oldest streets and a traditional courtyard", "Armenian coffee experience", "Anzvour Square", "Swan Lake", "Yerevan Opera House", "Saryan Park", "Yerevan State Conservatory", "Komitas Statue", "Cascade Complex"] },
     ru: { dur: "1 день · 6 часов", title: "Ереван пешком", body: "Местный продуктовый рынок, рынок Вернисаж, Площадь Республики и Арт-квартал на улице Пушкина, кофе во дворике старого города и прогулка мимо Оперного театра к Каскаду.",
-      highlights: ["Местный продуктовый рынок", "Рынок Вернисаж", "Площадь Республики", "Улица Пушкина и Арт-квартал", "Традиционный дворик и кофе", "Комплекс Каскад"] } },
+      highlights: ["Местный продуктовый рынок", "Рынок Вернисаж", "Площадь Республики", "Улица Пушкина и Арт-квартал", "Традиционный дворик и кофе", "Комплекс Каскад"],
+      story: [
+        "Познакомьтесь с Ереваном как местный житель и откройте для себя историю, культуру, искусство и повседневную жизнь города во время спокойной пешеходной прогулки по его самым интересным районам и достопримечательностям.",
+        "Мы заберём вас из отеля на автомобиле и начнём нашу экскурсию с местного продуктового рынка, где вы сможете познакомиться и попробовать разнообразные традиционные армянские продукты и получить настоящее представление о местных вкусах.",
+        "Оттуда мы продолжим путь к рынку Вернисаж — одному из самых известных открытых рынков Еревана, где вы сможете познакомиться с армянскими ремеслами, традиционными произведениями искусства, сувенирами и уникальными изделиями ручной работы.",
+        "Затем мы начнём нашу пешеходную прогулку по самому центру города. Мы начнём с Площади Республики и продолжим по улице Пушкина, где находится оживлённый Арт-квартал Еревана — район, где встречаются местные художники, галереи, кафе и творческие пространства.",
+        "Далее мы отправимся на одну из старейших улиц Еревана и заглянем в традиционный местный дворик, где вы сможете насладиться чашечкой настоящего армянского кофе и почувствовать более уютную и аутентичную атмосферу города.",
+        "Наша прогулка продолжится через площадь Анзвор, Лебединое озеро и к великолепному Оперному театру. Мы также посетим парк Сарьяна, увидим Ереванскую государственную консерваторию и памятник Комитасу, посвящённый одному из наиболее влиятельных деятелей армянской музыкальной культуры.",
+        "Экскурсия завершится у знаменитого комплекса Каскад — одной из самых узнаваемых достопримечательностей и символов Еревана, откуда открывается прекрасный вид на город. Это станет идеальным завершением нашего путешествия по столице Армении."
+      ],
+      highlightsFull: ["Трансфер из отеля и транспорт до места начала прогулки", "Посещение местного продуктового рынка", "Посещение рынка Вернисаж", "Площадь Республики", "Улица Пушкина и Арт-квартал Еревана", "Одна из старейших улиц Еревана и традиционный местный дворик", "Знакомство с армянским кофе", "Площадь Анзвор", "Лебединое озеро", "Ереванский оперный театр", "Парк Сарьяна", "Ереванская государственная консерватория", "Памятник Комитасу", "Комплекс Каскад"] } },
   { slot: "tour-gyumri", photo: "Marmashen Monastery on the Akhuryan river",
     src: "assets/photos/tour-gyumri.jpg", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg",
+    gallery: [
+      { src: "assets/photos/tour-gyumri.jpg", alt: "Marmashen Monastery on the Akhuryan river", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg" },
+      { src: "assets/photos/tour-gyumri-2.jpg", alt: "Vartanants Square and the Church of the Holy Saviour, Gyumri", credit: "Hayastan Mkrtchyan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Saviour_and_Vartanants_Square_2023-10-12.jpg" },
+      { src: "assets/photos/tour-gyumri-3.jpg", alt: "Black-tuff street in the Kumayri historic district, Gyumri", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Jivani_Street,_Kumayri_historic_district,_Gyumri,_08.07.2017.jpg" }
+    ],
     en: { dur: "1 day · 10 hours", title: "Gyumri & Marmashen Monastery", body: "A walk through Gyumri's black-stone streets, a horse-drawn carriage ride through the city, and the riverside medieval monastery of Marmashen.",
-      highlights: ["Historic Gyumri streets & architecture", "Horse-drawn carriage ride", "Marmashen Monastery"] },
+      highlights: ["Historic Gyumri streets & architecture", "Horse-drawn carriage ride", "Marmashen Monastery"],
+      story: [
+        "Discover the charm, history, and unique atmosphere of Gyumri, Armenia's cultural capital, on a memorable day trip combining a walking tour, a traditional horse-drawn carriage ride, and a visit to the historic Marmashen Monastery.",
+        "Our journey begins with a scenic drive from Yerevan to Gyumri, where we will explore the city on foot. Discover Gyumri's historic streets, beautiful architecture, traditional black-stone buildings, charming courtyards, and vibrant cultural atmosphere while learning about the city's fascinating history and traditions.",
+        "To make the experience even more special, we will enjoy a horse-drawn carriage ride through Gyumri, offering a unique and relaxing way to experience the city and its historic streets.",
+        "After exploring Gyumri, we will continue to the peaceful surroundings of the Marmashen Monastery, a beautiful medieval Armenian monastery located along the Akhuryan River. Surrounded by scenic landscapes, Marmashen offers a wonderful combination of history, architecture, and nature.",
+        "After visiting the monastery, we will begin our journey back to Yerevan, enjoying the beautiful views along the way.",
+        "Experience the unique spirit of Gyumri, discover its rich cultural heritage, enjoy a traditional horse-drawn carriage ride, and visit the peaceful medieval Marmashen Monastery — all in one unforgettable journey."
+      ],
+      highlightsFull: ["Hotel pickup and drop-off", "Scenic drive from Yerevan to Gyumri", "Walking tour of historic Gyumri", "Discover Gyumri's historic streets and architecture", "Traditional horse-drawn carriage ride", "Visit to Marmashen Monastery", "Professional English-speaking guide", "Entrance tickets"] },
     ru: { dur: "1 день · 10 часов", title: "Гюмри и монастырь Мармашен", body: "Прогулка по улицам Гюмри из чёрного туфа, поездка на конной карете по городу и средневековый монастырь Мармашен на берегу реки.",
-      highlights: ["Исторические улицы и архитектура Гюмри", "Прогулка на конной карете", "Монастырь Мармашен"] } },
+      highlights: ["Исторические улицы и архитектура Гюмри", "Прогулка на конной карете", "Монастырь Мармашен"],
+      story: [
+        "Откройте для себя очарование, историю и уникальную атмосферу Гюмри, культурной столицы Армении, во время незабываемой однодневной поездки, которая сочетает пешеходную экскурсию, традиционную прогулку на конной карете и посещение исторического монастыря Мармашен.",
+        "Наше путешествие начинается с живописной поездки из Еревана в Гюмри, где мы отправимся на пешеходную экскурсию по городу. Мы прогуляемся по историческим улицам Гюмри, увидим красивую архитектуру, традиционные здания из чёрного туфа, уютные дворики и почувствуем яркую культурную атмосферу города. Во время прогулки вы также узнаете больше об увлекательной истории и традициях Гюмри.",
+        "Чтобы сделать путешествие ещё более особенным, мы совершим прогулку на конной карете по Гюмри. Это прекрасная возможность в спокойной и необычной форме познакомиться с историческими улицами и атмосферой города.",
+        "После знакомства с Гюмри мы отправимся к расположенному в живописной местности монастырю Мармашен — прекрасному средневековому армянскому монастырю на берегу реки Ахурян. Окружённый красивыми природными пейзажами, Мармашен сочетает в себе богатую историю, уникальную архитектуру и спокойную атмосферу.",
+        "После посещения монастыря мы отправимся обратно в Ереван, наслаждаясь живописными видами по дороге.",
+        "Откройте для себя уникальный дух Гюмри, познакомьтесь с его богатым культурным наследием, совершите традиционную прогулку на конной карете и посетите тихий средневековый монастырь Мармашен — всё в одном незабываемом путешествии."
+      ],
+      highlightsFull: ["Трансфер из отеля и обратно", "Живописная поездка из Еревана в Гюмри", "Пешеходная экскурсия по историческому центру Гюмри", "Знакомство с историческими улицами и архитектурой города", "Традиционная прогулка на конной карете", "Посещение монастыря Мармашен", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-echmiadzin", photo: "Zvartnots Cathedral ruins with Mount Ararat",
     src: "assets/photos/tour-echmiadzin.jpg", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg",
+    gallery: [
+      { src: "assets/photos/tour-echmiadzin.jpg", alt: "Zvartnots Cathedral ruins with Mount Ararat", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg" },
+      { src: "assets/photos/tour-echmiadzin-2.jpg", alt: "Echmiadzin Cathedral", credit: "P. Hughes / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vagharshapat_-_Etchmiadzin_Cathedral.jpg" },
+      { src: "assets/photos/tour-echmiadzin-3.jpg", alt: "Saint Hripsime Church", credit: "Alexxx1979 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenia._Vagharshapat._Saint_Hripsime_Church_P8200160_2350.jpg" }
+    ],
     en: { dur: "Half day · 5 hours", title: "Echmiadzin & Zvartnots", body: "Saint Hripsime and Saint Gayane churches, the Mother See of Echmiadzin Cathedral, and the ruins of Zvartnots on the way back to Yerevan.",
-      highlights: ["Saint Hripsime Church", "Saint Gayane Church", "Echmiadzin Cathedral", "Zvartnots Cathedral"] },
+      highlights: ["Saint Hripsime Church", "Saint Gayane Church", "Echmiadzin Cathedral", "Zvartnots Cathedral"],
+      story: [
+        "Discover the spiritual heart of Armenia on a memorable journey to Echmiadzin, the country's religious center and one of the most important destinations in Armenian Christian history.",
+        "Our journey begins with a visit to the historic Saint Hripsime Church, one of Armenia's finest examples of early medieval Armenian architecture. Explore this beautiful UNESCO-listed site and learn about its important place in Armenian religious history.",
+        "We then continue to Saint Gayane Church, another remarkable early medieval Armenian church known for its elegant architecture and deep spiritual significance.",
+        "Our main destination is the magnificent Echmiadzin Cathedral, the spiritual center of the Armenian Apostolic Church and traditionally considered the oldest cathedral in the world. Discover its rich history, beautiful architecture, and importance to Armenian Christianity.",
+        "On our way back to Yerevan, we will stop at the impressive Zvartnots Cathedral. Once one of the most magnificent churches of medieval Armenia, the ruins of Zvartnots offer a fascinating glimpse into the country's architectural and religious heritage.",
+        "After visiting Zvartnots, we will continue our journey back to Yerevan.",
+        "Discover the spiritual heart of Armenia through ancient churches, magnificent cathedrals, UNESCO World Heritage sites, and centuries of Armenian Christian heritage — all in one unforgettable journey."
+      ],
+      highlightsFull: ["Hotel pickup and drop-off", "Visit Saint Hripsime Church", "Visit Saint Gayane Church", "Visit Echmiadzin Cathedral", "Explore the spiritual center of the Armenian Apostolic Church", "Visit Zvartnots Cathedral on the way back to Yerevan", "Professional English-speaking guide", "Entrance tickets"] },
     ru: { dur: "Полдня · 5 часов", title: "Эчмиадзин и Звартноц", body: "Церкви Святой Рипсиме и Святой Гаянэ, Эчмиадзинский кафедральный собор и руины Звартноца на обратном пути в Ереван.",
-      highlights: ["Церковь Святой Рипсиме", "Церковь Святой Гаянэ", "Эчмиадзинский собор", "Собор Звартноц"] } },
+      highlights: ["Церковь Святой Рипсиме", "Церковь Святой Гаянэ", "Эчмиадзинский собор", "Собор Звартноц"],
+      story: [
+        "Откройте для себя духовное сердце Армении во время незабываемой поездки в Эчмиадзин — религиозный центр страны и одно из важнейших мест в истории армянского христианства.",
+        "Наше путешествие начинается с посещения исторической церкви Святой Рипсимэ — одного из лучших примеров раннесредневековой армянской архитектуры. Вы сможете осмотреть этот прекрасный памятник, включённый в список Всемирного наследия ЮНЕСКО, и узнать о его важном значении в истории армянской церкви.",
+        "Затем мы продолжим путь к церкви Святой Гаянэ — ещё одному выдающемуся раннесредневековому храму Армении, известному своей изящной архитектурой и глубоким духовным значением.",
+        "Главной остановкой нашего путешествия станет величественный Эчмиадзинский кафедральный собор — духовный центр Армянской Апостольской Церкви и один из древнейших христианских соборов в мире. Вы познакомитесь с его богатой историей, уникальной архитектурой и огромным значением для армянского христианства.",
+        "На обратном пути в Ереван мы остановимся у впечатляющего кафедрального собора Звартноц. Когда-то это был один из самых величественных храмов средневековой Армении. Сегодня его руины позволяют увидеть и почувствовать величие древней армянской архитектуры и религиозного наследия.",
+        "После посещения Звартноца мы продолжим наш путь обратно в Ереван.",
+        "Откройте для себя духовное сердце Армении через древние церкви, величественные соборы, объекты Всемирного наследия ЮНЕСКО и многовековое армянское христианское наследие — всё в одном незабываемом путешествии."
+      ],
+      highlightsFull: ["Трансфер из отеля и обратно", "Посещение церкви Святой Рипсимэ", "Посещение церкви Святой Гаянэ", "Посещение Эчмиадзинского кафедрального собора", "Знакомство с духовным центром Армянской Апостольской Церкви", "Посещение кафедрального собора Звартноц на обратном пути в Ереван", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-aparan", photo: "Ruins at Lori Berd fortress",
     src: "assets/photos/tour-aparan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Lori_Berd,_Armenia,_2016-09-30,_DD_63-65_HDR.jpg",
+    gallery: [
+      { src: "assets/photos/tour-aparan.jpg", alt: "Ruins at Lori Berd fortress", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Lori_Berd,_Armenia,_2016-09-30,_DD_63-65_HDR.jpg" },
+      { src: "assets/photos/tour-aparan-2.jpg", alt: "Stepanavan Dendropark, Lori province", credit: "Valen1988 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Stepanavan_Dendropark,_Lori.jpg" },
+      { src: "assets/photos/tour-aparan-3.jpg", alt: "Amrakits Church", credit: "Armineaghayan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Amrakits_church,_ArmAg_(2).jpg" }
+    ],
     en: { dur: "1 day · 11 hours", title: "Lori Berd & Horseback Riding", body: "A stop in Aparan, the medieval fortress of Lori Berd, a horseback ride through the Dendropark, and the historic Amrakits church.",
-      highlights: ["Aparan", "Lori Berd Fortress", "Horseback riding at the Dendropark", "Amrakits Church"] },
+      highlights: ["Aparan", "Lori Berd Fortress", "Horseback riding at the Dendropark", "Amrakits Church"],
+      story: [
+        "Discover the history, nature, and authentic beauty of northern Armenia on this unforgettable day trip from Yerevan to Lori Province.",
+        "Our journey begins with a scenic drive from Yerevan, with our first stop in Aparan, a historic town surrounded by beautiful mountain landscapes. Take a short break and enjoy the atmosphere of this charming Armenian city before continuing our journey north.",
+        "From Aparan, we continue our drive toward the beautiful Lori region, known for its lush forests, dramatic landscapes, and rich historical heritage.",
+        "Our first destination in Lori is Lori Fortress, an impressive medieval fortress surrounded by spectacular mountain scenery. Explore the historic site and learn about the region's fascinating past and strategic importance.",
+        "We then continue to the beautiful Dendropark, a peaceful natural setting filled with trees, greenery, and fresh mountain air. Here, we will enjoy a horseback riding experience through the picturesque surroundings, offering a wonderful opportunity to connect with nature and experience the Armenian countryside in a unique way.",
+        "After exploring the area, we will visit Amrakits Church, a beautiful historic church located in the heart of Lori's scenic landscapes. Take some time to admire the architecture and peaceful surroundings before beginning our journey back.",
+        "At the end of the day, we will drive back to Yerevan, enjoying the scenic views along the way.",
+        "Experience Armenia beyond the capital through historic fortresses, lush forests, scenic mountain landscapes, horseback riding, and authentic cultural heritage — all in one memorable journey."
+      ],
+      highlightsFull: ["Hotel pickup and drop-off", "Stop in Aparan", "Scenic drive through northern Armenia", "Visit to Lori Berd Fortress", "Visit to Lori Berd Dendropark", "Horseback riding experience", "Visit to Amrakits Church", "Professional English-speaking guide", "Entrance tickets"] },
     ru: { dur: "1 день · 11 часов", title: "Лори Берд и конная прогулка", body: "Остановка в Апаране, средневековая крепость Лори Берд, конная прогулка по дендропарку и исторический храм Амракиц.",
-      highlights: ["Апаран", "Крепость Лори Берд", "Конная прогулка по дендропарку", "Церковь Амракиц"] } }
+      highlights: ["Апаран", "Крепость Лори Берд", "Конная прогулка по дендропарку", "Церковь Амракиц"],
+      story: [
+        "Откройте для себя историю, природу и аутентичную красоту северной Армении во время незабываемой однодневной поездки из Еревана в Лорийскую область.",
+        "Наше путешествие начинается с живописной поездки из Еревана, с первой остановкой в городе Апаран — историческом городе, окружённом красивыми горными пейзажами. Здесь мы сделаем небольшую остановку, после чего продолжим наше путешествие на север.",
+        "Из Апарана мы отправимся в живописную Лорийскую область, известную своими густыми лесами, впечатляющими природными ландшафтами и богатым историческим наследием.",
+        "Первой остановкой в Лори станет крепость Лори Берд — впечатляющая средневековая крепость, расположенная среди великолепных горных пейзажей. Мы осмотрим историческую территорию крепости и познакомимся с богатой историей региона и его стратегическим значением.",
+        "Затем мы отправимся в прекрасный Лорийский дендропарк — тихий природный уголок с большим разнообразием деревьев и растений. Здесь нас ждёт конная прогулка по живописным окрестностям. Это прекрасная возможность насладиться природой, свежим воздухом и красотой армянской сельской местности.",
+        "После конной прогулки мы посетим церковь Амракиц — красивый исторический храм, расположенный среди живописных ландшафтов Лори. Здесь у нас будет возможность осмотреть церковь и насладиться спокойной атмосферой окружающей природы.",
+        "После завершения программы мы отправимся обратно в Ереван, наслаждаясь живописными видами по дороге.",
+        "Откройте для себя Армению за пределами столицы: средневековые крепости, зелёные леса, живописные горные пейзажи, конные прогулки и богатое культурное наследие — всё в одном незабываемом путешествии."
+      ],
+      highlightsFull: ["Трансфер из отеля и обратно", "Остановка в городе Апаран", "Живописная поездка по северной Армении", "Посещение крепости Лори Берд", "Посещение Лорийского дендропарка", "Конная прогулка", "Посещение церкви Амракиц", "Профессиональный англоговорящий гид", "Входные билеты"] } }
 ];
 
 const PACKAGES = [
@@ -371,7 +552,7 @@ const WHY = [
 ];
 
 class Component extends DCLogic {
-  state = { lang: null };
+  state = { lang: null, openTour: null };
 
   get lang() {
     return this.state.lang || this.props.defaultLang || "en";
@@ -386,9 +567,21 @@ class Component extends DCLogic {
     const lang = this.lang;
     const c = S[lang] || S.en;
     const brand = "Armina Signature Travel";
+    const openData = TOURS.find((t) => t.slot === this.state.openTour);
+    const modal = openData ? {
+      title: openData[lang].title,
+      dur: openData[lang].dur,
+      story: openData[lang].story,
+      highlights: openData[lang].highlightsFull,
+      gallery: openData.gallery,
+      wa: this.wa(openData.en.title + " — " + brand),
+      close: () => this.setState({ openTour: null }),
+      stop: (e) => e.stopPropagation()
+    } : null;
 
     return {
       c,
+      modal,
       waLink: this.wa(brand + " — " + c.secContact),
       phoneDisplay: this.props.whatsappNumber || "+374 94 965 509",
       langs: [["en", "EN"], ["ru", "RU"]].map(([code, label]) => ({
@@ -401,7 +594,8 @@ class Component extends DCLogic {
       tours: TOURS.map((t) => ({
         slot: t.slot, photo: t.photo, src: t.src, credit: t.credit, creditHref: t.creditHref,
         dur: t[lang].dur, title: t[lang].title, body: t[lang].body, highlights: t[lang].highlights,
-        wa: this.wa(t.en.title + " — " + brand)
+        wa: this.wa(t.en.title + " — " + brand),
+        openDetails: () => this.setState({ openTour: t.slot })
       })),
       packages: PACKAGES.map((p) => ({
         slot: p.slot, photo: p.photo, src: p.src, credit: p.credit, creditHref: p.creditHref,
