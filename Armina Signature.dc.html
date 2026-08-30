@@ -92,6 +92,12 @@
               <div class="card-kicker" style="font-variant-numeric: tabular-nums">{{ t.dur }}</div>
               <h3 class="card-title" style="font-family: var(--font-heading); font-weight: 500; font-size: 26px; margin: 0; line-height: 1.15">{{ t.title }}</h3>
               <p style="font-size: 15px; line-height: 1.7; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0; flex: 1">{{ t.body }}</p>
+              <div style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-neutral-700)">{{ c.highlights }}</div>
+              <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px">
+                <sc-for list="{{ t.highlights }}" as="h" hint-placeholder-count="4">
+                  <li style="font-size: 13px; line-height: 1.5; color: var(--color-neutral-800)">{{ h }}</li>
+                </sc-for>
+              </ul>
               <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-divider); padding-top: 14px; margin-top: 4px">
                 <span style="font-size: 13px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
                 <a href="{{ t.wa }}" target="_blank" rel="noopener" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
@@ -252,7 +258,7 @@ const S = {
     contactLead: "Tell us your dates, how many of you are travelling and what you would like to see. We answer within a few hours with a draft itinerary and a clear price, with no obligation.",
     labelEmail: "Email", labelWhatsApp: "WhatsApp", labelOffice: "Office", labelHours: "Hours",
     office: "Yerevan, Armenia", hours: "Mon–Sat 09:00–19:00 (GMT+4) · WhatsApp answered daily",
-    enquire: "Enquire", priceQuestion: "How many of you are travelling?"
+    enquire: "Enquire", priceQuestion: "How many of you are travelling?", highlights: "Highlights"
   },
   ru: {
     navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
@@ -276,35 +282,47 @@ const S = {
     contactLead: "Напишите даты, число путешественников и то, что хотели бы увидеть. В течение нескольких часов пришлём черновой маршрут и понятную цену — без обязательств.",
     labelEmail: "Почта", labelWhatsApp: "WhatsApp", labelOffice: "Офис", labelHours: "Часы работы",
     office: "Ереван, Армения", hours: "Пн–Сб 09:00–19:00 (GMT+4) · WhatsApp ежедневно",
-    enquire: "Запрос", priceQuestion: "Сколько вас будет?"
+    enquire: "Запрос", priceQuestion: "Сколько вас будет?", highlights: "Основные моменты"
   }
 };
 
 const TOURS = [
   { slot: "tour-garni", photo: "Garni temple above the Azat gorge",
     src: "assets/photos/tour-garni.jpg", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg",
-    en: { dur: "1 day · 9 hours", title: "Garni, Geghard & Symphony of Stones", body: "Charents' Arch for a view of Ararat, the Hellenistic temple at Garni, the basalt columns of the Symphony of Stones, the rock-hewn monastery of Geghard, and lavash baked in a village tonir." },
-    ru: { dur: "1 день · 9 часов", title: "Гарни, Гегард и Симфония камней", body: "Арка Чаренца с видом на Арарат, эллинистический храм Гарни, базальтовые колонны Симфонии камней, высеченный в скале монастырь Гегард и лаваш из деревенского тонира." } },
+    en: { dur: "1 day · 9 hours", title: "Garni, Geghard & Symphony of Stones", body: "Charents' Arch for a view of Ararat, the Hellenistic temple at Garni, the basalt columns of the Symphony of Stones, the rock-hewn monastery of Geghard, and lavash baked in a village tonir.",
+      highlights: ["Charents' Arch", "Garni Temple", "Symphony of Stones", "Geghard Monastery", "Lavash baking experience"] },
+    ru: { dur: "1 день · 9 часов", title: "Гарни, Гегард и Симфония камней", body: "Арка Чаренца с видом на Арарат, эллинистический храм Гарни, базальтовые колонны Симфонии камней, высеченный в скале монастырь Гегард и лаваш из деревенского тонира.",
+      highlights: ["Арка Чаренца", "Храм Гарни", "Симфония камней", "Монастырь Гегард", "Мастер-класс по выпечке лаваша"] } },
   { slot: "tour-sevan", photo: "Sevanavank peninsula on Lake Sevan",
     src: "assets/photos/tour-sevan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg",
-    en: { dur: "1 day · 10 hours", title: "Sevan, Dilijan & Lake Parz", body: "A coffee stop at Lake Sevan, the craft streets of Old Dilijan, the forest waters of Lake Parz, and a visit to a local deer farm." },
-    ru: { dur: "1 день · 10 часов", title: "Севан, Дилижан и озеро Парз", body: "Кофейная остановка у озера Севан, ремесленные улочки Старого Дилижана, лесное озеро Парз и посещение оленьей фермы." } },
+    en: { dur: "1 day · 10 hours", title: "Sevan, Dilijan & Lake Parz", body: "A coffee stop at Lake Sevan, the craft streets of Old Dilijan, the forest waters of Lake Parz, and a visit to a local deer farm.",
+      highlights: ["Lake Sevan", "Old Dilijan", "Lake Parz", "Deer Farm"] },
+    ru: { dur: "1 день · 10 часов", title: "Севан, Дилижан и озеро Парз", body: "Кофейная остановка у озера Севан, ремесленные улочки Старого Дилижана, лесное озеро Парз и посещение оленьей фермы.",
+      highlights: ["Озеро Севан", "Старый Дилижан", "Озеро Парз", "Оленья ферма"] } },
   { slot: "tour-yerevan", photo: "Cascade steps and Republic Square, Yerevan",
     src: "assets/photos/tour-yerevan.jpg",
-    en: { dur: "1 day · 6 hours", title: "Yerevan on foot", body: "A local food market, the Vernissage craft market, Republic Square and Pushkin Street's art quarter, a coffee break in an old courtyard, and a walk past the Opera House to the Cascade." },
-    ru: { dur: "1 день · 6 часов", title: "Ереван пешком", body: "Местный продуктовый рынок, рынок Вернисаж, Площадь Республики и Арт-квартал на улице Пушкина, кофе во дворике старого города и прогулка мимо Оперного театра к Каскаду." } },
+    en: { dur: "1 day · 6 hours", title: "Yerevan on foot", body: "A local food market, the Vernissage craft market, Republic Square and Pushkin Street's art quarter, a coffee break in an old courtyard, and a walk past the Opera House to the Cascade.",
+      highlights: ["Local food market", "Vernissage Market", "Republic Square", "Pushkin Street & Art Quarter", "Traditional courtyard & coffee", "Cascade Complex"] },
+    ru: { dur: "1 день · 6 часов", title: "Ереван пешком", body: "Местный продуктовый рынок, рынок Вернисаж, Площадь Республики и Арт-квартал на улице Пушкина, кофе во дворике старого города и прогулка мимо Оперного театра к Каскаду.",
+      highlights: ["Местный продуктовый рынок", "Рынок Вернисаж", "Площадь Республики", "Улица Пушкина и Арт-квартал", "Традиционный дворик и кофе", "Комплекс Каскад"] } },
   { slot: "tour-gyumri", photo: "Marmashen Monastery on the Akhuryan river",
     src: "assets/photos/tour-gyumri.jpg", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg",
-    en: { dur: "1 day · 10 hours", title: "Gyumri & Marmashen Monastery", body: "A walk through Gyumri's black-stone streets, a horse-drawn carriage ride through the city, and the riverside medieval monastery of Marmashen." },
-    ru: { dur: "1 день · 10 часов", title: "Гюмри и монастырь Мармашен", body: "Прогулка по улицам Гюмри из чёрного туфа, поездка на конной карете по городу и средневековый монастырь Мармашен на берегу реки." } },
+    en: { dur: "1 day · 10 hours", title: "Gyumri & Marmashen Monastery", body: "A walk through Gyumri's black-stone streets, a horse-drawn carriage ride through the city, and the riverside medieval monastery of Marmashen.",
+      highlights: ["Historic Gyumri streets & architecture", "Horse-drawn carriage ride", "Marmashen Monastery"] },
+    ru: { dur: "1 день · 10 часов", title: "Гюмри и монастырь Мармашен", body: "Прогулка по улицам Гюмри из чёрного туфа, поездка на конной карете по городу и средневековый монастырь Мармашен на берегу реки.",
+      highlights: ["Исторические улицы и архитектура Гюмри", "Прогулка на конной карете", "Монастырь Мармашен"] } },
   { slot: "tour-echmiadzin", photo: "Zvartnots Cathedral ruins with Mount Ararat",
     src: "assets/photos/tour-echmiadzin.jpg", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg",
-    en: { dur: "Half day · 5 hours", title: "Echmiadzin & Zvartnots", body: "Saint Hripsime and Saint Gayane churches, the Mother See of Echmiadzin Cathedral, and the ruins of Zvartnots on the way back to Yerevan." },
-    ru: { dur: "Полдня · 5 часов", title: "Эчмиадзин и Звартноц", body: "Церкви Святой Рипсиме и Святой Гаянэ, Эчмиадзинский кафедральный собор и руины Звартноца на обратном пути в Ереван." } },
+    en: { dur: "Half day · 5 hours", title: "Echmiadzin & Zvartnots", body: "Saint Hripsime and Saint Gayane churches, the Mother See of Echmiadzin Cathedral, and the ruins of Zvartnots on the way back to Yerevan.",
+      highlights: ["Saint Hripsime Church", "Saint Gayane Church", "Echmiadzin Cathedral", "Zvartnots Cathedral"] },
+    ru: { dur: "Полдня · 5 часов", title: "Эчмиадзин и Звартноц", body: "Церкви Святой Рипсиме и Святой Гаянэ, Эчмиадзинский кафедральный собор и руины Звартноца на обратном пути в Ереван.",
+      highlights: ["Церковь Святой Рипсиме", "Церковь Святой Гаянэ", "Эчмиадзинский собор", "Собор Звартноц"] } },
   { slot: "tour-aparan", photo: "Ruins at Lori Berd fortress",
     src: "assets/photos/tour-aparan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Lori_Berd,_Armenia,_2016-09-30,_DD_63-65_HDR.jpg",
-    en: { dur: "1 day · 11 hours", title: "Lori Berd & Horseback Riding", body: "A stop in Aparan, the medieval fortress of Lori Berd, a horseback ride through the Dendropark, and the historic Amrakits church." },
-    ru: { dur: "1 день · 11 часов", title: "Лори Берд и конная прогулка", body: "Остановка в Апаране, средневековая крепость Лори Берд, конная прогулка по дендропарку и исторический храм Амракиц." } }
+    en: { dur: "1 day · 11 hours", title: "Lori Berd & Horseback Riding", body: "A stop in Aparan, the medieval fortress of Lori Berd, a horseback ride through the Dendropark, and the historic Amrakits church.",
+      highlights: ["Aparan", "Lori Berd Fortress", "Horseback riding at the Dendropark", "Amrakits Church"] },
+    ru: { dur: "1 день · 11 часов", title: "Лори Берд и конная прогулка", body: "Остановка в Апаране, средневековая крепость Лори Берд, конная прогулка по дендропарку и исторический храм Амракиц.",
+      highlights: ["Апаран", "Крепость Лори Берд", "Конная прогулка по дендропарку", "Церковь Амракиц"] } }
 ];
 
 const PACKAGES = [
@@ -382,7 +400,7 @@ class Component extends DCLogic {
       })),
       tours: TOURS.map((t) => ({
         slot: t.slot, photo: t.photo, src: t.src, credit: t.credit, creditHref: t.creditHref,
-        dur: t[lang].dur, title: t[lang].title, body: t[lang].body,
+        dur: t[lang].dur, title: t[lang].title, body: t[lang].body, highlights: t[lang].highlights,
         wa: this.wa(t.en.title + " — " + brand)
       })),
       packages: PACKAGES.map((p) => ({
