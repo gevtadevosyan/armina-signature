@@ -99,7 +99,7 @@
                 </sc-for>
               </ul>
               <div style="flex: 1"></div>
-              <button type="button" onClick="{{ t.openDetails }}" style="align-self: flex-start; background: transparent; border: 0; padding: 0; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-neutral-600); border-bottom: 1px solid var(--color-divider)" style-hover="color: var(--color-accent-600); border-bottom-color: var(--color-accent)">{{ c.viewDetails }}</button>
+              <button type="button" onClick="{{ t.openDetails }}" style="align-self: flex-start; background: transparent; border: 0; padding: 0; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.viewDetails }}</button>
               <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-divider); padding-top: 14px; margin-top: 4px">
                 <span style="font-size: 13px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
                 <a href="{{ t.wa }}" target="_blank" rel="noopener" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
@@ -126,8 +126,10 @@
               <image-slot id="{{ p.slot }}" shape="rect" style="width: 100%; height: clamp(210px, 34vw, 300px)" placeholder="{{ p.photo }}" src="{{ p.src }}" credit="{{ p.credit }}" credit-href="{{ p.creditHref }}"></image-slot>
             </div>
             <div>
-              <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(28px, 3vw, 40px); margin: 0 0 16px; line-height: 1.1">{{ p.title }}</h3>
-              <p style="font-size: 16px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 28px; max-width: 58ch">{{ p.body }}</p>
+              <div class="card-kicker" style="font-variant-numeric: tabular-nums">{{ p.dur }}</div>
+              <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(28px, 3vw, 40px); margin: 10px 0 16px; line-height: 1.1">{{ p.title }}</h3>
+              <p style="font-size: 16px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 20px; max-width: 58ch">{{ p.body }}</p>
+              <button type="button" onClick="{{ p.openDetails }}" style="display: inline-block; background: transparent; border: 0; padding: 0; margin: 0 0 24px; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.viewDetails }}</button>
               <div style="display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap">
                 <span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700); max-width: 26ch">{{ c.priceQuestion }}</span>
                 <a class="btn btn-primary" href="{{ p.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
@@ -263,6 +265,29 @@
       </div>
     </div>
   </sc-if>
+
+  <sc-if value="{{ packageModal }}">
+    <div onClick="{{ packageModal.close }}" style="position: fixed; inset: 0; background: rgba(20, 18, 14, 0.66); z-index: 200; display: flex; align-items: flex-start; justify-content: center; padding: clamp(16px, 4vw, 48px) 16px; overflow-y: auto">
+      <div onClick="{{ packageModal.stop }}" style="background: var(--color-bg); max-width: 720px; width: 100%; position: relative; margin: auto 0">
+        <button type="button" onClick="{{ packageModal.close }}" aria-label="Close" style="position: absolute; top: 8px; right: 8px; background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 24px; line-height: 1; color: var(--color-neutral-600); z-index: 2; padding: 8px">×</button>
+        <image-slot shape="rect" style="width: 100%; height: 280px" placeholder="{{ packageModal.photo }}" src="{{ packageModal.src }}" credit="{{ packageModal.credit }}" credit-href="{{ packageModal.creditHref }}"></image-slot>
+        <div style="padding: 28px 32px 32px">
+          <div class="card-kicker" style="font-variant-numeric: tabular-nums">{{ packageModal.dur }}</div>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(26px, 4vw, 34px); margin: 12px 0 20px; line-height: 1.15">{{ packageModal.title }}</h3>
+          <sc-for list="{{ packageModal.story }}" as="d" hint-placeholder-count="7">
+            <sc-if value="{{ d.day }}">
+              <div style="font-family: var(--font-heading); font-weight: 600; font-size: 17px; margin: 20px 0 6px; color: var(--color-accent-700)">{{ d.day }}</div>
+            </sc-if>
+            <p style="font-size: 15.5px; line-height: 1.75; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0 0 4px">{{ d.text }}</p>
+          </sc-for>
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 24px">
+            <span style="font-size: 14px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
+            <a class="btn btn-primary" href="{{ packageModal.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
 </div>
 
 </x-dc>
@@ -326,7 +351,7 @@ const TOURS = [
       { src: "assets/photos/tour-garni-2.jpg", alt: "Charents' Arch with a view of Mount Ararat", credit: "Beko / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg" },
       { src: "assets/photos/tour-garni-3.jpg", alt: "The Symphony of Stones basalt columns", credit: "mk4oto / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Symphony_of_Stones,_Armenia.jpg" }
     ],
-    en: { dur: "1 day · 9 hours", title: "Garni, Geghard & Symphony of Stones", body: "Charents' Arch for a view of Ararat, the Hellenistic temple at Garni, the basalt columns of the Symphony of Stones, the rock-hewn monastery of Geghard, and lavash baked in a village tonir.",
+    en: { dur: "1 day · 6 hours", title: "Garni, Geghard & Symphony of Stones", body: "Charents' Arch for a view of Ararat, the Hellenistic temple at Garni, the basalt columns of the Symphony of Stones, the rock-hewn monastery of Geghard, and lavash baked in a village tonir.",
       highlights: ["Charents' Arch", "Garni Temple", "Symphony of Stones", "Geghard Monastery", "Lavash baking experience"],
       story: [
         "Discover some of Armenia's most iconic landmarks and experience the country's rich cultural heritage on this unforgettable day tour.",
@@ -338,7 +363,7 @@ const TOURS = [
         "Experience Armenia through its breathtaking viewpoints, ancient landmarks, dramatic landscapes, and authentic local traditions — all in one memorable journey."
       ],
       highlightsFull: ["Hotel pickup and drop-off", "Professional English-speaking guide", "Entrance tickets", "Visit to Charents' Arch", "Visit to Garni Temple", "Visit to the Symphony of Stones", "Visit to Geghard Monastery", "Traditional lavash baking experience", "Lavash tasting"] },
-    ru: { dur: "1 день · 9 часов", title: "Гарни, Гегард и Симфония камней", body: "Арка Чаренца с видом на Арарат, эллинистический храм Гарни, базальтовые колонны Симфонии камней, высеченный в скале монастырь Гегард и лаваш из деревенского тонира.",
+    ru: { dur: "1 день · 6 часов", title: "Гарни, Гегард и Симфония камней", body: "Арка Чаренца с видом на Арарат, эллинистический храм Гарни, базальтовые колонны Симфонии камней, высеченный в скале монастырь Гегард и лаваш из деревенского тонира.",
       highlights: ["Арка Чаренца", "Храм Гарни", "Симфония камней", "Монастырь Гегард", "Мастер-класс по выпечке лаваша"],
       story: [
         "Откройте для себя самые знаковые достопримечательности Армении и познакомьтесь с богатым культурным наследием страны во время этого незабываемого однодневного тура.",
@@ -510,16 +535,74 @@ const TOURS = [
 const PACKAGES = [
   { slot: "pkg-classic", photo: "Lake Sevan with the mountains behind",
     src: "assets/photos/pkg-classic.jpg", credit: "Xelgen / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Sevank_lake_and_clouds_coming_through_the_mountain_chain,_September_21,_2023.jpg",
-    en: { title: "Classic Armenia", body: "Yerevan as your base, then south through Areni, Tatev and Goris, back by way of Lake Sevan and Dilijan. The country's essentials without a single rushed morning." },
-    ru: { title: "Классическая Армения", body: "Ереван как база, затем юг — Арени, Татев, Горис — и возвращение через Севан и Дилижан. Всё главное, без ни одного торопливого утра." } },
+    en: { dur: "6 days", title: "Armenian Highlands Discovery", body: "Six days from Yerevan through Garni, Geghard and the Symphony of Stones to Lake Sevan, Dilijan, Lori's forests, the wine country of Areni and Noravank, and the monasteries of Tatev and Khndzoresk.",
+      story: [
+        { day: "Day 1 — Welcome to Armenia & Yerevan City Tour", text: "Experience Yerevan like a local and discover the city's history, culture, art, and everyday life on a relaxed walking tour through its most fascinating neighborhoods and landmarks. We will pick you up from your hotel by car and begin at a local food market, then continue to Vernissage Market, one of Yerevan's best-known open-air markets. The walking tour continues through Republic Square, Pushkin Street's Art Quarter, one of the city's oldest streets and a traditional courtyard for Armenian coffee, Anzvour Square, Swan Lake and the Opera House, Saryan Park, the Yerevan State Conservatory and the Komitas Statue, concluding at the iconic Cascade Complex. In the evening, enjoy a traditional welcome dinner. Overnight: Yerevan." },
+        { day: "Day 2 — Garni, Geghard & The Symphony of Stones", text: "Travel into the spectacular landscapes surrounding Yerevan, starting at Charents' Arch for a panoramic view of Mount Ararat. Continue to the ancient Temple of Garni, the only standing Greco-Roman temple in Armenia, then descend into the gorge to discover the Symphony of Stones, a natural wonder of basalt columns resembling a giant stone organ. Continue to the magnificent Geghard Monastery, a UNESCO World Heritage Site partly carved into the cliffs. The day ends with an interactive lavash baking masterclass. Overnight: Yerevan." },
+        { day: "Day 3 — Lakes, Forests & Dilijan", text: "Head north to the beautiful Lake Sevan, one of the largest high-altitude freshwater lakes in the world, before continuing to the lush forests of Dilijan. Explore Dilijan Old Town, with its traditional architecture and artisan workshops, then visit a local deer farm. Later, venture into the forests to discover Lake Parz, a serene mountain lake surrounded by greenery. Overnight: Vanadzor." },
+        { day: "Day 4 — Lori's Forests & Medieval Heritage", text: "Visit the Dendropark, a botanical park known for its diverse trees and tranquil forest atmosphere, followed by horseback riding. Enjoy lunch in the picturesque area near Amrakits, surrounded by the mountains and forests of Lori. Continue to the impressive Lori Berd, a medieval fortress that once served as the capital of the Kingdom of Lori, before returning to Yerevan. Overnight: Yerevan." },
+        { day: "Day 5 — Ararat Valley, Areni & Noravank Wine Country", text: "Journey south through the magnificent Ararat Valley, with spectacular views of Mount Ararat, to the village of Areni and its archaeological cave, famous for revealing Armenia's ancient winemaking traditions. Continue to the dramatic Noravank Monastery, nestled among towering red cliffs. For lunch, enjoy an authentic experience at a local winemaker's home with a traditional wine degustation, before continuing to Goris, a town surrounded by striking rock formations. Overnight: Goris." },
+        { day: "Day 6 — Khndzoresk, Tatev & Return to Yerevan", text: "Explore Khndzoresk, an ancient cave settlement carved into the mountainside, wandering among its caves and bridges. Continue to the magnificent Tatev Monastery, perched on the edge of a deep gorge, and finish with a visit to Devil's Bridge before returning to Yerevan. Overnight: Yerevan." },
+        { day: "", text: "Six days. Endless landscapes. Ancient stories. Authentic experiences. One unforgettable Armenia." }
+      ] },
+    ru: { dur: "6 дней", title: "Открытие Армянского нагорья", body: "Шесть дней из Еревана через Гарни, Гегард и Симфонию камней к озеру Севан, Дилижану, лесам Лори, винному краю Арени и Нораванка, а также монастырям Татев и Хндзореск.",
+      story: [
+        { day: "День 1 — Добро пожаловать в Армению и экскурсия по Еревану", text: "Познакомьтесь с Ереваном как местный житель и откройте для себя историю, культуру, искусство и повседневную жизнь города во время спокойной пешеходной прогулки по его самым интересным районам. Мы заберём вас из отеля и начнём с местного продуктового рынка, затем отправимся на рынок Вернисаж. Прогулка продолжится через площадь Республики, Арт-квартал на улице Пушкина, один из старейших дворов города с чашкой армянского кофе, площадь Анзвор, Лебединое озеро и Оперный театр, парк Сарьяна, консерваторию и памятник Комитасу, а завершится у комплекса Каскад. Вечером вас ждёт традиционный приветственный ужин. Ночёвка: Ереван." },
+        { day: "День 2 — Гарни, Гегард и «Симфония камней»", text: "Живописные окрестности Еревана: Арка Чаренца с видом на гору Арарат, древний храм Гарни — единственный греко-римский храм Армении, и спуск в ущелье к «Симфонии камней» — гигантским базальтовым колоннам. Далее — монастырь Гегард, частично высеченный в скалах и включённый в список Всемирного наследия ЮНЕСКО. День завершается мастер-классом по выпечке лаваша. Ночёвка: Ереван." },
+        { day: "День 3 — Озёра, леса и Дилижан", text: "Путь на север к озеру Севан — одному из крупнейших высокогорных пресноводных озёр мира, а затем в зелёные леса Дилижана. Прогулка по Старому Дилижану с его ремесленными мастерскими, посещение оленьей фермы и озера Парз — спокойного лесного озера. Ночёвка: Ванадзор." },
+        { day: "День 4 — Леса Лори и средневековое наследие", text: "Дендропарк с разнообразной коллекцией деревьев и катание на лошадях, затем обед в живописной местности у Амракиц среди гор и лесов Лори. Далее — крепость Лори Берд, когда-то столица Лорийского царства, и возвращение в Ереван. Ночёвка: Ереван." },
+        { day: "День 5 — Араратская долина, Арени и винный край Нораванка", text: "Путь на юг через Араратскую долину с видами на гору Арарат к селу Арени и его пещере, знаменитой древними традициями виноделия. Далее — монастырь Нораванк среди красных скал, обед в доме местного винодела с дегустацией вина, а затем Горис — город, окружённый скальными образованиями. Ночёвка: Горис." },
+        { day: "День 6 — Хндзореск, Татев и возвращение в Ереван", text: "Пещерное поселение Хндзореск с его мостами и скальными образованиями, затем монастырь Татев на краю глубокого ущелья и Чёртов мост, прежде чем вернуться в Ереван. Ночёвка: Ереван." },
+        { day: "", text: "Шесть дней. Бесконечные пейзажи. Древние истории. Аутентичные впечатления. Одна незабываемая Армения." }
+      ] } },
   { slot: "pkg-highlands", photo: "Dimats mountain, Dilijan National Park",
     src: "assets/photos/pkg-highlands.jpg", credit: "23artashes / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Dimats_mountain_ԱԹ_09.jpg",
-    en: { title: "Mountains Adventure", body: "Escape into the breathtaking mountains of Armenia and experience adventure at its best. Stay surrounded by nature, explore stunning landscapes on horseback, and feel the thrill of off-road driving through rugged mountain trails — horseback riding, off-road adventure and a mountain stay among Armenia's most unforgettable landscapes." },
-    ru: { title: "Горное приключение", body: "Отправьтесь в захватывающие горы Армении и почувствуйте приключение в лучшем виде. Остановитесь среди природы, откройте потрясающие пейзажи верхом на лошади и ощутите азарт бездорожья по крутым горным тропам — верховая езда, внедорожные приключения и отдых в горах среди самых незабываемых пейзажей Армении." } },
+    en: { dur: "7 days", title: "Jermuk Wine & Wellness", body: "Seven days combining Yerevan, Garni and Geghard, the wine country of Areni and Noravank, and three days of relaxation at the mineral-spring spa town of Jermuk.",
+      story: [
+        { day: "Day 1 — Welcome to Armenia & Yerevan City Tour", text: "Experience Yerevan like a local and discover the city's history, culture, art, and everyday life on a relaxed walking tour through its most fascinating neighborhoods and landmarks. We will pick you up from your hotel by car and begin at a local food market, then continue to Vernissage Market, one of Yerevan's best-known open-air markets. The walking tour continues through Republic Square, Pushkin Street's Art Quarter, one of the city's oldest streets and a traditional courtyard for Armenian coffee, Anzvour Square, Swan Lake and the Opera House, Saryan Park, the Yerevan State Conservatory and the Komitas Statue, concluding at the iconic Cascade Complex. In the evening, enjoy a traditional welcome dinner. Overnight: Yerevan." },
+        { day: "Day 2 — Garni, Geghard & The Symphony of Stones", text: "Travel into the spectacular landscapes surrounding Yerevan, starting at Charents' Arch for a panoramic view of Mount Ararat. Continue to the ancient Temple of Garni, the only standing Greco-Roman temple in Armenia, then descend into the gorge to discover the Symphony of Stones, a natural wonder of basalt columns resembling a giant stone organ. Continue to the magnificent Geghard Monastery, a UNESCO World Heritage Site partly carved into the cliffs. The day ends with an interactive lavash baking masterclass. Overnight: Yerevan." },
+        { day: "Day 3 — Ararat Valley, Khor Virap, Noravank & Armenian Wine", text: "Journey south through the Ararat Valley to Khor Virap Monastery, one of Armenia's most important historical and spiritual landmarks set against Mount Ararat. Continue to Areni Cave and its ancient winemaking history, then through Vayots Dzor to Noravank Monastery among towering red cliffs. Enjoy lunch and a traditional wine degustation at a local winemaker's home, then continue to Jermuk, Armenia's famous mountain spa town. Overnight: Jermuk." },
+        { day: "Day 4 — Jermuk Spa & Mountain Wellness", text: "A day dedicated to relaxation and wellness in Jermuk, famous for its mineral waters. Enjoy spa facilities, mineral-water treatments and massages at your hotel, then a gentle walk to the Jermuk Waterfall and a taste of the town's renowned mineral water. Overnight: Jermuk." },
+        { day: "Day 5 — Jermuk Nature, Leisure & Wellness", text: "A peaceful day balancing nature, relaxation and free time — more spa treatments, a gentle nature walk through the surrounding mountains and forests, or simply enjoying Jermuk at your own pace. Overnight: Jermuk." },
+        { day: "Day 6 — Jermuk & Return to Yerevan", text: "A final relaxed morning in Jermuk before the drive back to Yerevan through the landscapes of southern Armenia, with a free evening to relax or enjoy a farewell dinner. Overnight: Yerevan." },
+        { day: "Day 7 — Departure", text: "A final breakfast in Armenia before transferring to the airport for your flight home." },
+        { day: "", text: "Ancient traditions. Mountain landscapes. Armenian wine. Healing waters. Deep relaxation. One unforgettable journey through Armenia." }
+      ] },
+    ru: { dur: "7 дней", title: "Джермук: вино и wellness", body: "Семь дней, объединяющих Ереван, Гарни и Гегард, винный край Арени и Нораванка, и три дня отдыха на минеральном курорте Джермук.",
+      story: [
+        { day: "День 1 — Добро пожаловать в Армению и экскурсия по Еревану", text: "Познакомьтесь с Ереваном как местный житель и откройте для себя историю, культуру, искусство и повседневную жизнь города во время спокойной пешеходной прогулки по его самым интересным районам. Мы заберём вас из отеля и начнём с местного продуктового рынка, затем отправимся на рынок Вернисаж. Прогулка продолжится через площадь Республики, Арт-квартал на улице Пушкина, один из старейших дворов города с чашкой армянского кофе, площадь Анзвор, Лебединое озеро и Оперный театр, парк Сарьяна, консерваторию и памятник Комитасу, а завершится у комплекса Каскад. Вечером вас ждёт традиционный приветственный ужин. Ночёвка: Ереван." },
+        { day: "День 2 — Гарни, Гегард и «Симфония камней»", text: "Живописные окрестности Еревана: Арка Чаренца с видом на гору Арарат, древний храм Гарни — единственный греко-римский храм Армении, и спуск в ущелье к «Симфонии камней» — гигантским базальтовым колоннам. Далее — монастырь Гегард, частично высеченный в скалах и включённый в список Всемирного наследия ЮНЕСКО. День завершается мастер-классом по выпечке лаваша. Ночёвка: Ереван." },
+        { day: "День 3 — Араратская долина, Хор Вирап, Нораванк и армянское вино", text: "Путь на юг через Араратскую долину к монастырю Хор Вирап — одному из важнейших духовных памятников Армении на фоне горы Арарат. Далее — пещера Арени с её винодельческой историей, затем через Вайоц Дзор к монастырю Нораванк среди красных скал. Обед и традиционная дегустация вина в доме местного винодела, а затем путь в Джермук — знаменитый горный курорт Армении. Ночёвка: Джермук." },
+        { day: "День 4 — Spa Джермука и горный wellness", text: "День, посвящённый отдыху и wellness в Джермуке, знаменитом своими минеральными водами. Spa-процедуры, минеральные ванны и массаж в отеле, прогулка к водопаду Джермук и дегустация знаменитой минеральной воды. Ночёвка: Джермук." },
+        { day: "День 5 — Природа Джермука, отдых и wellness", text: "Спокойный день, сочетающий природу, отдых и свободное время — spa-процедуры, неспешная прогулка по горам и лесам или отдых в своём ритме. Ночёвка: Джермук." },
+        { day: "День 6 — Джермук и возвращение в Ереван", text: "Последнее спокойное утро в Джермуке перед дорогой обратно в Ереван через пейзажи южной Армении, со свободным вечером для отдыха или прощального ужина. Ночёвка: Ереван." },
+        { day: "День 7 — Отъезд", text: "Последний завтрак в Армении перед трансфером в аэропорт и вылетом домой." },
+        { day: "", text: "Древние традиции. Горные пейзажи. Армянское вино. Минеральные воды. Глубокий отдых. Одно незабываемое путешествие по Армении." }
+      ] } },
   { slot: "pkg-grand", photo: "Road through the Noravank canyon, Vayots Dzor",
     src: "assets/photos/pkg-grand.jpg", credit: "Marcin Konsek / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:2014_Prowincja_Wajoc_Dzor,_Wąwóz_Gnishik_(Wąwóz_Norawank)_(04).jpg",
-    en: { title: "Wine Tourism", body: "Discover the rich wine culture of Armenia while exploring its beautiful wine regions. Stay in the peaceful mountain landscapes, visit local wineries and wine factories, and enjoy authentic Armenian wine tastings while discovering the traditions behind every bottle — wine regions, mountain stays, winery visits and wine degustation at the heart of Armenian wine culture." },
-    ru: { title: "Винный туризм", body: "Откройте для себя богатую винную культуру Армении, исследуя её живописные винодельческие регионы. Остановитесь среди спокойных горных пейзажей, посетите местные винодельни и винзаводы и насладитесь настоящей армянской дегустацией вина, узнавая традиции, стоящие за каждой бутылкой — винные регионы, отдых в горах, посещение виноделен и дегустация вина в самом сердце армянской винной культуры." } }
+    en: { dur: "7 days", title: "Wine & Gastronomy Tour", body: "Seven days of Armenia through its wine and food: Yerevan's wine bars, the wineries of Aragatsotn and Vayots Dzor, Areni's ancient wine cave, family dinners, and cooking classes in lavash, khorovats and tolma.",
+      story: [
+        { day: "Day 1 — Yerevan Wine Bars & Gastronomy Walk", text: "Discover the vibrant wine and culinary culture of Yerevan on a walking tour through the city center, visiting selected wine bars and tasting Armenian wines paired with traditional and contemporary appetizers, while learning about the country's native grape varieties and winemaking heritage." },
+        { day: "Day 2 — Garni, Geghard & Armenian Culinary Traditions", text: "Visit the ancient Temple of Garni and the medieval Geghard Monastery, then take part in a traditional lavash baking masterclass followed by an Armenian sandwich-making class using fresh local ingredients. The day concludes at the Symphony of Stones, a natural basalt formation in the Garni Gorge." },
+        { day: "Day 3 — The History of Armenian Wine & Aragatsotn Wineries", text: "A day dedicated to Armenia's winemaking traditions, beginning at the Wine History Museum and continuing to the Aragatsotn wine region for visits to two renowned wineries, Van Ardi and Voskevaz, with vineyard tours and tastings at each." },
+        { day: "Day 4 — Farm, Cheese & Lake Sevan", text: "Visit Mikayelyan Farm for a tasting of traditionally made Armenian cheeses, then continue to Lake Sevan, visiting Hayravank Monastery on its shores and Noratus, famous for its medieval khachkar cemetery, before a tasting of Sevan crayfish prepared in the traditional style." },
+        { day: "Day 5 — Ararat Valley, Ancient Wine & Vayots Dzor Wineries", text: "Travel through the Ararat Valley with a photo stop overlooking Mount Ararat, then visit Areni-1 Cave, one of the world's most important sites for the history of winemaking. Enjoy lunch and a khorovats masterclass at a local winemaker's home, three more winery visits with tastings, and finish at the spectacular Noravank Monastery." },
+        { day: "Day 6 — Echmiadzin, Spiritual Heritage & Armenian Cuisine", text: "Visit Saint Hripsime Church and Echmiadzin Cathedral, one of the most important spiritual centers of the Armenian people, followed by a traditional tolma-making masterclass, a homemade family lunch, and a final winery visit." },
+        { day: "Day 7 — Departure", text: "Transfer to the airport and departure from Armenia." },
+        { day: "", text: "A journey designed not simply to see Armenia, but to experience its flavors, meet its people, and discover its ancient winemaking traditions." }
+      ] },
+    ru: { dur: "7 дней", title: "Винный и гастрономический тур", body: "Семь дней Армении через вино и кухню: винные бары Еревана, винодельни Арагацотна и Вайоц Дзора, древняя винная пещера Арени, семейные обеды и мастер-классы по лавашу, хоровацу и толме.",
+      story: [
+        { day: "День 1 — Винный Ереван: бары и гастрономическая прогулка", text: "Знакомство с Ереваном через его винную и гастрономическую культуру: прогулка по центру города с посещением винных баров, дегустацией армянских вин и традиционных закусок, знакомство с местными сортами винограда и особенностями армянского виноделия." },
+        { day: "День 2 — Гарни, Гегард и секреты армянского лаваша", text: "Посещение древнего храма Гарни и монастыря Гегард, затем мастер-класс по выпечке традиционного лаваша и мастер-класс по приготовлению армянского сэндвича. День завершается у природного памятника «Симфония камней»." },
+        { day: "День 3 — История армянского вина и винодельни Арагацотна", text: "День, посвящённый истории виноделия: Музей истории вина, затем винодельни региона Арагацотн — Van Ardi и Voskevaz — с экскурсией по виноградникам и дегустациями." },
+        { day: "День 4 — Ферма, сыр и озеро Севан", text: "Ферма Микаэлян с дегустацией армянских сыров, затем озеро Севан, монастырь Айраванк на его берегу и Норатус со средневековым кладбищем хачкаров, а также дегустация севанского рака." },
+        { day: "День 5 — Араратская долина, древнее вино и винодельни Вайоц Дзора", text: "Араратская долина с фотоостановкой на гору Арарат, пещера Арени-1 — один из важнейших памятников истории виноделия, обед и мастер-класс по хоровацу в доме винодела, три винодельни с дегустациями и монастырь Нораванк среди красных скал." },
+        { day: "День 6 — Эчмиадзин: духовное наследие и традиционная кухня", text: "Церковь Святой Рипсиме и Эчмиадзинский собор, мастер-класс по приготовлению толмы, домашний обед и завершающее посещение винодельни." },
+        { day: "День 7 — Отъезд", text: "Трансфер в аэропорт и завершение путешествия по Армении." },
+        { day: "", text: "Путешествие, которое позволяет не просто увидеть Армению, а почувствовать её вкус и познакомиться с её людьми." }
+      ] } }
 ];
 
 const SERVICES = [
@@ -553,7 +636,7 @@ const WHY = [
 ];
 
 class Component extends DCLogic {
-  state = { lang: null, openTour: null };
+  state = { lang: null, openTour: null, openPackage: null };
 
   get lang() {
     return this.state.lang || this.props.defaultLang || "en";
@@ -579,10 +662,21 @@ class Component extends DCLogic {
       close: () => this.setState({ openTour: null }),
       stop: (e) => e.stopPropagation()
     } : null;
+    const openPkg = PACKAGES.find((p) => p.slot === this.state.openPackage);
+    const packageModal = openPkg ? {
+      title: openPkg[lang].title,
+      dur: openPkg[lang].dur,
+      story: openPkg[lang].story,
+      photo: openPkg.photo, src: openPkg.src, credit: openPkg.credit, creditHref: openPkg.creditHref,
+      wa: this.wa(openPkg.en.title + " — " + brand),
+      close: () => this.setState({ openPackage: null }),
+      stop: (e) => e.stopPropagation()
+    } : null;
 
     return {
       c,
       modal,
+      packageModal,
       waLink: this.wa(brand + " — " + c.secContact),
       phoneDisplay: this.props.whatsappNumber || "+374 94 965 509",
       langs: [["en", "EN"], ["ru", "RU"]].map(([code, label]) => ({
@@ -600,8 +694,9 @@ class Component extends DCLogic {
       })),
       packages: PACKAGES.map((p) => ({
         slot: p.slot, photo: p.photo, src: p.src, credit: p.credit, creditHref: p.creditHref,
-        title: p[lang].title, body: p[lang].body,
-        wa: this.wa(p.en.title + " — " + brand)
+        dur: p[lang].dur, title: p[lang].title, body: p[lang].body,
+        wa: this.wa(p.en.title + " — " + brand),
+        openDetails: () => this.setState({ openPackage: p.slot })
       })),
       services: SERVICES.map((s) => ({ num: s.num, title: s[lang].title, body: s[lang].body })),
       why: WHY.map((w) => ({ num: w.num, title: w[lang].title, body: w[lang].body }))
