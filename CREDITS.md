@@ -10,7 +10,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-yerevan.jpg | Cascade of Yerevan | Benoît Prieur | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Cascade_of_Yerevan.JPG |
 | tour-gyumri.jpg | Marmashen Monastery, Shirak province (aerial) | Vahag851 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg |
 | tour-echmiadzin.jpg | Zvartnots Cathedral ruins with Mount Ararat | Adam Jones | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg |
-| tour-aparan.jpg | Lori Berd fortress ruins | Diego Delso (delso.photo) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lori_Berd,_Armenia,_2016-09-30,_DD_63-65_HDR.jpg |
+| tour-aparan.jpg | The Dzoraget canyon in Lori province | Armina Signature Travel | Original photograph, no external license | — |
 | tour-garni-2.jpg | Mount Ararat framed through Charents' Arch | Beko | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg |
 | tour-garni-3.jpg | Symphony of Stones basalt columns | mk4oto | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Symphony_of_Stones,_Armenia.jpg |
 | tour-sevan-2.jpg | Old Dilijan, Sharambeyan Street | Textfabrikant | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Old_Dilijan,_Sharambeyan_Street,_April_2026.jpg |

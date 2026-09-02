@@ -76,7 +76,7 @@
     <section id="tours" style="padding: clamp(40px, 5vw, 72px) 0 0; scroll-margin-top: 96px">
       <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
         <div>
-          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">01 — {{ c.secToursKicker }}</div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secToursKicker }}</div>
           <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secTours }}</h2>
         </div>
         <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secToursLead }}</p>
@@ -113,7 +113,7 @@
     <section id="packages" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
       <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
         <div>
-          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">02 — {{ c.secPackagesKicker }}</div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secPackagesKicker }}</div>
           <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secPackages }}</h2>
         </div>
         <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secPackagesLead }}</p>
@@ -143,17 +143,16 @@
     <section id="services" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
       <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
         <div>
-          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">03 — {{ c.secServicesKicker }}</div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secServicesKicker }}</div>
           <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secServices }}</h2>
         </div>
         <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secServicesLead }}</p>
       </div>
       <div class="hr" style="margin: 30px 0 40px"></div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 34px 40px">
-        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
           <div style="padding: 16px 0 0; border-top: 1px solid var(--color-divider)">
-            <div style="font-family: var(--font-heading); font-size: 15px; color: var(--color-accent); font-variant-numeric: tabular-nums; letter-spacing: 0.1em">{{ s.num }}</div>
-            <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 25px; margin: 12px 0 12px; line-height: 1.2">{{ s.title }}</h3>
+            <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 25px; margin: 0 0 12px; line-height: 1.2">{{ s.title }}</h3>
             <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0">{{ s.body }}</p>
           </div>
         </sc-for>
@@ -161,7 +160,7 @@
     </section>
 
     <section id="about" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
-      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">04 — {{ c.secAboutKicker }}</div>
+      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secAboutKicker }}</div>
       <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secAbout }}</h2>
       <div class="hr" style="margin: 30px 0 40px"></div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 46px; align-items: start">
@@ -173,12 +172,9 @@
         <div style="display: flex; flex-direction: column; gap: 26px">
           <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-700)">{{ c.secWhy }}</div>
           <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
-            <div style="display: grid; grid-template-columns: 46px 1fr; gap: 14px; border-top: 1px solid var(--color-divider); padding-top: 18px">
-              <div style="font-family: var(--font-heading); font-size: 22px; color: var(--color-accent); font-variant-numeric: tabular-nums">{{ w.num }}</div>
-              <div>
-                <h4 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; margin: 0 0 6px">{{ w.title }}</h4>
-                <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); margin: 0">{{ w.body }}</p>
-              </div>
+            <div style="border-top: 1px solid var(--color-divider); padding-top: 18px">
+              <h4 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; margin: 0 0 6px">{{ w.title }}</h4>
+              <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); margin: 0">{{ w.body }}</p>
             </div>
           </sc-for>
         </div>
@@ -186,7 +182,7 @@
     </section>
 
     <section id="contact" style="padding: clamp(52px, 6vw, 96px) 0 clamp(48px, 6vw, 88px); scroll-margin-top: 96px">
-      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">05 — {{ c.secContactKicker }}</div>
+      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secContactKicker }}</div>
       <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secContact }}</h2>
       <div class="hr" style="margin: 30px 0 40px"></div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 44px; align-items: start">
@@ -497,10 +493,10 @@ const TOURS = [
         "Откройте для себя духовное сердце Армении через древние церкви, величественные соборы, объекты Всемирного наследия ЮНЕСКО и многовековое армянское христианское наследие — всё в одном незабываемом путешествии."
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Посещение церкви Святой Рипсимэ", "Посещение церкви Святой Гаянэ", "Посещение Эчмиадзинского кафедрального собора", "Знакомство с духовным центром Армянской Апостольской Церкви", "Посещение кафедрального собора Звартноц на обратном пути в Ереван", "Профессиональный англоговорящий гид", "Входные билеты"] } },
-  { slot: "tour-aparan", photo: "Ruins at Lori Berd fortress",
-    src: "assets/photos/tour-aparan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Lori_Berd,_Armenia,_2016-09-30,_DD_63-65_HDR.jpg",
+  { slot: "tour-aparan", photo: "The Dzoraget canyon in Lori province",
+    src: "assets/photos/tour-aparan.jpg",
     gallery: [
-      { src: "assets/photos/tour-aparan.jpg", alt: "Ruins at Lori Berd fortress", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Lori_Berd,_Armenia,_2016-09-30,_DD_63-65_HDR.jpg" },
+      { src: "assets/photos/tour-aparan.jpg", alt: "The Dzoraget canyon in Lori province" },
       { src: "assets/photos/tour-aparan-2.jpg", alt: "Stepanavan Dendropark, Lori province", credit: "Valen1988 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Stepanavan_Dendropark,_Lori.jpg" },
       { src: "assets/photos/tour-aparan-3.jpg", alt: "Amrakits Church", credit: "Armineaghayan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Amrakits_church,_ArmAg_(2).jpg" }
     ],
@@ -606,32 +602,26 @@ const PACKAGES = [
 ];
 
 const SERVICES = [
-  { num: "01",
-    en: { title: "Accommodation", body: "Hotels, boutique stays and village guesthouses we have stayed in ourselves, booked at operator rates and matched to the route rather than the map." },
+  { en: { title: "Accommodation", body: "Hotels, boutique stays and village guesthouses we have stayed in ourselves, booked at operator rates and matched to the route rather than the map." },
     ru: { title: "Проживание", body: "Отели, бутик-размещение и деревенские гостевые дома, в которых мы жили сами, — по операторским тарифам и под маршрут, а не под карту." } },
-  { num: "02",
-    en: { title: "Transfers", body: "Airport meetings at any hour with a name board, intercity transfers, and border crossings to Georgia arranged with the paperwork done in advance." },
+  { en: { title: "Transfers", body: "Airport meetings at any hour with a name board, intercity transfers, and border crossings to Georgia arranged with the paperwork done in advance." },
     ru: { title: "Трансферы", body: "Встреча в аэропорту в любое время с табличкой, междугородние трансферы и переезды к границе с Грузией с заранее оформленными документами." } },
-  { num: "03",
-    en: { title: "Private tours", body: "Any route in this list, or one we build for you: photography, hiking, wine, Armenian heritage, or a single long drive to somewhere you read about." },
+  { en: { title: "Private tours", body: "Any route in this list, or one we build for you: photography, hiking, wine, Armenian heritage, or a single long drive to somewhere you read about." },
     ru: { title: "Индивидуальные туры", body: "Любой маршрут из списка или составленный для вас: фотография, походы, вино, армянское наследие или одна долгая поездка туда, о чём вы прочитали." } },
-  { num: "04",
-    en: { title: "Car rental", body: "Sedans, SUVs for the mountain passes and vans for groups — with or without a driver, insured, delivered to your hotel or the terminal." },
-    ru: { title: "Аренда авто", body: "Седаны, внедорожники для горных перевалов и минивэны для групп — с водителем или без, застрахованные, с доставкой в отель или терминал." } }
+  { en: { title: "Car rental", body: "Sedans, SUVs for the mountain passes and vans for groups — with or without a driver, insured, delivered to your hotel or the terminal." },
+    ru: { title: "Аренда авто", body: "Седаны, внедорожники для горных перевалов и минивэны для групп — с водителем или без, застрахованные, с доставкой в отель или терминал." } },
+  { en: { title: "Tailor-made journeys", body: "We can create your perfect Armenian journey with personalized tours and packages designed around your interests, preferences, and travel style — combine and customize freely to build a trip that's entirely yours." },
+    ru: { title: "По вашему вкусу", body: "Мы создадим ваше идеальное путешествие по Армении — туры и пакеты, подобранные под ваши интересы, предпочтения и стиль. Комбинируйте и сочетайте их свободно, чтобы получить поездку, созданную только для вас." } }
 ];
 
 const WHY = [
-  { num: "01",
-    en: { title: "Local, not remote", body: "Our office, guides and cars are all in Armenia. Nothing is subcontracted to an agency you never meet." },
+  { en: { title: "Local, not remote", body: "Our office, guides and cars are all in Armenia. Nothing is subcontracted to an agency you never meet." },
     ru: { title: "Мы на месте", body: "Офис, гиды и автомобили — в Армении. Ничего не передаётся агентству, которого вы никогда не увидите." } },
-  { num: "02",
-    en: { title: "Private by default", body: "Every tour departs for your party alone. No coach, no waiting for eleven strangers at each stop." },
+  { en: { title: "Private by default", body: "Every tour departs for your party alone. No coach, no waiting for eleven strangers at each stop." },
     ru: { title: "Всегда индивидуально", body: "Каждый тур проводится только для вашей группы. Без автобуса и ожидания одиннадцати незнакомцев на каждой остановке." } },
-  { num: "03",
-    en: { title: "Licensed and insured", body: "A registered tour operator with insured vehicles and guides certified in English, Russian and Armenian." },
+  { en: { title: "Licensed and insured", body: "A registered tour operator with insured vehicles and guides certified in English, Russian and Armenian." },
     ru: { title: "Лицензия и страховка", body: "Зарегистрированный туроператор, застрахованные автомобили и гиды с сертификацией на английском, русском и армянском." } },
-  { num: "04",
-    en: { title: "Answered in hours", body: "One person handles your trip from first message to departure, and stays reachable while you are here." },
+  { en: { title: "Answered in hours", body: "One person handles your trip from first message to departure, and stays reachable while you are here." },
     ru: { title: "Ответ за часы", body: "Один человек ведёт вашу поездку от первого письма до отъезда и остаётся на связи, пока вы здесь." } }
 ];
 
@@ -698,8 +688,8 @@ class Component extends DCLogic {
         wa: this.wa(p.en.title + " — " + brand),
         openDetails: () => this.setState({ openPackage: p.slot })
       })),
-      services: SERVICES.map((s) => ({ num: s.num, title: s[lang].title, body: s[lang].body })),
-      why: WHY.map((w) => ({ num: w.num, title: w[lang].title, body: w[lang].body }))
+      services: SERVICES.map((s) => ({ title: s[lang].title, body: s[lang].body })),
+      why: WHY.map((w) => ({ title: w[lang].title, body: w[lang].body }))
     };
   }
 }
