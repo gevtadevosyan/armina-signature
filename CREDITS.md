@@ -26,5 +26,14 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | pkg-classic.jpg | Lake Sevan with mountains behind | Xelgen (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sevank_lake_and_clouds_coming_through_the_mountain_chain,_September_21,_2023.jpg |
 | pkg-highlands.jpg | Dimats mountain, Dilijan National Park | 23artashes (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dimats_mountain_ԱԹ_09.jpg |
 | pkg-grand.jpg | Road through the Noravank canyon, Vayots Dzor | Marcin Konsek | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2014_Prowincja_Wajoc_Dzor,_Wąwóz_Gnishik_(Wąwóz_Norawank)_(04).jpg |
+| tour-azat.jpg | Azat Reservoir seen from the mountain road above Garni | Preacher lad | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Azat_Reservoir_(1).jpg |
+| tour-azat-2.jpg | The Azat River gorge near Garni | Armen Manukov | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Azat_river_Gorge_Garni_01.jpg |
+| tour-azat-3.jpg | Fresh lavash baked in a traditional tonir oven | Furkan Akkurt | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lavash_in_a_tonir_oven_Armenia_2026.jpg |
+| tour-dimats.jpg | Off-road track climbing toward Mount Dimats, Dilijan National Park | Wowan1978 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:View_of_Mount_Dimats_in_Dilijan_National_Park.jpg |
+| tour-dimats-2.jpg | Wild horses grazing in the high pastures near Mount Dimats | Dav Sargsyan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dimats_1101_08.jpg |
+| tour-dimats-3.jpg | Lake Sevan shoreline | Kareyac | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sevan_Lake,_2021-06-14_2.jpg |
+| tour-khorvirap.jpg | Khor Virap Monastery beneath Mount Ararat | Vyacheslav Argenberg | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg |
+| tour-khorvirap-2.jpg | The entrance to the Areni-1 Cave | Serouj | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Areni-1_cave_entrance.jpg |
+| tour-khorvirap-3.jpg | Carved tympanum at Noravank Monastery | gailhampshire | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Noravank_Monastery_3.jpg |
 
 Images were resized/re-compressed for web delivery (`sips`); originals are unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above.
