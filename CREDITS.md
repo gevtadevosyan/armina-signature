@@ -37,7 +37,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-khorvirap-3.jpg | Carved tympanum at Noravank Monastery | gailhampshire | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Noravank_Monastery_3.jpg |
 | tour-hayravank.jpg | A spread of natural Armenian cheeses at Mikayelyan Farm | Grasshalm | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Armenian_cheeses.jpg |
 | tour-hayravank-2.jpg | Hayravank Monastery overlooking Lake Sevan | Azniv Stepanian | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Hayravank_Monastery_near_Sevan_lake_43.jpg |
-| tour-hayravank-3.jpg | Medieval khachkars at the Noratus cemetery | Khoren Arabadjian | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Khatchkars_in_Noraduz_Cemetery_19.jpg |
+| tour-hayravank-3.jpg | Rows of ornately carved khachkars at the Noratus cemetery | Eupator | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:NoraduzKhachkars.JPG |
 | favicon-16.png, favicon-32.png, apple-touch-icon.png | Mountain mark cropped from the Armina Signature Travel logo | Armina Signature Travel | Original artwork, no external license | — |
 
 Images were resized/re-compressed for web delivery (`sips`); originals are unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above.
