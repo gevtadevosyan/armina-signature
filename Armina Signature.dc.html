@@ -7,7 +7,7 @@
 <meta name="description" content="Licensed Yerevan-based tour operator. Private day tours and multi-day itineraries across Armenia's monasteries, mountain roads and vineyards — your own guide, your own car, your own pace.">
 <link rel="canonical" href="https://armina-signature.travel/">
 <link rel="alternate" hreflang="en" href="https://armina-signature.travel/">
-<link rel="alternate" hreflang="ru" href="https://armina-signature.travel/?lang=ru">
+<link rel="alternate" hreflang="ru" href="https://armina-signature.travel/ru/">
 <link rel="alternate" hreflang="x-default" href="https://armina-signature.travel/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://armina-signature.travel/">
@@ -43,9 +43,9 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+Armenian:wght@300;400;500;600&display=swap">
@@ -72,12 +72,12 @@
   <header style="position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--color-bg) 92%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--color-divider)">
     <div style="max-width: 1200px; margin: 0 auto; padding: 10px 20px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px">
       <a href="#top" style="display: flex; align-items: center; flex: 0 1 auto; min-width: 0">
-        <img src="assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: clamp(34px, 8vw, 46px); width: auto; max-width: 100%; display: block">
+        <img src="/assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: clamp(34px, 8vw, 46px); width: auto; max-width: 100%; display: block">
       </a>
       <div style="display: flex; align-items: center; gap: 12px; flex: 0 0 auto">
         <div style="display: flex; align-items: center; gap: 0; font-size: 12px; letter-spacing: 0.1em; font-variant-numeric: tabular-nums">
           <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
-            <a href="{{ l.url }}" onClick="{{ l.pick }}" style="{{ l.style }}">{{ l.label }}</a>
+            <a href="{{ l.url }}" style="{{ l.style }}">{{ l.label }}</a>
           </sc-for>
         </div>
         <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.05em; white-space: nowrap; padding: 7px 14px">WhatsApp</a>
@@ -107,7 +107,7 @@
         </div>
       </div>
       <div class="plate" style="padding: 10px">
-        <image-slot id="hero" shape="rect" style="width: 100%; height: clamp(260px, 46vw, 460px)" placeholder="Hero photograph — Mount Ararat or a monastery at dawn" src="assets/photos/hero.jpg" credit="Serouj Ourishian / Wikimedia Commons (CC BY-SA 4.0)" credit-href="https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Araratian_plain_(cropped).jpg"></image-slot>
+        <image-slot id="hero" shape="rect" style="width: 100%; height: clamp(260px, 46vw, 460px)" placeholder="Hero photograph — Mount Ararat or a monastery at dawn" src="/assets/photos/hero.jpg" credit="Serouj Ourishian / Wikimedia Commons (CC BY-SA 4.0)" credit-href="https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Araratian_plain_(cropped).jpg"></image-slot>
       </div>
     </section>
 
@@ -254,7 +254,7 @@
 
   <footer style="border-top: 1px solid var(--color-divider); background: var(--color-surface)">
     <div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap">
-      <img src="assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: 54px; width: auto; display: block">
+      <img src="/assets/armina-logo-transparent.png" alt="Armina Signature Travel" style="height: 54px; width: auto; display: block">
       <p style="font-family: var(--font-heading); font-style: italic; font-size: 19px; color: var(--color-neutral-800); margin: 0">{{ c.heroSlogan }}</p>
       <div style="display: flex; align-items: center; gap: 22px; flex-wrap: wrap">
         <div style="display: flex; align-items: center; gap: 14px">
@@ -383,11 +383,11 @@ const S = {
 
 const TOURS = [
   { slot: "tour-garni", photo: "Garni temple above the Azat gorge",
-    src: "assets/photos/tour-garni.jpg", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg",
+    src: "/assets/photos/tour-garni.jpg", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg",
     gallery: [
-      { src: "assets/photos/tour-garni.jpg", alt: "Garni temple above the Azat gorge", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg" },
-      { src: "assets/photos/tour-garni-2.jpg", alt: "Charents' Arch with a view of Mount Ararat", credit: "Beko / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg" },
-      { src: "assets/photos/tour-garni-3.jpg", alt: "The Symphony of Stones basalt columns", credit: "mk4oto / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Symphony_of_Stones,_Armenia.jpg" }
+      { src: "/assets/photos/tour-garni.jpg", alt: "Garni temple above the Azat gorge", credit: "Ji-Elle / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Temple_et_gorge_de_Garni_(2).jpg" },
+      { src: "/assets/photos/tour-garni-2.jpg", alt: "Charents' Arch with a view of Mount Ararat", credit: "Beko / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg" },
+      { src: "/assets/photos/tour-garni-3.jpg", alt: "The Symphony of Stones basalt columns", credit: "mk4oto / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Symphony_of_Stones,_Armenia.jpg" }
     ],
     en: { dur: "1 day · 6 hours", title: "Garni, Geghard & Symphony of Stones", body: "Charents' Arch for a view of Ararat, the Hellenistic temple at Garni, the basalt columns of the Symphony of Stones, the rock-hewn monastery of Geghard, and lavash baked in a village tonir.",
       highlights: ["Charents' Arch", "Garni Temple", "Symphony of Stones", "Geghard Monastery", "Lavash baking experience"],
@@ -414,11 +414,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Профессиональный англоговорящий гид", "Входные билеты", "Посещение Арки Чаренца", "Посещение храма Гарни", "Посещение Симфонии камней", "Посещение монастыря Гегард", "Традиционный мастер-класс по выпечке лаваша", "Дегустация свежего лаваша"] } },
   { slot: "tour-sevan", photo: "Sevanavank peninsula on Lake Sevan",
-    src: "assets/photos/tour-sevan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg",
+    src: "/assets/photos/tour-sevan.jpg", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg",
     gallery: [
-      { src: "assets/photos/tour-sevan.jpg", alt: "Sevanavank peninsula on Lake Sevan", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg" },
-      { src: "assets/photos/tour-sevan-2.jpg", alt: "Old Dilijan's historic street", credit: "Textfabrikant / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Old_Dilijan,_Sharambeyan_Street,_April_2026.jpg" },
-      { src: "assets/photos/tour-sevan-3.jpg", alt: "Lake Parz forest lake", credit: "Serouj / Wikimedia Commons (Public domain)", creditHref: "https://commons.wikimedia.org/wiki/File:Clear_Lake_(Parz_lich).jpg" }
+      { src: "/assets/photos/tour-sevan.jpg", alt: "Sevanavank peninsula on Lake Sevan", credit: "Diego Delso, delso.photo, CC BY-SA", creditHref: "https://commons.wikimedia.org/wiki/File:Monasterio_de_Sevanavank,_Armenia,_2016-10-02,_DD_98.jpg" },
+      { src: "/assets/photos/tour-sevan-2.jpg", alt: "Old Dilijan's historic street", credit: "Textfabrikant / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Old_Dilijan,_Sharambeyan_Street,_April_2026.jpg" },
+      { src: "/assets/photos/tour-sevan-3.jpg", alt: "Lake Parz forest lake", credit: "Serouj / Wikimedia Commons (Public domain)", creditHref: "https://commons.wikimedia.org/wiki/File:Clear_Lake_(Parz_lich).jpg" }
     ],
     en: { dur: "1 day · 10 hours", title: "Sevan, Dilijan & Lake Parz", body: "A coffee stop at Lake Sevan, the craft streets and old-town charm of Old Dilijan, the forest waters of Lake Parz, and a visit to a local deer farm before the drive back to Yerevan.",
       highlights: ["Lake Sevan", "Old Dilijan", "Lake Parz", "Deer Farm"],
@@ -445,11 +445,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Живописная поездка из Еревана", "Кофейная остановка у озера Севан", "Посещение озера Севан", "Прогулка по Старому Дилижану", "Посещение озера Парз", "Посещение оленьей фермы", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-yerevan", photo: "Cascade steps and Republic Square, Yerevan",
-    src: "assets/photos/tour-yerevan.jpg",
+    src: "/assets/photos/tour-yerevan.jpg",
     gallery: [
-      { src: "assets/photos/tour-yerevan.jpg", alt: "Cascade steps and Republic Square, Yerevan", credit: "", creditHref: "" },
-      { src: "assets/photos/tour-yerevan-2.jpg", alt: "Vernissage Market, Yerevan", credit: "Deb Collins / Wikimedia Commons (CC BY 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vernissage_market,_Yerevan.jpg" },
-      { src: "assets/photos/tour-yerevan-3.jpg", alt: "Yerevan Opera House and Swan Lake", credit: "Armenak Margarian / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Exterior_of_Opera_house_of_Yerevan_2019-05-16.jpg" }
+      { src: "/assets/photos/tour-yerevan.jpg", alt: "Cascade steps and Republic Square, Yerevan", credit: "", creditHref: "" },
+      { src: "/assets/photos/tour-yerevan-2.jpg", alt: "Vernissage Market, Yerevan", credit: "Deb Collins / Wikimedia Commons (CC BY 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vernissage_market,_Yerevan.jpg" },
+      { src: "/assets/photos/tour-yerevan-3.jpg", alt: "Yerevan Opera House and Swan Lake", credit: "Armenak Margarian / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Exterior_of_Opera_house_of_Yerevan_2019-05-16.jpg" }
     ],
     en: { dur: "1 day · 6 hours", title: "Yerevan on foot", body: "A local food market, the Vernissage craft market, Republic Square and Pushkin Street's art quarter, a coffee break in an old courtyard, and a walk past the Opera House to the Cascade.",
       highlights: ["Local food market", "Vernissage Market", "Republic Square", "Pushkin Street & Art Quarter", "Traditional courtyard & coffee", "Cascade Complex"],
@@ -476,11 +476,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и транспорт до места начала прогулки", "Посещение местного продуктового рынка", "Посещение рынка Вернисаж", "Площадь Республики", "Улица Пушкина и Арт-квартал Еревана", "Одна из старейших улиц Еревана и традиционный местный дворик", "Знакомство с армянским кофе", "Площадь Анзвор", "Лебединое озеро", "Ереванский оперный театр", "Парк Сарьяна", "Ереванская государственная консерватория", "Памятник Комитасу", "Комплекс Каскад"] } },
   { slot: "tour-gyumri", photo: "Marmashen Monastery on the Akhuryan river",
-    src: "assets/photos/tour-gyumri.jpg", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg",
+    src: "/assets/photos/tour-gyumri.jpg", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg",
     gallery: [
-      { src: "assets/photos/tour-gyumri.jpg", alt: "Marmashen Monastery on the Akhuryan river", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg" },
-      { src: "assets/photos/tour-gyumri-2.jpg", alt: "Vartanants Square and the Church of the Holy Saviour, Gyumri", credit: "Hayastan Mkrtchyan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Saviour_and_Vartanants_Square_2023-10-12.jpg" },
-      { src: "assets/photos/tour-gyumri-3.jpg", alt: "Black-tuff street in the Kumayri historic district, Gyumri", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Jivani_Street,_Kumayri_historic_district,_Gyumri,_08.07.2017.jpg" }
+      { src: "/assets/photos/tour-gyumri.jpg", alt: "Marmashen Monastery on the Akhuryan river", credit: "Vahag851 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg" },
+      { src: "/assets/photos/tour-gyumri-2.jpg", alt: "Vartanants Square and the Church of the Holy Saviour, Gyumri", credit: "Hayastan Mkrtchyan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Church_of_the_Holy_Saviour_and_Vartanants_Square_2023-10-12.jpg" },
+      { src: "/assets/photos/tour-gyumri-3.jpg", alt: "Black-tuff street in the Kumayri historic district, Gyumri", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Jivani_Street,_Kumayri_historic_district,_Gyumri,_08.07.2017.jpg" }
     ],
     en: { dur: "1 day · 10 hours", title: "Gyumri & Marmashen Monastery", body: "A walk through Gyumri's historic black-stone streets, a horse-drawn carriage ride through the city, and the riverside medieval monastery of Marmashen on the way back to Yerevan.",
       highlights: ["Historic Gyumri streets & architecture", "Horse-drawn carriage ride", "Marmashen Monastery"],
@@ -505,11 +505,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Живописная поездка из Еревана в Гюмри", "Пешеходная экскурсия по историческому центру Гюмри", "Знакомство с историческими улицами и архитектурой города", "Традиционная прогулка на конной карете", "Посещение монастыря Мармашен", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-echmiadzin", photo: "Zvartnots Cathedral ruins with Mount Ararat",
-    src: "assets/photos/tour-echmiadzin.jpg", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg",
+    src: "/assets/photos/tour-echmiadzin.jpg", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg",
     gallery: [
-      { src: "assets/photos/tour-echmiadzin.jpg", alt: "Zvartnots Cathedral ruins with Mount Ararat", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg" },
-      { src: "assets/photos/tour-echmiadzin-2.jpg", alt: "Echmiadzin Cathedral", credit: "P. Hughes / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vagharshapat_-_Etchmiadzin_Cathedral.jpg" },
-      { src: "assets/photos/tour-echmiadzin-3.jpg", alt: "Saint Hripsime Church", credit: "Alexxx1979 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenia._Vagharshapat._Saint_Hripsime_Church_P8200160_2350.jpg" }
+      { src: "/assets/photos/tour-echmiadzin.jpg", alt: "Zvartnots Cathedral ruins with Mount Ararat", credit: "Adam Jones / Wikimedia Commons (CC BY-SA 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Ruins_of_Zvartnots_Cathedral_with_Mount_Ararat_Backdrop_-_Near_Yerevan_-_Armenia_(18805091799).jpg" },
+      { src: "/assets/photos/tour-echmiadzin-2.jpg", alt: "Echmiadzin Cathedral", credit: "P. Hughes / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Vagharshapat_-_Etchmiadzin_Cathedral.jpg" },
+      { src: "/assets/photos/tour-echmiadzin-3.jpg", alt: "Saint Hripsime Church", credit: "Alexxx1979 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenia._Vagharshapat._Saint_Hripsime_Church_P8200160_2350.jpg" }
     ],
     en: { dur: "Half day · 5 hours", title: "Echmiadzin & Zvartnots", body: "Saint Hripsime and Saint Gayane churches, the Mother See of Echmiadzin Cathedral, and the ancient ruins of Zvartnots on the way back to Yerevan from Armenia's spiritual centre.",
       highlights: ["Saint Hripsime Church", "Saint Gayane Church", "Echmiadzin Cathedral", "Zvartnots Cathedral"],
@@ -536,11 +536,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Посещение церкви Святой Рипсимэ", "Посещение церкви Святой Гаянэ", "Посещение Эчмиадзинского кафедрального собора", "Знакомство с духовным центром Армянской Апостольской Церкви", "Посещение кафедрального собора Звартноц на обратном пути в Ереван", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-aparan", photo: "The Dzoraget canyon in Lori province",
-    src: "assets/photos/tour-aparan.jpg",
+    src: "/assets/photos/tour-aparan.jpg",
     gallery: [
-      { src: "assets/photos/tour-aparan.jpg", alt: "The Dzoraget canyon in Lori province" },
-      { src: "assets/photos/tour-aparan-2.jpg", alt: "Stepanavan Dendropark, Lori province", credit: "Valen1988 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Stepanavan_Dendropark,_Lori.jpg" },
-      { src: "assets/photos/tour-aparan-3.jpg", alt: "Amrakits Church", credit: "Armineaghayan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Amrakits_church,_ArmAg_(2).jpg" }
+      { src: "/assets/photos/tour-aparan.jpg", alt: "The Dzoraget canyon in Lori province" },
+      { src: "/assets/photos/tour-aparan-2.jpg", alt: "Stepanavan Dendropark, Lori province", credit: "Valen1988 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Stepanavan_Dendropark,_Lori.jpg" },
+      { src: "/assets/photos/tour-aparan-3.jpg", alt: "Amrakits Church", credit: "Armineaghayan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Amrakits_church,_ArmAg_(2).jpg" }
     ],
     en: { dur: "1 day · 11 hours", title: "Lori Berd & Horseback Riding", body: "A stop in Aparan, the medieval fortress of Lori Berd, a horseback ride through the Dendropark, and the historic Amrakits church, deep in the forests of Lori.",
       highlights: ["Aparan", "Lori Berd Fortress", "Horseback riding at the Dendropark", "Amrakits Church"],
@@ -569,11 +569,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Остановка в городе Апаран", "Живописная поездка по северной Армении", "Посещение крепости Лори Берд", "Посещение Лорийского дендропарка", "Конная прогулка", "Посещение церкви Амракиц", "Профессиональный англоговорящий гид", "Входные билеты"] } },
   { slot: "tour-azat", photo: "Azat Reservoir seen from the mountain road above Garni",
-    src: "assets/photos/tour-azat.jpg", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Azat_Reservoir_(1).jpg",
+    src: "/assets/photos/tour-azat.jpg", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Azat_Reservoir_(1).jpg",
     gallery: [
-      { src: "assets/photos/tour-azat.jpg", alt: "Azat Reservoir seen from the mountain road above Garni", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Azat_Reservoir_(1).jpg" },
-      { src: "assets/photos/tour-azat-2.jpg", alt: "The Azat River gorge near Garni", credit: "Armen Manukov / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Azat_river_Gorge_Garni_01.jpg" },
-      { src: "assets/photos/tour-azat-3.jpg", alt: "Fresh lavash baked in a traditional tonir oven", credit: "Furkan Akkurt / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Lavash_in_a_tonir_oven_Armenia_2026.jpg" }
+      { src: "/assets/photos/tour-azat.jpg", alt: "Azat Reservoir seen from the mountain road above Garni", credit: "Preacher lad / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Azat_Reservoir_(1).jpg" },
+      { src: "/assets/photos/tour-azat-2.jpg", alt: "The Azat River gorge near Garni", credit: "Armen Manukov / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Azat_river_Gorge_Garni_01.jpg" },
+      { src: "/assets/photos/tour-azat-3.jpg", alt: "Fresh lavash baked in a traditional tonir oven", credit: "Furkan Akkurt / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Lavash_in_a_tonir_oven_Armenia_2026.jpg" }
     ],
     en: { dur: "1 day · 4 hours", title: "ATV Adventure to Azat Reservoir & Lavash Baking", body: "Trade the usual monastery circuit for two hours on a quad bike through the mountain trails above Garni, then trade the throttle for a rolling pin at a village lavash bakery. A short, active day built around the Azat gorge and a very old bread.",
       highlights: ["Garni Village start point", "~2 hours of ATV riding", "Azat Reservoir viewpoint", "Traditional lavash baking", "Fresh lavash tasting"],
@@ -594,11 +594,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Поездка на автомобиле до села Гарни", "Около 2 часов катания на квадроциклах", "Маршрут по живописным горным окрестностям Гарни", "Посещение Азатского водохранилища", "Мастер-класс по традиционной выпечке лаваша", "Дегустация свежего лаваша"] } },
   { slot: "tour-dimats", photo: "Off-road track climbing toward Mount Dimats, Dilijan National Park",
-    src: "assets/photos/tour-dimats.jpg", credit: "Wowan1978 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:View_of_Mount_Dimats_in_Dilijan_National_Park.jpg",
+    src: "/assets/photos/tour-dimats.jpg", credit: "Wowan1978 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:View_of_Mount_Dimats_in_Dilijan_National_Park.jpg",
     gallery: [
-      { src: "assets/photos/tour-dimats.jpg", alt: "Off-road track climbing toward Mount Dimats, Dilijan National Park", credit: "Wowan1978 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:View_of_Mount_Dimats_in_Dilijan_National_Park.jpg" },
-      { src: "assets/photos/tour-dimats-2.jpg", alt: "Wild horses grazing in the high pastures near Mount Dimats", credit: "Dav Sargsyan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Dimats_1101_08.jpg" },
-      { src: "assets/photos/tour-dimats-3.jpg", alt: "Lake Sevan shoreline", credit: "Kareyac / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Sevan_Lake,_2021-06-14_2.jpg" }
+      { src: "/assets/photos/tour-dimats.jpg", alt: "Off-road track climbing toward Mount Dimats, Dilijan National Park", credit: "Wowan1978 / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:View_of_Mount_Dimats_in_Dilijan_National_Park.jpg" },
+      { src: "/assets/photos/tour-dimats-2.jpg", alt: "Wild horses grazing in the high pastures near Mount Dimats", credit: "Dav Sargsyan / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Dimats_1101_08.jpg" },
+      { src: "/assets/photos/tour-dimats-3.jpg", alt: "Lake Sevan shoreline", credit: "Kareyac / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Sevan_Lake,_2021-06-14_2.jpg" }
     ],
     en: { dur: "1 day · 9 hours", title: "Dilijan, Lake Sevan & Mount Dimats Off-Road", body: "A coffee stop on the shore of Lake Sevan, a walk through Dilijan's quieter, less-touristed side, and then the day's real destination: an off-road climb into the forests and ridgelines around Mount Dimats.",
       highlights: ["Coffee break at Lake Sevan", "The alternative side of Dilijan", "Off-road drive to Mount Dimats", "Panoramic forest and valley views", "English-speaking guide"],
@@ -623,11 +623,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Кофейная остановка у озера Севан", "Посещение озера Севан", "Альтернативный Дилижан", "Поездка на внедорожнике", "Подъём к горе Димац", "Живописные горные пейзажи и панорамные виды", "Профессиональный англоговорящий гид", "Внедорожный маршрут"] } },
   { slot: "tour-khorvirap", photo: "Khor Virap Monastery beneath Mount Ararat",
-    src: "assets/photos/tour-khorvirap.jpg", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg",
+    src: "/assets/photos/tour-khorvirap.jpg", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg",
     gallery: [
-      { src: "assets/photos/tour-khorvirap.jpg", alt: "Khor Virap Monastery beneath Mount Ararat", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg" },
-      { src: "assets/photos/tour-khorvirap-2.jpg", alt: "The entrance to the Areni-1 Cave", credit: "Serouj / Wikimedia Commons (CC BY 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Areni-1_cave_entrance.jpg" },
-      { src: "assets/photos/tour-khorvirap-3.jpg", alt: "Carved tympanum at Noravank Monastery", credit: "gailhampshire / Wikimedia Commons (CC BY 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Noravank_Monastery_3.jpg" }
+      { src: "/assets/photos/tour-khorvirap.jpg", alt: "Khor Virap Monastery beneath Mount Ararat", credit: "Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg" },
+      { src: "/assets/photos/tour-khorvirap-2.jpg", alt: "The entrance to the Areni-1 Cave", credit: "Serouj / Wikimedia Commons (CC BY 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Areni-1_cave_entrance.jpg" },
+      { src: "/assets/photos/tour-khorvirap-3.jpg", alt: "Carved tympanum at Noravank Monastery", credit: "gailhampshire / Wikimedia Commons (CC BY 2.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Noravank_Monastery_3.jpg" }
     ],
     en: { dur: "1 day · 8 hours", title: "Khor Virap, Areni & Noravank", body: "Southern Armenia in one day: the Ararat views at Khor Virap, the world's oldest known winery inside the Areni-1 Cave, the cliffside drama of Noravank, and a wine tasting at a local winemaker's home.",
       highlights: ["Khor Virap & Mount Ararat views", "Areni-1 Cave", "Noravank Monastery", "Local winemaker visit & tasting"],
@@ -652,11 +652,11 @@ const TOURS = [
       ],
       highlightsFull: ["Трансфер из отеля и обратно", "Профессиональный англоговорящий гид", "Монастырь Хор Вирап и потрясающий вид на гору Арарат", "Посещение древней пещеры Арени-1", "Знакомство с великолепным монастырём Нораванк", "Живописные ландшафты региона Вайоц Дзор", "Встреча с местным армянским виноделом", "Дегустация местных армянских вин", "Знакомство с настоящим армянским гостеприимством"] } },
   { slot: "tour-hayravank", photo: "A spread of natural Armenian cheeses at Mikayelyan Farm",
-    src: "assets/photos/tour-hayravank.jpg", credit: "Grasshalm / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenian_cheeses.jpg",
+    src: "/assets/photos/tour-hayravank.jpg", credit: "Grasshalm / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenian_cheeses.jpg",
     gallery: [
-      { src: "assets/photos/tour-hayravank.jpg", alt: "A spread of natural Armenian cheeses at Mikayelyan Farm", credit: "Grasshalm / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenian_cheeses.jpg" },
-      { src: "assets/photos/tour-hayravank-2.jpg", alt: "Hayravank Monastery overlooking Lake Sevan", credit: "Azniv Stepanian / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Hayravank_Monastery_near_Sevan_lake_43.jpg" },
-      { src: "assets/photos/tour-hayravank-3.jpg", alt: "Rows of ornately carved khachkars at the Noratus cemetery", credit: "Eupator / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:NoraduzKhachkars.JPG" }
+      { src: "/assets/photos/tour-hayravank.jpg", alt: "A spread of natural Armenian cheeses at Mikayelyan Farm", credit: "Grasshalm / Wikimedia Commons (CC0)", creditHref: "https://commons.wikimedia.org/wiki/File:Armenian_cheeses.jpg" },
+      { src: "/assets/photos/tour-hayravank-2.jpg", alt: "Hayravank Monastery overlooking Lake Sevan", credit: "Azniv Stepanian / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Hayravank_Monastery_near_Sevan_lake_43.jpg" },
+      { src: "/assets/photos/tour-hayravank-3.jpg", alt: "Rows of ornately carved khachkars at the Noratus cemetery", credit: "Eupator / Wikimedia Commons (CC BY-SA 3.0)", creditHref: "https://commons.wikimedia.org/wiki/File:NoraduzKhachkars.JPG" }
     ],
     en: { dur: "1 day · 8 hours", title: "Farm, Khachkars & Lake Sevan", body: "A quieter day east of Yerevan: fresh cheese at a family farm, a walk through Armenia's largest field of medieval carved crosses, and a lakeside monastery — finished with a crayfish lunch on the shore of Lake Sevan.",
       highlights: ["Mikayelyan Farm cheese tasting", "Noratus khachkar cemetery", "Hayravank Monastery", "Lakeside lunch with Sevan crayfish"],
@@ -682,7 +682,7 @@ const TOURS = [
 
 const PACKAGES = [
   { slot: "pkg-classic", photo: "Lake Sevan with the mountains behind",
-    src: "assets/photos/pkg-classic.jpg", credit: "Xelgen / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Sevank_lake_and_clouds_coming_through_the_mountain_chain,_September_21,_2023.jpg",
+    src: "/assets/photos/pkg-classic.jpg", credit: "Xelgen / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Sevank_lake_and_clouds_coming_through_the_mountain_chain,_September_21,_2023.jpg",
     en: { dur: "6 days", title: "Armenian Highlands Discovery", body: "Six days from Yerevan through Garni, Geghard and the Symphony of Stones to Lake Sevan, Dilijan, Lori's forests, the wine country of Areni and Noravank, and the monasteries of Tatev and Khndzoresk.",
       story: [
         { day: "Day 1 — Welcome to Armenia & Yerevan City Tour", text: "Experience Yerevan like a local and discover the city's history, culture, art, and everyday life on a relaxed walking tour through its most fascinating neighborhoods and landmarks. We will pick you up from your hotel by car and begin at a local food market, then continue to Vernissage Market, one of Yerevan's best-known open-air markets. The walking tour continues through Republic Square, Pushkin Street's Art Quarter, one of the city's oldest streets and a traditional courtyard for Armenian coffee, Anzvour Square, Swan Lake and the Opera House, Saryan Park, the Yerevan State Conservatory and the Komitas Statue, concluding at the iconic Cascade Complex. In the evening, enjoy a traditional welcome dinner. Overnight: Yerevan." },
@@ -704,7 +704,7 @@ const PACKAGES = [
         { day: "", text: "Шесть дней. Бесконечные пейзажи. Древние истории. Аутентичные впечатления. Одна незабываемая Армения." }
       ] } },
   { slot: "pkg-highlands", photo: "Dimats mountain, Dilijan National Park",
-    src: "assets/photos/pkg-highlands.jpg", credit: "23artashes / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Dimats_mountain_ԱԹ_09.jpg",
+    src: "/assets/photos/pkg-highlands.jpg", credit: "23artashes / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:Dimats_mountain_ԱԹ_09.jpg",
     en: { dur: "7 days", title: "Jermuk Wine & Wellness", body: "Seven days combining Yerevan, Garni and Geghard, the wine country of Areni and Noravank, and three days of relaxation at the mineral-spring spa town of Jermuk.",
       story: [
         { day: "Day 1 — Welcome to Armenia & Yerevan City Tour", text: "Experience Yerevan like a local and discover the city's history, culture, art, and everyday life on a relaxed walking tour through its most fascinating neighborhoods and landmarks. We will pick you up from your hotel by car and begin at a local food market, then continue to Vernissage Market, one of Yerevan's best-known open-air markets. The walking tour continues through Republic Square, Pushkin Street's Art Quarter, one of the city's oldest streets and a traditional courtyard for Armenian coffee, Anzvour Square, Swan Lake and the Opera House, Saryan Park, the Yerevan State Conservatory and the Komitas Statue, concluding at the iconic Cascade Complex. In the evening, enjoy a traditional welcome dinner. Overnight: Yerevan." },
@@ -728,7 +728,7 @@ const PACKAGES = [
         { day: "", text: "Древние традиции. Горные пейзажи. Армянское вино. Минеральные воды. Глубокий отдых. Одно незабываемое путешествие по Армении." }
       ] } },
   { slot: "pkg-grand", photo: "Road through the Noravank canyon, Vayots Dzor",
-    src: "assets/photos/pkg-grand.jpg", credit: "Marcin Konsek / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:2014_Prowincja_Wajoc_Dzor,_Wąwóz_Gnishik_(Wąwóz_Norawank)_(04).jpg",
+    src: "/assets/photos/pkg-grand.jpg", credit: "Marcin Konsek / Wikimedia Commons (CC BY-SA 4.0)", creditHref: "https://commons.wikimedia.org/wiki/File:2014_Prowincja_Wajoc_Dzor,_Wąwóz_Gnishik_(Wąwóz_Norawank)_(04).jpg",
     en: { dur: "7 days", title: "Wine & Gastronomy Tour", body: "Seven days of Armenia through its wine and food: Yerevan's wine bars, the wineries of Aragatsotn and Vayots Dzor, Areni's ancient wine cave, family dinners, and cooking classes in lavash, khorovats and tolma.",
       story: [
         { day: "Day 1 — Yerevan Wine Bars & Gastronomy Walk", text: "Discover the vibrant wine and culinary culture of Yerevan on a walking tour through the city center, visiting selected wine bars and tasting Armenian wines paired with traditional and contemporary appetizers, while learning about the country's native grape varieties and winemaking heritage." },
@@ -782,6 +782,7 @@ class Component extends DCLogic {
 
   static langFromUrl() {
     if (typeof location === "undefined") return null;
+    if (/\/ru\/(index\.html)?$/.test(location.pathname)) return "ru";
     return new URLSearchParams(location.search).get("lang") === "ru" ? "ru" : null;
   }
 
@@ -798,13 +799,24 @@ class Component extends DCLogic {
     if (typeof document === "undefined") return;
     document.documentElement.lang = lang;
     if (document.title !== c.metaTitle) document.title = c.metaTitle;
-    let m = document.querySelector('meta[name="description"]');
-    if (!m) {
-      m = document.createElement("meta");
-      m.setAttribute("name", "description");
-      document.head.appendChild(m);
-    }
-    if (m.getAttribute("content") !== c.metaDescription) m.setAttribute("content", c.metaDescription);
+    const pageUrl = lang === "ru" ? "https://armina-signature.travel/ru/" : "https://armina-signature.travel/";
+    const setAttr = (selector, tag, attrs, valueAttr, value) => {
+      let el = document.querySelector(selector);
+      if (!el) {
+        el = document.createElement(tag);
+        for (const k in attrs) el.setAttribute(k, attrs[k]);
+        document.head.appendChild(el);
+      }
+      if (el.getAttribute(valueAttr) !== value) el.setAttribute(valueAttr, value);
+    };
+    setAttr('meta[name="description"]', "meta", { name: "description" }, "content", c.metaDescription);
+    setAttr('link[rel="canonical"]', "link", { rel: "canonical" }, "href", pageUrl);
+    setAttr('meta[property="og:url"]', "meta", { property: "og:url" }, "content", pageUrl);
+    setAttr('meta[property="og:title"]', "meta", { property: "og:title" }, "content", c.metaTitle);
+    setAttr('meta[property="og:description"]', "meta", { property: "og:description" }, "content", c.metaDescription);
+    setAttr('meta[property="og:locale"]', "meta", { property: "og:locale" }, "content", lang === "ru" ? "ru_RU" : "en_US");
+    setAttr('meta[name="twitter:title"]', "meta", { name: "twitter:title" }, "content", c.metaTitle);
+    setAttr('meta[name="twitter:description"]', "meta", { name: "twitter:description" }, "content", c.metaDescription);
   }
 
   renderVals() {
@@ -842,15 +854,7 @@ class Component extends DCLogic {
       phoneDisplay: this.props.whatsappNumber || "+374 94 965 509",
       langs: [["en", "EN"], ["ru", "RU"]].map(([code, label]) => ({
         label,
-        url: code === "en" ? (typeof location !== "undefined" ? location.pathname : "/") : "?lang=" + code,
-        pick: (e) => {
-          if (e && e.preventDefault) e.preventDefault();
-          if (typeof history !== "undefined" && history.pushState && typeof location !== "undefined") {
-            const url = code === "en" ? location.pathname : location.pathname + "?lang=" + code;
-            history.pushState(null, "", url);
-          }
-          this.setState({ lang: code });
-        },
+        url: code === "ru" ? "/ru/" : "/",
         style: "display: inline-block; background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; padding: 4px 7px; border-bottom: 1px solid " +
           (code === lang ? "var(--color-accent)" : "transparent") + "; color: " +
           (code === lang ? "var(--color-accent-700)" : "var(--color-neutral-600)")

@@ -4,16 +4,16 @@
   <url>
     <loc>https://armina-signature.travel/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://armina-signature.travel/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://armina-signature.travel/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://armina-signature.travel/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://armina-signature.travel/"/>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://armina-signature.travel/?lang=ru</loc>
+    <loc>https://armina-signature.travel/ru/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://armina-signature.travel/"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://armina-signature.travel/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://armina-signature.travel/ru/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://armina-signature.travel/"/>
     <lastmod>2026-09-13</lastmod>
     <changefreq>monthly</changefreq>
