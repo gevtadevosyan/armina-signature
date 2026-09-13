@@ -1,8 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Armina Signature Travel — Private Tours in Armenia</title>
+<meta name="description" content="Licensed Yerevan-based tour operator. Private day tours and multi-day itineraries across Armenia's monasteries, mountain roads and vineyards — your own guide, your own car, your own pace.">
+<link rel="canonical" href="https://armina-signature.travel/">
+<link rel="alternate" hreflang="en" href="https://armina-signature.travel/">
+<link rel="alternate" hreflang="ru" href="https://armina-signature.travel/?lang=ru">
+<link rel="alternate" hreflang="x-default" href="https://armina-signature.travel/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://armina-signature.travel/">
+<meta property="og:site_name" content="Armina Signature Travel">
+<meta property="og:title" content="Armina Signature Travel — Private Tours in Armenia">
+<meta property="og:description" content="Licensed Yerevan-based tour operator. Private day tours and multi-day itineraries across Armenia's monasteries, mountain roads and vineyards — your own guide, your own car, your own pace.">
+<meta property="og:image" content="https://armina-signature.travel/assets/photos/hero.jpg">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Armina Signature Travel — Private Tours in Armenia">
+<meta name="twitter:description" content="Licensed Yerevan-based tour operator. Private day tours and multi-day itineraries across Armenia's monasteries, mountain roads and vineyards — your own guide, your own car, your own pace.">
+<meta name="twitter:image" content="https://armina-signature.travel/assets/photos/hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Armina Signature Travel",
+  "description": "Licensed Yerevan-based tour operator offering private day tours and multi-day itineraries across Armenia.",
+  "url": "https://armina-signature.travel/",
+  "telephone": "+37494965509",
+  "email": "info@armina-signature.travel",
+  "address": { "@type": "PostalAddress", "addressLocality": "Yerevan", "addressCountry": "AM" },
+  "areaServed": "Armenia",
+  "sameAs": [
+    "https://www.instagram.com/armina_signature_travel?igsi=d2Q4bHJtZHAwdm94",
+    "https://www.facebook.com/share/1BnSCSXiWn/?mibextid=wwXIfr"
+  ]
+}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -42,7 +77,7 @@
       <div style="display: flex; align-items: center; gap: 12px; flex: 0 0 auto">
         <div style="display: flex; align-items: center; gap: 0; font-size: 12px; letter-spacing: 0.1em; font-variant-numeric: tabular-nums">
           <sc-for list="{{ langs }}" as="l" hint-placeholder-count="3">
-            <button type="button" onClick="{{ l.pick }}" style="{{ l.style }}">{{ l.label }}</button>
+            <a href="{{ l.url }}" onClick="{{ l.pick }}" style="{{ l.style }}">{{ l.label }}</a>
           </sc-for>
         </div>
         <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.05em; white-space: nowrap; padding: 7px 14px">WhatsApp</a>
@@ -293,6 +328,8 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;en&quot;,&quot;ru&quot;],&quot;default&quot;:&quot;en&quot;,&quot;tsType&quot;:&quot;'en'|'ru'&quot;,&quot;section&quot;:&quot;Site&quot;},&quot;whatsappNumber&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;+374 94 965 509&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Site&quot;}}">
 const S = {
   en: {
+    metaTitle: "Armina Signature Travel — Private Tours in Armenia",
+    metaDescription: "Licensed Yerevan-based tour operator. Private day tours and multi-day itineraries across Armenia's monasteries, mountain roads and vineyards — your own guide, your own car, your own pace.",
     navTours: "Tours", navPackages: "Packages", navServices: "Services", navAbout: "About", navContact: "Contact",
     heroKicker: "Incoming tours in Armenia · Since 2016",
     heroTitle: "Armenia, travelled properly.",
@@ -317,6 +354,8 @@ const S = {
     enquire: "Enquire", priceQuestion: "How many of you are travelling?", highlights: "Highlights", viewDetails: "Full itinerary"
   },
   ru: {
+    metaTitle: "Armina Signature Travel — Индивидуальные туры по Армении",
+    metaDescription: "Лицензированный туроператор в Ереване. Индивидуальные однодневные туры и многодневные маршруты по монастырям, горным дорогам и винодельням Армении — свой гид, свой автомобиль, свой темп.",
     navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
     heroKicker: "Въездной туризм в Армению · с 2016 года",
     heroTitle: "Армения, как её стоит увидеть.",
@@ -739,7 +778,12 @@ const WHY = [
 ];
 
 class Component extends DCLogic {
-  state = { lang: null, openTour: null, openPackage: null };
+  state = { lang: Component.langFromUrl(), openTour: null, openPackage: null };
+
+  static langFromUrl() {
+    if (typeof location === "undefined") return null;
+    return new URLSearchParams(location.search).get("lang") === "ru" ? "ru" : null;
+  }
 
   get lang() {
     return this.state.lang || this.props.defaultLang || "en";
@@ -750,9 +794,23 @@ class Component extends DCLogic {
     return "https://wa.me/" + digits + "?text=" + encodeURIComponent(text);
   }
 
+  syncHead(lang, c) {
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = lang;
+    if (document.title !== c.metaTitle) document.title = c.metaTitle;
+    let m = document.querySelector('meta[name="description"]');
+    if (!m) {
+      m = document.createElement("meta");
+      m.setAttribute("name", "description");
+      document.head.appendChild(m);
+    }
+    if (m.getAttribute("content") !== c.metaDescription) m.setAttribute("content", c.metaDescription);
+  }
+
   renderVals() {
     const lang = this.lang;
     const c = S[lang] || S.en;
+    this.syncHead(lang, c);
     const brand = "Armina Signature Travel";
     const openData = TOURS.find((t) => t.slot === this.state.openTour);
     const modal = openData ? {
@@ -784,8 +842,16 @@ class Component extends DCLogic {
       phoneDisplay: this.props.whatsappNumber || "+374 94 965 509",
       langs: [["en", "EN"], ["ru", "RU"]].map(([code, label]) => ({
         label,
-        pick: () => this.setState({ lang: code }),
-        style: "background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; padding: 4px 7px; border-bottom: 1px solid " +
+        url: code === "en" ? (typeof location !== "undefined" ? location.pathname : "/") : "?lang=" + code,
+        pick: (e) => {
+          if (e && e.preventDefault) e.preventDefault();
+          if (typeof history !== "undefined" && history.pushState && typeof location !== "undefined") {
+            const url = code === "en" ? location.pathname : location.pathname + "?lang=" + code;
+            history.pushState(null, "", url);
+          }
+          this.setState({ lang: code });
+        },
+        style: "display: inline-block; background: transparent; border: 0; cursor: pointer; font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em; padding: 4px 7px; border-bottom: 1px solid " +
           (code === lang ? "var(--color-accent)" : "transparent") + "; color: " +
           (code === lang ? "var(--color-accent-700)" : "var(--color-neutral-600)")
       })),
