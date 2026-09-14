@@ -38,6 +38,9 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-hayravank.jpg | Shelves of traditional Armenian cheese | Narek75 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cheese_Warehouse_in_Armenia.jpg |
 | tour-hayravank-2.jpg | Hayravank Monastery overlooking Lake Sevan | Azniv Stepanian | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Hayravank_Monastery_near_Sevan_lake_43.jpg |
 | tour-hayravank-3.jpg | Rows of ornately carved khachkars at the Noratus cemetery | Eupator | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:NoraduzKhachkars.JPG |
+| tour-erebuni.jpg | Erebuni Fortress ruins above Yerevan (cropped from a wider panorama) | Armen Manukov | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Erebuni_Fortress,_Yerevan,_Armenia_01.jpg |
+| tour-erebuni-2.jpg | Ararat Brandy Factory in Yerevan | Brejnev | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Ararat_brandy_factory_in_Yerevan,_Winter_time.JPG |
+| tour-erebuni-3.jpg | Memorial wall at the Tsitsernakaberd Genocide Memorial | Palickap | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Yerevan,_memorial_wall_at_Tsitsernakaberd.jpg |
 | favicon-16.png, favicon-32.png, apple-touch-icon.png | Mountain mark cropped from the Armina Signature Travel logo | Armina Signature Travel | Original artwork, no external license | — |
 
-Images were resized/re-compressed for web delivery (`sips`); originals are unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above.
+Images were resized/re-compressed for web delivery (`sips`); tour-erebuni.jpg was also center-cropped from a wider panorama. Originals are otherwise unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above.
