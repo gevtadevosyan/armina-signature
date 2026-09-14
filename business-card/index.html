@@ -73,13 +73,13 @@
 
     .tagline { margin: 0; font-size: 14px; font-style: italic; color: #5c6472; line-height: 1.55; text-align: center; }
 
-    .contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
     .contact-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; }
-    .contact-list a, .contact-list span { color: #23262b; text-decoration: none; }
+    .contact-list a, .contact-list span { color: #23262b; text-decoration: none; padding: 7px 0; }
     .contact-list a:hover, .contact-list a:focus-visible { text-decoration: underline; }
     .icon { width: 16px; height: 16px; flex: none; stroke: #b68235; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
-    .qr-row { display: flex; align-items: center; gap: 14px; padding-top: 6px; border-top: 1px solid rgba(27, 58, 107, 0.16); }
+    .qr-row { display: flex; align-items: center; gap: 14px; padding-top: 6px; border-top: 1px solid rgba(27, 58, 107, 0.16); flex-wrap: wrap; }
     .qr-box {
       width: 66px; height: 66px; flex: none;
       background: #ffffff; border: 1px solid rgba(27, 58, 107, 0.16); border-radius: 6px;
@@ -90,9 +90,9 @@
 
     .foot-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 
-    .social-row { display: flex; gap: 8px; }
+    .social-row { display: flex; gap: 10px; }
     .social-btn {
-      width: 32px; height: 32px; border-radius: 50%;
+      width: 38px; height: 38px; border-radius: 50%;
       border: 1px solid rgba(27, 58, 107, 0.16);
       display: flex; align-items: center; justify-content: center;
       color: #5c6472;
@@ -100,20 +100,22 @@
       transition: color 0.15s ease, border-color 0.15s ease;
     }
     .social-btn:hover, .social-btn:focus-visible { color: #1b3a6b; border-color: #1b3a6b; outline: none; }
-    .social-btn svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .social-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
     .save-btn {
       font-family: "Lora", serif;
       font-weight: 600;
-      font-size: 13px;
+      font-size: 13.5px;
       letter-spacing: 0.03em;
       background: #b68235;
       color: #fffefb;
       border: none;
       border-radius: 999px;
-      padding: 11px 20px;
+      padding: 13px 22px;
       text-decoration: none;
       display: inline-block;
+      min-height: 38px;
+      line-height: 1;
       transition: background 0.15s ease;
     }
     .save-btn:hover, .save-btn:focus-visible { background: #9c6f2b; outline: none; }
