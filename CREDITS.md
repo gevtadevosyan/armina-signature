@@ -44,6 +44,9 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-gum.jpg | Dried fruits at Yerevan's GUM Market | Wiquijote | Public domain | https://commons.wikimedia.org/wiki/File:Frutas_secas_en_el_mercado_de_Yerevan.JPG |
 | tour-gum-2.jpg | Vernissage open-air market, Yerevan | Deb Collins | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Yerevan_Vernissage_view.jpg |
 | tour-gum-3.jpg | Traditional Armenian coffee (cropped from a portrait original) | Pandukht | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Armenian_Coffee_01.jpg |
+| tour-jermuk.jpg | Jermuk Waterfall cascading over red rock cliffs | MEDIACRAT | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Jermuk_Waterfall4.jpg |
+| tour-jermuk-2.jpg | Grape harvest in an Areni vineyard | Narek75 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Grape_Harvesting_in_Armenia_5954.jpg |
+| tour-jermuk-3.jpg | The Jermuk cable car crossing forested hills | 1987Tony1987 | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Jermuk_ropeway.JPG |
 | favicon-16.png, favicon-32.png, apple-touch-icon.png | Mountain mark cropped from the Armina Signature Travel logo | Armina Signature Travel | Original artwork, no external license | — |
 
 Images were resized/re-compressed for web delivery (`sips`); tour-gum-3.jpg was also center-cropped from a taller original. Originals are otherwise unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above. tour-hayravank.jpg is an original photograph supplied by Armina Signature Travel (Mikayelyan Farm).
