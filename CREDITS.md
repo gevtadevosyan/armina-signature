@@ -29,7 +29,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-azat.jpg | Azat Reservoir and gorge at golden hour | mk4oto | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Azat_Lake_and_Azat_Gorge,_Armenia.jpg |
 | tour-azat-2.jpg | The Azat River gorge near Garni | Armen Manukov | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Azat_river_Gorge_Garni_01.jpg |
 | tour-azat-3.jpg | Fresh lavash baked in a traditional tonir oven | Furkan Akkurt | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lavash_in_a_tonir_oven_Armenia_2026.jpg |
-| tour-dimats.jpg | Mount Dimats emerging from cloud, Dilijan National Park | Wowan1978 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dilijan_National_Park_near_Mount_Dimats_in_autumn.jpg |
+| tour-dimats.jpg | Cows grazing against the backdrop of Mount Dimats | Wowan1978 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:%D0%A1ows_against_the_backdrop_of_Mount_Dimats.jpg |
 | tour-dimats-2.jpg | Wild horses grazing in the high pastures near Mount Dimats | Dav Sargsyan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dimats_1101_08.jpg |
 | tour-dimats-3.jpg | Lake Sevan shoreline | Kareyac | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sevan_Lake,_2021-06-14_2.jpg |
 | tour-khorvirap.jpg | Khor Virap Monastery beneath Mount Ararat | Vyacheslav Argenberg | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg |
