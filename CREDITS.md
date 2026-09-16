@@ -6,7 +6,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 |---|---|---|---|---|
 | hero.jpg | Mount Ararat panorama | Serouj Ourishian | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Araratian_plain_(cropped).jpg |
 | tour-garni.jpg | Garni Temple against a clear sky | Diego Delso | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Templo_de_Garni,_Armenia,_2016-10-02,_DD_03.jpg |
-| tour-sevan.jpg | Waves on the shore of Lake Sevan | Suzanarmenia | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lake_Sevan-summertime4.jpg |
+| tour-sevan.jpg | Lake Sevan with snow-capped mountains behind | Ավետիսյան91 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lake_Sevan_0001.jpg |
 | tour-yerevan.jpg | The Cascade complex, Yerevan | Patrick Makhoul | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Cascade_of_Yerevan_HDef.jpg |
 | tour-gyumri.jpg | Marmashen Monastery, Shirak province (aerial) | Vahag851 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg |
 | tour-echmiadzin.jpg | Etchmiadzin Cathedral exterior | Butcher | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Etchmiadzin_cathedral.jpg |
