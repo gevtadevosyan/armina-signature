@@ -9,7 +9,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-sevan.jpg | Lake Sevan with snow-capped mountains behind | Ավետիսյան91 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lake_Sevan_0001.jpg |
 | tour-yerevan.jpg | The Cascade complex, Yerevan | Patrick Makhoul | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Cascade_of_Yerevan_HDef.jpg |
 | tour-gyumri.jpg | Marmashen Monastery, Shirak province (aerial) | Vahag851 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg |
-| tour-echmiadzin.jpg | Etchmiadzin Cathedral exterior | Butcher | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Etchmiadzin_cathedral.jpg |
+| tour-echmiadzin.jpg | Etchmiadzin Cathedral exterior, 2024 | Armen888 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Etchmiadzin_cathedral_2024.jpg |
 | tour-aparan.jpg | The Dzoraget canyon in Lori province | Armina Signature Travel | Original photograph, no external license | — |
 | tour-garni-2.jpg | Mount Ararat framed through Charents' Arch | Beko | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg |
 | tour-garni-3.jpg | Symphony of Stones basalt columns | mk4oto | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Symphony_of_Stones,_Armenia.jpg |
