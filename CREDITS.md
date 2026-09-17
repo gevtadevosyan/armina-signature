@@ -24,7 +24,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-aparan-2.jpg | Stepanavan Dendropark, Lori province | Valen1988 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Stepanavan_Dendropark,_Lori.jpg |
 | tour-aparan-3.jpg | Amrakits Church | Armineaghayan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Amrakits_church,_ArmAg_(2).jpg |
 | pkg-classic.jpg | Lake Sevan with mountains behind | Xelgen (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Sevank_lake_and_clouds_coming_through_the_mountain_chain,_September_21,_2023.jpg |
-| pkg-highlands.jpg | Dimats mountain, Dilijan National Park | 23artashes (Wikimedia Commons user) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dimats_mountain_ԱԹ_09.jpg |
+| pkg-highlands.jpg | The Arpa river gorge through Jermuk | Emma YSU | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Jermuk_Emma_YSU_(14).jpg |
 | pkg-grand.jpg | Road through the Noravank canyon, Vayots Dzor | Marcin Konsek | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:2014_Prowincja_Wajoc_Dzor,_Wąwóz_Gnishik_(Wąwóz_Norawank)_(04).jpg |
 | tour-azat.jpg | Azat Reservoir and gorge at golden hour | mk4oto | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Azat_Lake_and_Azat_Gorge,_Armenia.jpg |
 | tour-azat-2.jpg | The Azat River gorge near Garni | Armen Manukov | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Azat_river_Gorge_Garni_01.jpg |
