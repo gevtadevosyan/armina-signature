@@ -7,8 +7,8 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | hero.jpg | Mount Ararat panorama | Serouj Ourishian | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_the_Araratian_plain_(cropped).jpg |
 | tour-garni.jpg | Garni Temple against a clear sky | Diego Delso | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Templo_de_Garni,_Armenia,_2016-10-02,_DD_03.jpg |
 | tour-sevan.jpg | Lake Sevan with snow-capped mountains behind | Ավետիսյան91 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lake_Sevan_0001.jpg |
-| tour-yerevan.jpg | The Cascade complex, Yerevan | Patrick Makhoul | CC BY-SA 2.0 | https://commons.wikimedia.org/wiki/File:Cascade_of_Yerevan_HDef.jpg |
-| tour-gyumri.jpg | Marmashen Monastery, Shirak province (aerial) | Vahag851 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Marmashen_Monastery_in_Shirak_province,_Armenia._DJI_0034-2.jpg |
+| tour-yerevan.jpg | Republic Square lit up at night, Yerevan | Vyacheslav Argenberg | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Yerevan_at_night,_Republic_Square,_Yerevan,_Armenia.jpg |
+| tour-gyumri.jpg | Gyumri's historic Kumayri center from above | O'micron | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Gyumri_(historical_center).jpg |
 | tour-echmiadzin.jpg | Etchmiadzin Cathedral exterior, 2024 | Armen888 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Etchmiadzin_cathedral_2024.jpg |
 | tour-aparan.jpg | The Dzoraget canyon in Lori province | Armina Signature Travel | Original photograph, no external license | — |
 | tour-garni-2.jpg | Mount Ararat framed through Charents' Arch | Beko | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Mount_Ararat_from_Charents%27_Arch_1.jpg |
