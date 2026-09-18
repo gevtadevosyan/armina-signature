@@ -50,6 +50,15 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-tatev.jpg | Tatev Monastery on its cliff-edge plateau | Alexander Naumov | CC BY 3.0 | https://commons.wikimedia.org/wiki/File:Tatev_Monastery_from_a_distance.jpg |
 | tour-tatev-2.jpg | The Khndzoresk swinging bridge over the cave settlement | Arian Zwegers | CC BY 2.0 | https://commons.wikimedia.org/wiki/File:Khndzoresk_(35252734534).jpg |
 | tour-tatev-3.jpg | Standing stones at the Karahunj megalithic site | Armen Manukov | CC BY-SA 3.0 | https://commons.wikimedia.org/wiki/File:Karahunj_(Zorats_Karer)3.JPG |
+| tour-geghard.jpg | Geghard Monastery set into the cliffs of the Azat gorge | Diego Delso (delso.photo) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Monasterio_de_Geghard,_Armenia,_2016-10-02,_DD_63.jpg |
+| tour-geghard-2.jpg | Sevanavank Monastery above Lake Sevan | Alexxx1979 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Armenia._Lake_Sevan._Sevanavank_P8230612_2350.jpg |
+| tour-geghard-3.jpg | Kecharis Monastery in Tsaghkadzor | Kevorkmail | Public domain | https://commons.wikimedia.org/wiki/File:Kecharis_Monastery,_Tsaghkadzor.jpg |
+| tour-tsaghkadzor.jpg | Haghartsin Monastery in autumn, Dilijan National Park | Aleksey Chalabyan (Xelgen) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Haghartsin_monastery_in_Fall_2019.jpg |
+| tour-tsaghkadzor-2.jpg | The Tsaghkadzor Ropeway above the valley | 23artashes | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cableway_in_Tsaghkadzor_2019_01.jpg |
+| tour-tsaghkadzor-3.jpg | Old Dilijan with the mountains behind | Serouj Ourishian | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Tufenkian_Old_Dilijan_Complex.jpg |
+| tour-amberd.jpg | Amberd Fortress on the slopes of Mount Aragats | Vahagn Grigoryan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:DJI_0013-amberd.jpg |
+| tour-amberd-2.jpg | Saghmosavank Monastery on the edge of the Kasagh gorge | Vahagn Grigoryan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:DJI_-Saghmosavanq.jpg |
+| tour-amberd-3.jpg | Lake Kari high on Mount Aragats | GeoO | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lake_Kari,_Armenia_-_%D5%94%D5%A1%D6%80%D5%AB_%D5%AC%D5%AB%D5%B3,_%D5%80%D5%A1%D5%B5%D5%A1%D5%BD%D5%BF%D5%A1%D5%B6_02.jpg |
 | favicon-16.png, favicon-32.png, apple-touch-icon.png | Mountain mark cropped from the Armina Signature Travel logo | Armina Signature Travel | Original artwork, no external license | — |
 
 Images were resized/re-compressed for web delivery (`sips`); tour-gum-3.jpg was also center-cropped from a taller original. Originals are otherwise unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above. tour-hayravank.jpg is an original photograph supplied by Armina Signature Travel (Mikayelyan Farm).
