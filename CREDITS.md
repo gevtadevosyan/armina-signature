@@ -54,7 +54,7 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-geghard-2.jpg | Sevanavank Monastery above Lake Sevan | Alexxx1979 | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Armenia._Lake_Sevan._Sevanavank_P8230612_2350.jpg |
 | tour-geghard-3.jpg | Kecharis Monastery in Tsaghkadzor | Kevorkmail | Public domain | https://commons.wikimedia.org/wiki/File:Kecharis_Monastery,_Tsaghkadzor.jpg |
 | tour-tsaghkadzor.jpg | Haghartsin Monastery in autumn, Dilijan National Park | Aleksey Chalabyan (Xelgen) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Haghartsin_monastery_in_Fall_2019.jpg |
-| tour-tsaghkadzor-2.jpg | The Tsaghkadzor Ropeway above the valley | 23artashes | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Cableway_in_Tsaghkadzor_2019_01.jpg |
+| tour-tsaghkadzor-2.jpg | Riding the Tsaghkadzor Ropeway above the forested valley | Marion & Christoph Aistleitner | CC0 (public domain, no attribution required) | https://commons.wikimedia.org/wiki/File:Cableway_Tsaghkadzor_2.jpg |
 | tour-tsaghkadzor-3.jpg | Old Dilijan with the mountains behind | Serouj Ourishian | CC BY 4.0 | https://commons.wikimedia.org/wiki/File:Tufenkian_Old_Dilijan_Complex.jpg |
 | tour-amberd.jpg | Amberd Fortress on the slopes of Mount Aragats | Vahagn Grigoryan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:DJI_0013-amberd.jpg |
 | tour-amberd-2.jpg | Saghmosavank Monastery on the edge of the Kasagh gorge | Vahagn Grigoryan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:DJI_-Saghmosavanq.jpg |
