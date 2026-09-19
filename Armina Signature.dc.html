@@ -137,6 +137,7 @@
         <a href="#packages" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navPackages }}</a>
         <a href="#services" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navServices }}</a>
         <a href="#about" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navAbout }}</a>
+        <a href="#map" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navMap }}</a>
         <a href="#contact" style="color: inherit; padding-bottom: 2px; border-bottom: 1px solid transparent" style-hover="color: var(--color-accent-700); border-bottom-color: var(--color-accent)">{{ c.navContact }}</a>
     </nav>
   </header>
@@ -309,6 +310,18 @@
       </div>
     </section>
 
+    <section id="map" style="padding: clamp(52px, 6vw, 96px) 0 0; scroll-margin-top: 96px">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secMapKicker }}</div>
+          <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secMap }}</h2>
+        </div>
+        <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secMapLead }}</p>
+      </div>
+      <div class="hr" style="margin: 30px 0 32px"></div>
+      <div id="route-map" style="min-height: 420px"></div>
+    </section>
+
     <section id="contact" style="padding: clamp(52px, 6vw, 96px) 0 clamp(48px, 6vw, 88px); scroll-margin-top: 96px">
       <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secContactKicker }}</div>
       <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secContact }}</h2>
@@ -420,7 +433,7 @@ const S = {
   en: {
     metaTitle: "Armina Signature Travel — Private Tours in Armenia",
     metaDescription: "Licensed Yerevan-based tour operator. Private day tours and multi-day itineraries across Armenia's monasteries, mountain roads and vineyards — your own guide, your own car, your own pace.",
-    navTours: "Tours", navPackages: "Packages", navServices: "Services", navAbout: "About", navContact: "Contact",
+    navTours: "Tours", navPackages: "Packages", navServices: "Services", navAbout: "About", navMap: "Map", navContact: "Contact",
     heroKicker: "Incoming tours in Armenia · Since 2016",
     heroTitle: "Armenia, travelled properly.",
     heroSlogan: "Your journey, our signature.",
@@ -449,12 +462,14 @@ const S = {
     statYears: ["Year welcoming guests, since 2016", "Years welcoming guests, since 2016"],
     statLanguages: ["Guide language", "Guide languages: English, Russian, Armenian"],
     statTours: ["Private day tour", "Private day tours"],
-    statPackages: ["Multi-day package", "Multi-day packages"]
+    statPackages: ["Multi-day package", "Multi-day packages"],
+    secMapKicker: "Map", secMap: "Where we go",
+    secMapLead: "Every tour starts in Yerevan. Hover over or tap a tour to draw its route, or tap a place to see which tours go there."
   },
   ru: {
     metaTitle: "Armina Signature Travel — Индивидуальные туры по Армении",
     metaDescription: "Лицензированный туроператор в Ереване. Индивидуальные однодневные туры и многодневные маршруты по монастырям, горным дорогам и винодельням Армении — свой гид, свой автомобиль, свой темп.",
-    navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navContact: "Контакты",
+    navTours: "Туры", navPackages: "Пакеты", navServices: "Услуги", navAbout: "О нас", navMap: "Карта", navContact: "Контакты",
     heroKicker: "Въездной туризм в Армению · с 2016 года",
     heroTitle: "Армения, как её стоит увидеть.",
     heroSlogan: "Ваше путешествие — наша подпись.",
@@ -483,7 +498,9 @@ const S = {
     statYears: ["год принимаем гостей, с 2016 года", "года принимаем гостей, с 2016 года", "лет принимаем гостей, с 2016 года"],
     statLanguages: ["язык гидов: английский, русский, армянский", "языка гидов: английский, русский, армянский", "языков гидов: английский, русский, армянский"],
     statTours: ["однодневный тур", "однодневных тура", "однодневных туров"],
-    statPackages: ["многодневный пакет", "многодневных пакета", "многодневных пакетов"]
+    statPackages: ["многодневный пакет", "многодневных пакета", "многодневных пакетов"],
+    secMapKicker: "Карта", secMap: "Куда мы едем",
+    secMapLead: "Все туры начинаются в Ереване. Наведите на тур или нажмите на него, чтобы увидеть маршрут, или выберите место — узнаете, какие туры туда едут."
   }
 };
 
@@ -1125,6 +1142,32 @@ class Component extends DCLogic {
 
   componentDidMount() {
     this.countUpStats();
+    this.mountRouteMap();
+  }
+
+  // The "Where we go" map lives in /assets/route-map.js; titles come from here so they match the site copy.
+  mountRouteMap() {
+    if (typeof document === "undefined") return;
+    const el = document.getElementById("route-map");
+    if (!el) return;
+    const lang = this.lang;
+    const opts = {
+      lang,
+      tours: TOURS.map((t) => ({ slot: t.slot, src: t.src, title: t[lang].title, dur: t[lang].dur })),
+      packages: PACKAGES.map((p) => ({
+        slot: p.slot, src: p.src, title: p[lang].title, dur: p[lang].dur,
+        days: p[lang].story.filter((s) => s && s.day).map((s) => s.day.replace(/^[^—]*—\s*/, ""))
+      })),
+      wa: (text) => this.wa(text),
+      openTour: (slot) => this.setState({ openTour: slot }),
+      openPackage: (slot) => this.setState({ openPackage: slot })
+    };
+    const start = () => { if (window.ArminaRouteMap) window.ArminaRouteMap.mount(el, opts); };
+    if (window.ArminaRouteMap) { start(); return; }
+    const s = document.createElement("script");
+    s.src = "/assets/route-map.js?v=1";
+    s.onload = start;
+    document.head.appendChild(s);
   }
 
   componentWillUnmount() {

@@ -62,3 +62,9 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | favicon-16.png, favicon-32.png, apple-touch-icon.png | Mountain mark cropped from the Armina Signature Travel logo | Armina Signature Travel | Original artwork, no external license | — |
 
 Images were resized/re-compressed for web delivery (`sips`); tour-gum-3.jpg was also center-cropped from a taller original. Originals are otherwise unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above. tour-hayravank.jpg is an original photograph supplied by Armina Signature Travel (Mikayelyan Farm).
+
+`assets/photos/thumbs/` holds 320×200 center-cropped copies of the photos above (same names, same credits and licenses), used by the route map.
+
+## Map data
+
+The Armenia outline and Lake Sevan in `assets/route-map.js` are simplified from [Natural Earth](https://www.naturalearthdata.com/) 1:10m Admin 0 Countries and Lakes, which are in the public domain.
