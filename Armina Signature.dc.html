@@ -59,6 +59,19 @@
   a { color: var(--color-accent-700); text-decoration: none; }
   a:hover { color: var(--color-accent-600); }
   ::selection { background: var(--color-accent-200); }
+  .tour-card { cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+  .pkg-row { cursor: pointer; }
+  .pkg-row h3 { transition: color 0.25s ease; }
+  .pkg-row image-slot::part(image) { transition: transform 0.6s ease; }
+  @media (hover: hover) {
+    .tour-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-divider)); }
+    .pkg-row:hover h3 { color: var(--color-accent-700); }
+    .pkg-row:hover image-slot::part(image) { transform: translate(-50%, -50%) scale(1.04); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tour-card:hover { transform: none; }
+    .pkg-row:hover image-slot::part(image) { transform: translate(-50%, -50%); }
+  }
   .om-navrow { scrollbar-width: none; }
   .om-navrow::-webkit-scrollbar { display: none; }
   :root {
@@ -123,7 +136,7 @@
       <div class="hr" style="margin: 30px 0 40px"></div>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px">
         <sc-for list="{{ tours }}" as="t" hint-placeholder-count="6">
-          <article class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: transparent">
+          <article class="card tour-card" onClick="{{ t.openDetails }}" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; background: transparent">
             <div style="padding: 10px 10px 0">
               <image-slot id="{{ t.slot }}" shape="rect" style="width: 100%; height: 196px" placeholder="{{ t.photo }}" src="{{ t.src }}" credit="{{ t.credit }}" credit-href="{{ t.creditHref }}"></image-slot>
             </div>
@@ -141,7 +154,7 @@
               <button type="button" onClick="{{ t.openDetails }}" style="align-self: flex-start; background: transparent; border: 0; padding: 0; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.viewDetails }}</button>
               <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-top: 1px solid var(--color-divider); padding-top: 14px; margin-top: 4px">
                 <span style="font-size: 13px; letter-spacing: 0.05em; color: var(--color-neutral-700)">{{ c.priceQuestion }}</span>
-                <a href="{{ t.wa }}" target="_blank" rel="noopener" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
+                <a href="{{ t.wa }}" target="_blank" rel="noopener" onClick="{{ t.stop }}" style="font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.enquire }}</a>
               </div>
             </div>
           </article>
@@ -160,7 +173,7 @@
       <div class="hr" style="margin: 30px 0 40px"></div>
       <div style="display: flex; flex-direction: column; gap: 34px">
         <sc-for list="{{ packages }}" as="p" hint-placeholder-count="3">
-          <article style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: center; border-top: 1px solid var(--color-divider); padding-top: 34px">
+          <article class="pkg-row" onClick="{{ p.openDetails }}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 36px; align-items: center; border-top: 1px solid var(--color-divider); padding-top: 34px">
             <div class="plate" style="padding: 9px">
               <image-slot id="{{ p.slot }}" shape="rect" style="width: 100%; height: clamp(210px, 34vw, 300px)" placeholder="{{ p.photo }}" src="{{ p.src }}" credit="{{ p.credit }}" credit-href="{{ p.creditHref }}"></image-slot>
             </div>
@@ -171,7 +184,7 @@
               <button type="button" onClick="{{ p.openDetails }}" style="display: inline-block; background: transparent; border: 0; padding: 0; margin: 0 0 24px; cursor: pointer; font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-700); border-bottom: 1px solid var(--color-accent)" style-hover="color: var(--color-accent-600)">{{ c.viewDetails }}</button>
               <div style="display: flex; align-items: baseline; gap: 22px; flex-wrap: wrap">
                 <span style="font-size: 15px; line-height: 1.5; color: var(--color-neutral-700); max-width: 26ch">{{ c.priceQuestion }}</span>
-                <a class="btn btn-primary" href="{{ p.wa }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
+                <a class="btn btn-primary" href="{{ p.wa }}" target="_blank" rel="noopener" onClick="{{ p.stop }}" style="font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.enquire }}</a>
               </div>
             </div>
           </article>
@@ -1073,13 +1086,15 @@ class Component extends DCLogic {
         slot: t.slot, photo: t.photo, src: t.src, credit: t.credit, creditHref: t.creditHref,
         dur: t[lang].dur, title: t[lang].title, body: t[lang].body, highlights: t[lang].highlights,
         wa: this.wa(t.en.title + " — " + brand),
-        openDetails: () => this.setState({ openTour: t.slot })
+        openDetails: () => this.setState({ openTour: t.slot }),
+        stop: (e) => e.stopPropagation()
       })),
       packages: PACKAGES.map((p) => ({
         slot: p.slot, photo: p.photo, src: p.src, credit: p.credit, creditHref: p.creditHref,
         dur: p[lang].dur, title: p[lang].title, body: p[lang].body,
         wa: this.wa(p.en.title + " — " + brand),
-        openDetails: () => this.setState({ openPackage: p.slot })
+        openDetails: () => this.setState({ openPackage: p.slot }),
+        stop: (e) => e.stopPropagation()
       })),
       services: SERVICES.map((s) => ({ title: s[lang].title, body: s[lang].body })),
       why: WHY.map((w) => ({ title: w[lang].title, body: w[lang].body }))
