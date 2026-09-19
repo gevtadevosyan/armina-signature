@@ -379,9 +379,9 @@
     });
     var PKG = {}; PACKAGES.forEach(function (p) { PKG[p.id] = p; });
 
-    /* opens on the first package; `intro` draws its whole route until the visitor starts exploring */
-    var S = { mode: PACKAGES.length && OPT.packages ? "pkgs" : "tours", intro: true, plan: false, theme: "all", len: "any",
-      tour: TOUR["tour-tatev"] ? "tour-tatev" : (TOURS[0] && TOURS[0].id),
+    /* opens on Day tours with Sevan, Dilijan & Lake Parz; in Packages, `intro` draws the whole package route until a day is hovered */
+    var S = { mode: "tours", intro: true, plan: false, theme: "all", len: "any",
+      tour: TOUR["tour-sevan"] ? "tour-sevan" : (TOURS[0] && TOURS[0].id),
       hoverTour: null, pkg: PACKAGES[0] && PACKAGES[0].id, hoverDay: null, card: null, picks: [] };
     var lastActiveKey = null, placedBoxes = [];
 
@@ -799,6 +799,12 @@
         if (itin) itin.addEventListener("click", function () { if (opts.openTour) opts.openTour(t.id); });
         panel.appendChild(item);
       });
+      /* in the swipeable row, bring the selected tour to the middle so the card matches the route */
+      var sel = panel.classList.contains("h") && panel.querySelector(".rm-item.sel");
+      if (sel) {
+        var pr = panel.getBoundingClientRect(), sr = sel.getBoundingClientRect();
+        panel.scrollLeft += (sr.left + sr.width / 2) - (pr.left + panel.clientWidth / 2);
+      }
     }
 
     /* place card */
