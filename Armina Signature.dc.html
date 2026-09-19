@@ -1165,7 +1165,7 @@ class Component extends DCLogic {
     const start = () => { if (window.ArminaRouteMap) window.ArminaRouteMap.mount(el, opts); };
     if (window.ArminaRouteMap) { start(); return; }
     const s = document.createElement("script");
-    s.src = "/assets/route-map.js?v=1";
+    s.src = "/assets/route-map.js?v=2";
     s.onload = start;
     document.head.appendChild(s);
   }

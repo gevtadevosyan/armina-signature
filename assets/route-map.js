@@ -13,7 +13,7 @@
 
   /* Switches for the optional features. Drive times and seasons are estimates
      waiting for confirmation, so they start off. */
-  var OPT = { filters: true, packages: true, planner: true, times: false, ararat: true, seasons: false, regions: true };
+  var OPT = { filters: false, packages: true, planner: true, times: false, ararat: true, seasons: false, regions: true };
 
   var NS = "http://www.w3.org/2000/svg";
   var GEO = { lon0: 43.3, lat1: 41.42, kx: 0.7649214009184319, k: 373.52110343785915,
@@ -231,6 +231,7 @@
   var CSS = [
     ".rm{--rm-land:#ebe5da;--rm-land-stroke:#b4a68e;--rm-lake:#cdd7d7;--rm-lake-stroke:#9eb0b1;--rm-accent:var(--color-accent,#b68235);--rm-a700:var(--color-accent-700,#7d5411);--rm-a100:var(--color-accent-100,#fff3e4);--rm-line:var(--color-divider,rgba(32,31,29,.16));--rm-text:var(--color-text,#201f1d);--rm-muted:var(--color-neutral-700,#605d5d);--rm-body:var(--font-body,Georgia,serif);--rm-head:var(--font-heading,Georgia,serif);font-family:var(--rm-body);color:var(--rm-text)}",
     ".rm button{font:inherit;color:inherit}",
+    ".rm [hidden]{display:none !important}",
     ".rm-filters{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:16px}",
     ".rm-chips{display:flex;flex-wrap:wrap;gap:6px}",
     ".rm-chip{border:1px solid var(--rm-line);background:transparent;border-radius:999px;padding:6px 13px;font-size:13px;cursor:pointer;transition:background .15s ease,border-color .15s ease}",
@@ -378,7 +379,9 @@
     });
     var PKG = {}; PACKAGES.forEach(function (p) { PKG[p.id] = p; });
 
-    var S = { mode: "tours", plan: false, theme: "all", len: "any", tour: TOUR["tour-tatev"] ? "tour-tatev" : (TOURS[0] && TOURS[0].id),
+    /* opens on the first package; `intro` draws its whole route until the visitor starts exploring */
+    var S = { mode: PACKAGES.length && OPT.packages ? "pkgs" : "tours", intro: true, plan: false, theme: "all", len: "any",
+      tour: TOUR["tour-tatev"] ? "tour-tatev" : (TOURS[0] && TOURS[0].id),
       hoverTour: null, pkg: PACKAGES[0] && PACKAGES[0].id, hoverDay: null, card: null, picks: [] };
     var lastActiveKey = null, placedBoxes = [];
 
@@ -391,7 +394,7 @@
       '<filter id="rm-soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#2d2b2b" flood-opacity="0.16"></feDropShadow></filter></defs>' +
       '<g data-r="countries"></g><path class="rm-land" filter="url(#rm-soft)" data-r="land"></path><g data-r="lakes"></g>' +
       '<g class="rm-regions" data-r="regions"></g><g class="rm-ararat" data-r="ararat"></g><g data-r="routes"></g><g data-r="active"></g>' +
-      '<g data-r="dots"></g><g data-r="pins"></g><g data-r="hub"></g><g data-r="hover" pointer-events="none"></g></svg>' +
+      '<g data-r="dots"></g><g data-r="pins"></g><g data-r="hub"></g><g data-r="labels" pointer-events="none"></g><g data-r="hover" pointer-events="none"></g></svg>' +
       '<div class="rm-hint" data-r="hint"></div><div class="rm-card" data-r="card" hidden></div></div>' +
       '<aside class="rm-panel"><div class="rm-panel-inner"><div class="rm-head"><div class="rm-tabs" role="tablist">' +
       '<button type="button" class="rm-tab" role="tab" data-r="tabTours">' + esc(L.tours) + '</button>' +
@@ -448,6 +451,16 @@
         if (end) prev = end;
         return clean;
       });
+    }
+    /* the whole package as one continuous path: each day starts where the previous night ended */
+    function packageD(pkg) {
+      var d = "";
+      dayLegs(pkg).forEach(function (pts, i) {
+        if (pts.length < 2) return;
+        if (!d) d = "M" + PLACES[pts[0]].x.toFixed(1) + "," + PLACES[pts[0]].y.toFixed(1);
+        for (var j = 1; j < pts.length; j++) d += legD(PLACES[pts[j - 1]], PLACES[pts[j]], i % 2 ? -0.12 : 0.12);
+      });
+      return d;
     }
     function lastStop(id) { var t = TOUR[id]; return t && t.stops.length ? t.stops[t.stops.length - 1] : "yerevan"; }
 
@@ -562,10 +575,14 @@
       });
       return best;
     }
+    /* the "every tour starts here" caption only makes sense in the day-tours view */
+    function hubCaption() { return S.mode === "tours" && !S.plan; }
     function placeLabels(nodes) {
       var hub = PLACES.yerevan;
       var obstacles = nodes.map(function (n) { return [n.x - 22, n.y - 22, n.x + 22, n.y + 22]; });
-      obstacles.push([hub.x - 30, hub.y - 30, hub.x + 30, hub.y + 68]);
+      obstacles.push([hub.x - 31, hub.y - 31, hub.x + 31, hub.y + 31]);
+      obstacles.push([hub.x - 45, hub.y + 30, hub.x + 45, hub.y + 54]);
+      if (hubCaption()) obstacles.push([hub.x - 105, hub.y + 52, hub.x + 105, hub.y + 68]);
       var placed = [], sides = {};
       nodes.forEach(function (n) { var s = bestSide(n, obstacles.concat(placed)); sides[n.k] = s; placed.push(labelBox(n, s)); });
       placedBoxes = obstacles.concat(placed);
@@ -601,13 +618,15 @@
         el("circle", { r: 1.8, fill: "#7d5411" }, eg);
       }
       if (o.label) {
+        /* labels sit in their own layer above every pin, so no photo can cover a name */
+        var lg = el("g", { transform: "translate(" + n.x.toFixed(1) + "," + n.y.toFixed(1) + ")" }, o.labelLayer || g);
         var side = o.side || "r", ht = hasTime(p), off = r + 8, a, nx, ny, tx2, ty2;
         if (side === "r") { a = "start"; nx = off; ny = ht ? -1 : 6; tx2 = off; ty2 = 15; }
         else if (side === "l") { a = "end"; nx = -off; ny = ht ? -1 : 6; tx2 = -off; ty2 = 15; }
         else if (side === "b") { a = "middle"; nx = 0; ny = r + 22; tx2 = 0; ty2 = r + 38; }
         else { a = "middle"; nx = 0; ny = ht ? -r - 26 : -r - 10; tx2 = 0; ty2 = -r - 10; }
-        el("text", { x: nx, y: ny, "class": "rm-label", "text-anchor": a }, pg).textContent = p.name;
-        if (ht) el("text", { x: tx2, y: ty2, "class": "rm-time", "text-anchor": a }, pg).textContent = "≈ " + p.time;
+        el("text", { x: nx, y: ny, "class": "rm-label", "text-anchor": a }, lg).textContent = p.name;
+        if (ht) el("text", { x: tx2, y: ty2, "class": "rm-time", "text-anchor": a }, lg).textContent = "≈ " + p.time;
       }
       if (o.interactive) onActivate(pg, function () { placeClicked(n.k); });
     }
@@ -620,7 +639,7 @@
       el("circle", { r: 27, "class": "rm-hub-ring" }, hg);
       img(hg, p.img, 23);
       el("text", { x: 0, y: 48, "class": "rm-hub-label", "text-anchor": "middle" }, hg).textContent = p.name;
-      el("text", { x: 0, y: 63, "class": "rm-hub-sub", "text-anchor": "middle" }, hg).textContent = cityWalk ? L.hubCity : L.hubSub;
+      if (hubCaption()) el("text", { x: 0, y: 63, "class": "rm-hub-sub", "text-anchor": "middle" }, hg).textContent = cityWalk ? L.hubCity : L.hubSub;
       onActivate(hg, function () { placeClicked("yerevan"); });
     }
     function activePinKeys() {
@@ -652,7 +671,7 @@
       requestAnimationFrame(step);
     }
     function updateHighlight() {
-      clear(R.pins); clear(R.hover);
+      clear(R.pins); clear(R.labels); clear(R.hover);
       var key = null, activeD = "", cls = "rm-route-active", cityWalk = false;
       var routes = R.routes.querySelectorAll(".rm-route");
       if (S.plan) {
@@ -661,8 +680,9 @@
       } else if (S.mode === "pkgs") {
         var hd = S.hoverDay;
         routes.forEach(function (r) { r.classList.toggle("dim", hd !== null && +r.getAttribute("data-day") !== hd); });
-        key = "pkg:" + S.pkg + ":" + hd;
+        key = "pkg:" + S.pkg + ":" + (hd !== null ? hd : S.intro ? "intro" : "none");
         if (hd !== null && PKG[S.pkg]) { var pts = dayLegs(PKG[S.pkg])[hd]; if (pts.length > 1) activeD = pathD(pts, hd % 2 ? -0.12 : 0.12); }
+        else if (S.intro && PKG[S.pkg]) activeD = packageD(PKG[S.pkg]);
       } else {
         var id = S.hoverTour || S.tour;
         if (id && visibleTours().indexOf(TOUR[id]) < 0) id = null;
@@ -686,7 +706,7 @@
       var sides = placeLabels(nodes);
       nodes.forEach(function (n) {
         var b = badges[n.k]; if (b && b.length > 3) b = b.split("·")[0] + "+";
-        drawPin(R.pins, n, { label: true, interactive: true, badge: b, bed: beds[n.k], side: sides[n.k] });
+        drawPin(R.pins, n, { label: true, interactive: true, badge: b, bed: beds[n.k], side: sides[n.k], labelLayer: R.labels });
       });
       drawHub(cityWalk);
       R.hint.textContent = S.plan ? L.hintPlan : S.mode === "pkgs" ? L.hintPkgs : L.hintTours;
@@ -735,7 +755,7 @@
         PACKAGES.forEach(function (p) {
           var b = document.createElement("button"); b.type = "button"; b.className = "rm-pkg"; b.setAttribute("aria-pressed", String(S.pkg === p.id));
           b.innerHTML = '<img alt="" loading="lazy" src="' + esc(p.photo) + '"><small>' + esc(p.dur) + "</small><span>" + esc(p.title) + "</span>";
-          b.addEventListener("click", function () { S.pkg = p.id; S.hoverDay = null; refresh(); });
+          b.addEventListener("click", function () { S.pkg = p.id; S.hoverDay = null; S.intro = true; refresh(); });
           pick.appendChild(b);
         });
         panel.appendChild(pick);
@@ -744,7 +764,7 @@
           var row = document.createElement("div"); row.className = "rm-day"; row.tabIndex = 0;
           var night = !d.end && d.night ? '<span class="rm-night">' + BED_SVG + esc(L.overnight + PLACES[d.night].name) + "</span>" : "";
           row.innerHTML = '<span class="rm-day-n">' + (i + 1) + '</span><span><span class="rm-day-t">' + esc(d.title || L.day + " " + (i + 1)) + "</span>" + night + "</span>";
-          function on() { S.hoverDay = i; row.classList.add("hl"); updateHighlight(); }
+          function on() { S.hoverDay = i; S.intro = false; row.classList.add("hl"); updateHighlight(); }
           function off() { S.hoverDay = null; row.classList.remove("hl"); updateHighlight(); }
           row.addEventListener("mouseenter", on); row.addEventListener("mouseleave", off);
           row.addEventListener("focus", on); row.addEventListener("blur", off);
@@ -806,7 +826,7 @@
       c.hidden = false;
       c.querySelector(".rm-x").addEventListener("click", function () { S.card = null; buildCard(); });
       c.querySelectorAll("[data-tour]").forEach(function (b) { b.addEventListener("click", function () { S.plan = false; S.mode = "tours"; S.theme = "all"; S.len = "any"; selectTour(b.getAttribute("data-tour"), true); }); });
-      c.querySelectorAll("[data-pkg]").forEach(function (b) { b.addEventListener("click", function () { S.plan = false; S.mode = "pkgs"; S.pkg = b.getAttribute("data-pkg"); S.hoverDay = null; refresh(); }); });
+      c.querySelectorAll("[data-pkg]").forEach(function (b) { b.addEventListener("click", function () { S.plan = false; S.mode = "pkgs"; S.pkg = b.getAttribute("data-pkg"); S.hoverDay = null; S.intro = true; refresh(); }); });
     }
 
     /* actions */
@@ -825,7 +845,7 @@
     }
 
     R.tabTours.addEventListener("click", function () { S.plan = false; S.mode = "tours"; refresh(); });
-    R.tabPkgs.addEventListener("click", function () { S.plan = false; S.mode = "pkgs"; S.hoverDay = null; refresh(); });
+    R.tabPkgs.addEventListener("click", function () { S.plan = false; S.mode = "pkgs"; S.hoverDay = null; S.intro = true; refresh(); });
     R.planBtn.addEventListener("click", function () { S.plan = !S.plan; S.card = null; refresh(); });
 
     /* the tour list turns into a swipeable row on narrow screens */
