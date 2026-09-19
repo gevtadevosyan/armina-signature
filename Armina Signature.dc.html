@@ -72,6 +72,41 @@
     .tour-card:hover { transform: none; }
     .pkg-row:hover image-slot::part(image) { transform: translate(-50%, -50%); }
   }
+  .svc-tile { position: relative; display: flex; flex-direction: column; gap: 10px; text-align: left; padding: 18px 18px 20px; background: transparent; border: 1px solid var(--color-divider); border-radius: var(--radius-md); cursor: pointer; font-family: var(--font-body); color: var(--color-text); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease, background 0.2s ease; }
+  .svc-tile.is-on { border-color: var(--color-accent); background: var(--color-accent-100); }
+  .svc-check { position: absolute; top: 14px; right: 14px; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--color-neutral-600); display: grid; place-items: center; transition: background 0.2s ease, border-color 0.2s ease; }
+  .svc-check::after { content: ""; width: 5px; height: 9px; border: solid #fff; border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); opacity: 0; }
+  .svc-tile.is-on .svc-check { background: var(--color-accent); border-color: var(--color-accent); }
+  .svc-tile.is-on .svc-check::after { opacity: 1; }
+  .svc-icon { width: 32px; height: 32px; display: block; }
+  .svc-title { font-family: var(--font-heading); font-weight: 500; font-size: 23px; line-height: 1.15; padding-right: 26px; }
+  .svc-body { font-size: 13.5px; line-height: 1.6; color: var(--color-neutral-800); }
+  .svc-label { font-size: 13px; letter-spacing: 0.05em; color: var(--color-neutral-700); }
+  .svc-stepper { display: inline-flex; align-items: stretch; width: max-content; border: 1px solid var(--color-divider); border-radius: var(--radius-md); }
+  .svc-stepper button { width: 42px; border: 0; background: transparent; cursor: pointer; font-family: var(--font-body); font-size: 18px; color: var(--color-accent-700); }
+  .svc-stepper button:hover { background: var(--color-accent-100); }
+  .svc-stepper button:disabled { opacity: 0.35; cursor: default; background: transparent; }
+  .svc-count { min-width: 56px; padding: 10px 0; text-align: center; border-inline: 1px solid var(--color-divider); font-size: 17px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .svc-select { max-width: 260px; font-family: var(--font-body); font-size: 15px; color: var(--color-text); background: transparent; border: 1px solid var(--color-divider); border-radius: var(--radius-md); padding: 10px 12px; }
+  .svc-msg { background: #fff; border: 1px solid var(--color-divider); border-radius: 4px 14px 14px 14px; padding: 16px 18px; box-shadow: var(--shadow-md); }
+  .stat-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--color-divider); margin-bottom: 40px; }
+  .stat { padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 6px; }
+  .stat + .stat { border-left: 1px solid var(--color-divider); }
+  .why-tile { padding: 20px 20px 22px; border: 1px solid var(--color-divider); border-radius: var(--radius-md); display: flex; flex-direction: column; gap: 10px; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+  .why-badge { width: 44px; height: 44px; border-radius: 50%; background: var(--color-accent-100); display: grid; place-items: center; }
+  @media (max-width: 700px) {
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .stat + .stat { border-left: 0; }
+    .stat:nth-child(even) { border-left: 1px solid var(--color-divider); }
+    .stat:nth-child(n + 3) { border-top: 1px solid var(--color-divider); }
+  }
+  @media (hover: hover) {
+    .svc-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .why-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-divider)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .svc-tile:hover, .why-tile:hover { transform: none; }
+  }
   .om-navrow { scrollbar-width: none; }
   .om-navrow::-webkit-scrollbar { display: none; }
   :root {
@@ -201,13 +236,43 @@
         <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.secServicesLead }}</p>
       </div>
       <div class="hr" style="margin: 30px 0 40px"></div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 34px 40px">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); gap: 14px">
         <sc-for list="{{ services }}" as="s" hint-placeholder-count="5">
-          <div style="padding: 16px 0 0; border-top: 1px solid var(--color-divider)">
-            <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 25px; margin: 0 0 12px; line-height: 1.2">{{ s.title }}</h3>
-            <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); text-align: justify; hyphens: auto; margin: 0">{{ s.body }}</p>
-          </div>
+          <button type="button" class="{{ s.cls }}" aria-pressed="{{ s.pressed }}" onClick="{{ s.toggle }}">
+            <span class="svc-check" aria-hidden="true"></span>
+            <img class="svc-icon" src="{{ s.icon }}" alt="" width="32" height="32">
+            <span class="svc-title">{{ s.title }}</span>
+            <span class="svc-body">{{ s.body }}</span>
+          </button>
         </sc-for>
+      </div>
+      <div style="margin-top: 30px; padding-top: 26px; border-top: 1px solid var(--color-divider); display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px 40px; align-items: start">
+        <div style="display: flex; flex-direction: column; gap: 20px">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <span class="svc-label">{{ c.priceQuestion }}</span>
+            <div class="svc-stepper">
+              <button type="button" aria-label="{{ c.pickFewer }}" onClick="{{ picker.dec }}" disabled="{{ picker.atMin }}">−</button>
+              <span class="svc-count" aria-live="polite">{{ picker.travellers }}</span>
+              <button type="button" aria-label="{{ c.pickMore }}" onClick="{{ picker.inc }}" disabled="{{ picker.atMax }}">+</button>
+            </div>
+          </div>
+          <label style="display: flex; flex-direction: column; gap: 8px">
+            <span class="svc-label">{{ c.pickWhen }}</span>
+            <select class="svc-select" value="{{ picker.month }}" onChange="{{ picker.setMonth }}">{{ picker.options }}</select>
+          </label>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <div class="svc-msg">
+            <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-neutral-700); margin-bottom: 6px">{{ c.pickMsgLabel }}</div>
+            <p style="{{ picker.msgStyle }}" aria-live="polite">{{ picker.text }}</p>
+          </div>
+          <sc-if value="{{ picker.ready }}">
+            <a class="btn btn-primary" href="{{ picker.wa }}" target="_blank" rel="noopener" style="align-self: flex-start; font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.pickSend }}</a>
+          </sc-if>
+          <sc-if value="{{ picker.notReady }}">
+            <button type="button" class="btn btn-primary" disabled="{{ picker.notReady }}" style="align-self: flex-start; font-family: var(--font-body); font-size: 13.5px; letter-spacing: 0.05em">{{ c.pickSend }}</button>
+          </sc-if>
+        </div>
       </div>
     </section>
 
@@ -215,20 +280,31 @@
       <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secAboutKicker }}</div>
       <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secAbout }}</h2>
       <div class="hr" style="margin: 30px 0 40px"></div>
+      <div class="stat-row">
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+          <div class="stat">
+            <span data-count-to="{{ st.value }}" style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(46px, 6vw, 68px); line-height: 0.95; color: var(--color-accent-700); font-variant-numeric: lining-nums tabular-nums">{{ st.value }}</span>
+            <span style="font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-neutral-700); line-height: 1.45">{{ st.caption }}</span>
+          </div>
+        </sc-for>
+      </div>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 46px; align-items: start">
         <div style="display: flex; flex-direction: column; gap: 18px">
           <p style="font-family: var(--font-heading); font-size: clamp(22px, 2.4vw, 30px); line-height: 1.3; margin: 0; color: var(--color-neutral-900)">{{ c.aboutLead }}</p>
           <p style="font-size: 16px; line-height: 1.8; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0">{{ c.aboutP1 }}</p>
           <p style="font-size: 16px; line-height: 1.8; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0">{{ c.aboutP2 }}</p>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 26px">
+        <div style="display: flex; flex-direction: column; gap: 18px">
           <div style="font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-700)">{{ c.secWhy }}</div>
-          <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
-            <div style="border-top: 1px solid var(--color-divider); padding-top: 18px">
-              <h4 style="font-family: var(--font-heading); font-weight: 600; font-size: 20px; margin: 0 0 6px">{{ w.title }}</h4>
-              <p style="font-size: 14.5px; line-height: 1.7; color: var(--color-neutral-800); margin: 0">{{ w.body }}</p>
-            </div>
-          </sc-for>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px">
+            <sc-for list="{{ why }}" as="w" hint-placeholder-count="4">
+              <div class="why-tile">
+                <span class="why-badge"><img src="{{ w.icon }}" alt="" width="22" height="22" style="display: block"></span>
+                <h4 style="font-family: var(--font-heading); font-weight: 600; font-size: 21px; margin: 0; line-height: 1.2">{{ w.title }}</h4>
+                <p style="font-size: 14px; line-height: 1.65; color: var(--color-neutral-800); margin: 0">{{ w.body }}</p>
+              </div>
+            </sc-for>
+          </div>
         </div>
       </div>
     </section>
@@ -355,7 +431,7 @@ const S = {
     secPackagesKicker: "Multi-day", secPackages: "Tour packages",
     secPackagesLead: "Complete journeys with accommodation, transfers and guiding arranged end to end. Nothing to book on arrival but dinner.",
     secServicesKicker: "Services", secServices: "Beyond the itinerary",
-    secServicesLead: "Everything a journey needs, arranged separately or folded into a package.",
+    secServicesLead: "Tick what your trip needs, and we'll reply on WhatsApp with a plan and a clear price.",
     secAboutKicker: "About us", secAbout: "The company",
     aboutLead: "A small team of Armenian guides, drivers and planners who would rather run twelve journeys well than a hundred quickly.",
     aboutP1: "Armina Signature Travel was founded in Yerevan to receive guests coming into Armenia. We work only inbound, which means every route we sell is one we drive ourselves, every hotel is one we have slept in, and every guide is someone we know by name.",
@@ -365,7 +441,15 @@ const S = {
     contactLead: "Tell us your dates, how many of you are travelling and what you would like to see. We answer within a few hours with a draft itinerary and a clear price, with no obligation.",
     labelEmail: "Email", labelWhatsApp: "WhatsApp", labelOffice: "Office", labelHours: "Hours",
     office: "Yerevan, Armenia", hours: "Mon–Sat 09:00–19:00 (GMT+4) · WhatsApp answered daily",
-    enquire: "Enquire", priceQuestion: "How many of you are travelling?", highlights: "Highlights", viewDetails: "Full itinerary"
+    enquire: "Enquire", priceQuestion: "How many of you are travelling?", highlights: "Highlights", viewDetails: "Full itinerary",
+    pickWhen: "When are you coming?", pickMonthAny: "Not sure yet", pickMsgLabel: "Your WhatsApp message",
+    pickSend: "Send on WhatsApp", pickHint: "Tick at least one service to build your message.",
+    pickFewer: "One fewer traveller", pickMore: "One more traveller",
+    pickMsgHello: "Hello! We're planning a trip to Armenia.", pickMsgTravellers: "Travellers", pickMsgWhen: "When", pickMsgNeed: "We need",
+    statYears: ["Year welcoming guests, since 2016", "Years welcoming guests, since 2016"],
+    statLanguages: ["Guide language", "Guide languages: English, Russian, Armenian"],
+    statTours: ["Private day tour", "Private day tours"],
+    statPackages: ["Multi-day package", "Multi-day packages"]
   },
   ru: {
     metaTitle: "Armina Signature Travel — Индивидуальные туры по Армении",
@@ -381,7 +465,7 @@ const S = {
     secPackagesKicker: "Многодневные", secPackages: "Пакетные туры",
     secPackagesLead: "Готовые путешествия с проживанием, трансферами и гидом от начала до конца. По приезде остаётся выбрать только ужин.",
     secServicesKicker: "Услуги", secServices: "Кроме маршрута",
-    secServicesLead: "Всё, что нужно в поездке, — отдельно или в составе пакета.",
+    secServicesLead: "Отметьте, что нужно для поездки, — мы ответим в WhatsApp с планом и понятной ценой.",
     secAboutKicker: "О нас", secAbout: "Компания",
     aboutLead: "Небольшая команда армянских гидов, водителей и организаторов, которой ближе двенадцать хорошо проведённых поездок, чем сто быстрых.",
     aboutP1: "Armina Signature Travel основана в Ереване для приёма гостей, приезжающих в Армению. Мы работаем только на въезд: каждый маршрут мы проезжаем сами, в каждом отеле сами ночевали, каждого гида знаем по имени.",
@@ -391,7 +475,15 @@ const S = {
     contactLead: "Напишите даты, число путешественников и то, что хотели бы увидеть. В течение нескольких часов пришлём черновой маршрут и понятную цену — без обязательств.",
     labelEmail: "Почта", labelWhatsApp: "WhatsApp", labelOffice: "Офис", labelHours: "Часы работы",
     office: "Ереван, Армения", hours: "Пн–Сб 09:00–19:00 (GMT+4) · WhatsApp ежедневно",
-    enquire: "Запрос", priceQuestion: "Сколько вас будет?", highlights: "Основные моменты", viewDetails: "Полная программа"
+    enquire: "Запрос", priceQuestion: "Сколько вас будет?", highlights: "Основные моменты", viewDetails: "Полная программа",
+    pickWhen: "Когда планируете приехать?", pickMonthAny: "Пока не знаем", pickMsgLabel: "Ваше сообщение в WhatsApp",
+    pickSend: "Отправить в WhatsApp", pickHint: "Отметьте хотя бы одну услугу, чтобы составить сообщение.",
+    pickFewer: "На одного меньше", pickMore: "На одного больше",
+    pickMsgHello: "Здравствуйте! Планируем поездку в Армению.", pickMsgTravellers: "Путешественников", pickMsgWhen: "Когда", pickMsgNeed: "Нужно",
+    statYears: ["год принимаем гостей, с 2016 года", "года принимаем гостей, с 2016 года", "лет принимаем гостей, с 2016 года"],
+    statLanguages: ["язык гидов: английский, русский, армянский", "языка гидов: английский, русский, армянский", "языков гидов: английский, русский, армянский"],
+    statTours: ["однодневный тур", "однодневных тура", "однодневных туров"],
+    statPackages: ["многодневный пакет", "многодневных пакета", "многодневных пакетов"]
   }
 };
 
@@ -977,31 +1069,95 @@ const PACKAGES = [
 ];
 
 const SERVICES = [
-  { en: { title: "Accommodation", body: "Hotels, boutique stays and village guesthouses we have stayed in ourselves, booked at operator rates and matched to the route rather than the map." },
-    ru: { title: "Проживание", body: "Отели, бутик-размещение и деревенские гостевые дома, в которых мы жили сами, — по операторским тарифам и под маршрут, а не под карту." } },
-  { en: { title: "Transfers", body: "Airport meetings at any hour with a name board, intercity transfers, and border crossings to Georgia arranged with the paperwork done in advance." },
-    ru: { title: "Трансферы", body: "Встреча в аэропорту в любое время с табличкой, междугородние трансферы и переезды к границе с Грузией с заранее оформленными документами." } },
-  { en: { title: "Private tours", body: "Any route in this list, or one we build for you: photography, hiking, wine, Armenian heritage, or a single long drive to somewhere you read about." },
-    ru: { title: "Индивидуальные туры", body: "Любой маршрут из списка или составленный для вас: фотография, походы, вино, армянское наследие или одна долгая поездка туда, о чём вы прочитали." } },
-  { en: { title: "Car rental", body: "Sedans, SUVs for the mountain passes and vans for groups — with or without a driver, insured, delivered to your hotel or the terminal." },
-    ru: { title: "Аренда авто", body: "Седаны, внедорожники для горных перевалов и минивэны для групп — с водителем или без, застрахованные, с доставкой в отель или терминал." } },
-  { en: { title: "Tailor-made journeys", body: "We can create your perfect Armenian journey with personalized tours and packages designed around your interests, preferences, and travel style — combine and customize freely to build a trip that's entirely yours." },
-    ru: { title: "По вашему вкусу", body: "Мы создадим ваше идеальное путешествие по Армении — туры и пакеты, подобранные под ваши интересы, предпочтения и стиль. Комбинируйте и сочетайте их свободно, чтобы получить поездку, созданную только для вас." } }
+  { key: "accommodation", icon: "/assets/icons/svc-accommodation.svg",
+    en: { title: "Accommodation", body: "Hotels and guesthouses we've stayed in ourselves, at operator rates.", msg: "accommodation" },
+    ru: { title: "Проживание", body: "Отели и гостевые дома, в которых мы жили сами, — по операторским тарифам.", msg: "проживание" } },
+  { key: "transfers", icon: "/assets/icons/svc-transfers.svg",
+    en: { title: "Transfers", body: "Airport meetings at any hour, intercity drives and the Georgian border.", msg: "transfers" },
+    ru: { title: "Трансферы", body: "Встреча в аэропорту в любое время, междугородние поездки и граница с Грузией.", msg: "трансферы" } },
+  { key: "private-tours", icon: "/assets/icons/svc-private-tours.svg",
+    en: { title: "Private tours", body: "Any route on this site, or one we build around you.", msg: "private tours" },
+    ru: { title: "Индивидуальные туры", body: "Любой маршрут с сайта или составленный специально для вас.", msg: "индивидуальные туры" } },
+  { key: "car-rental", icon: "/assets/icons/svc-car-rental.svg",
+    en: { title: "Car rental", body: "Sedans, SUVs and vans, with or without a driver.", msg: "car rental" },
+    ru: { title: "Аренда авто", body: "Седаны, внедорожники и минивэны — с водителем или без.", msg: "аренда авто" } },
+  { key: "tailor-made", icon: "/assets/icons/svc-tailor-made.svg",
+    en: { title: "Tailor-made journeys", body: "A whole trip designed around your interests and pace.", msg: "a tailor-made journey" },
+    ru: { title: "По вашему вкусу", body: "Вся поездка — под ваши интересы и темп.", msg: "поездка под наши интересы" } }
 ];
 
 const WHY = [
-  { en: { title: "Local, not remote", body: "Our office, guides and cars are all in Armenia. Nothing is subcontracted to an agency you never meet." },
+  { icon: "/assets/icons/why-local.svg", en: { title: "Local, not remote", body: "Our office, guides and cars are all in Armenia. Nothing is subcontracted to an agency you never meet." },
     ru: { title: "Мы на месте", body: "Офис, гиды и автомобили — в Армении. Ничего не передаётся агентству, которого вы никогда не увидите." } },
-  { en: { title: "Private by default", body: "Every tour departs for your party alone. No coach, no waiting for eleven strangers at each stop." },
+  { icon: "/assets/icons/why-private.svg", en: { title: "Private by default", body: "Every tour departs for your party alone. No coach, no waiting for eleven strangers at each stop." },
     ru: { title: "Всегда индивидуально", body: "Каждый тур проводится только для вашей группы. Без автобуса и ожидания одиннадцати незнакомцев на каждой остановке." } },
-  { en: { title: "Licensed and insured", body: "A registered tour operator with insured vehicles and guides certified in English, Russian and Armenian." },
+  { icon: "/assets/icons/why-licensed.svg", en: { title: "Licensed and insured", body: "A registered tour operator with insured vehicles and guides certified in English, Russian and Armenian." },
     ru: { title: "Лицензия и страховка", body: "Зарегистрированный туроператор, застрахованные автомобили и гиды с сертификацией на английском, русском и армянском." } },
-  { en: { title: "Answered in hours", body: "One person handles your trip from first message to departure, and stays reachable while you are here." },
+  { icon: "/assets/icons/why-answered.svg", en: { title: "Answered in hours", body: "One person handles your trip from first message to departure, and stays reachable while you are here." },
     ru: { title: "Ответ за часы", body: "Один человек ведёт вашу поездку от первого письма до отъезда и остаётся на связи, пока вы здесь." } }
 ];
 
+// "1 day tour" / "17 day tours"; Russian picks one / few / many by the number's ending.
+function plural(lang, n, forms) {
+  if (lang === "ru") {
+    const m10 = n % 10, m100 = n % 100;
+    if (m10 === 1 && m100 !== 11) return forms[0];
+    if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return forms[1];
+    return forms[2];
+  }
+  return n === 1 ? forms[0] : forms[1];
+}
+
+// The next `count` months, starting with the current one: "October 2026" / "Октябрь 2026".
+function upcomingMonths(lang, count) {
+  const fmt = new Intl.DateTimeFormat(lang === "ru" ? "ru-RU" : "en-GB", { month: "long", year: "numeric" });
+  const now = new Date();
+  const out = [];
+  for (let i = 0; i < count; i++) {
+    const label = fmt.format(new Date(now.getFullYear(), now.getMonth() + i, 1)).replace(/\s*г\.$/, "");
+    out.push(label.charAt(0).toUpperCase() + label.slice(1));
+  }
+  return out;
+}
+
 class Component extends DCLogic {
-  state = { lang: Component.langFromUrl(), openTour: null, openPackage: null };
+  state = { lang: Component.langFromUrl(), openTour: null, openPackage: null, picked: {}, travellers: 2, month: "" };
+
+  componentDidMount() {
+    this.countUpStats();
+  }
+
+  componentWillUnmount() {
+    if (this.statsObserver) this.statsObserver.disconnect();
+  }
+
+  // Count the About figures up from 0 the first time they scroll into view.
+  // Only the rendered text node's value changes, and it ends on the same number React rendered.
+  countUpStats() {
+    if (typeof document === "undefined" || typeof IntersectionObserver === "undefined") return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const els = [...document.querySelectorAll("[data-count-to]")];
+    if (!els.length) return;
+    const run = (el) => {
+      const node = document.createTreeWalker(el, NodeFilter.SHOW_TEXT).nextNode();
+      const to = Number(el.getAttribute("data-count-to"));
+      if (!node || !(to > 0)) return;
+      const start = performance.now();
+      const step = (now) => {
+        const p = Math.min(1, (now - start) / 1300);
+        node.nodeValue = String(Math.round(to * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(step);
+      };
+      node.nodeValue = "0";
+      requestAnimationFrame(step);
+    };
+    this.statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { run(e.target); this.statsObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.6 });
+    els.forEach((el) => this.statsObserver.observe(el));
+  }
 
   static langFromUrl() {
     if (typeof location === "undefined") return null;
@@ -1069,10 +1225,39 @@ class Component extends DCLogic {
       stop: (e) => e.stopPropagation()
     } : null;
 
+    const picked = SERVICES.filter((s) => this.state.picked[s.key]);
+    const travellers = this.state.travellers;
+    const msgLines = [c.pickMsgHello, c.pickMsgTravellers + ": " + travellers];
+    if (this.state.month) msgLines.push(c.pickMsgWhen + ": " + this.state.month);
+    msgLines.push(c.pickMsgNeed + ": " + picked.map((s) => s[lang].msg).join(", "));
+    const pickerText = msgLines.join("\n");
+    const picker = {
+      travellers,
+      atMin: travellers <= 1,
+      atMax: travellers >= 30,
+      dec: () => this.setState((st) => ({ travellers: Math.max(1, st.travellers - 1) })),
+      inc: () => this.setState((st) => ({ travellers: Math.min(30, st.travellers + 1) })),
+      month: this.state.month,
+      setMonth: (e) => this.setState({ month: e.target.value }),
+      options: [["", c.pickMonthAny]].concat(upcomingMonths(lang, 12).map((m) => [m, m]))
+        .map(([value, label]) => React.createElement("option", { key: value || "any", value }, label)),
+      ready: picked.length > 0,
+      notReady: picked.length === 0,
+      text: picked.length ? pickerText : c.pickHint,
+      msgStyle: "margin: 0; font-size: 15px; line-height: 1.65; white-space: pre-line; min-height: 5em; " +
+        (picked.length ? "color: var(--color-text)" : "color: var(--color-neutral-600); font-style: italic"),
+      wa: this.wa(pickerText)
+    };
+    const years = new Date().getFullYear() - 2016;
+    const stats = [[years, c.statYears], [3, c.statLanguages], [TOURS.length, c.statTours], [PACKAGES.length, c.statPackages]]
+      .map(([value, forms]) => ({ value, caption: plural(lang, value, forms) }));
+
     return {
       c,
       modal,
       packageModal,
+      picker,
+      stats,
       waLink: this.wa(brand + " — " + c.secContact),
       phoneDisplay: this.props.whatsappNumber || "+374 94 965 509",
       langs: [["en", "EN"], ["ru", "RU"]].map(([code, label]) => ({
@@ -1096,8 +1281,13 @@ class Component extends DCLogic {
         openDetails: () => this.setState({ openPackage: p.slot }),
         stop: (e) => e.stopPropagation()
       })),
-      services: SERVICES.map((s) => ({ title: s[lang].title, body: s[lang].body })),
-      why: WHY.map((w) => ({ title: w[lang].title, body: w[lang].body }))
+      services: SERVICES.map((s) => ({
+        title: s[lang].title, body: s[lang].body, icon: s.icon,
+        pressed: this.state.picked[s.key] ? "true" : "false",
+        cls: "svc-tile" + (this.state.picked[s.key] ? " is-on" : ""),
+        toggle: () => this.setState((st) => ({ picked: { ...st.picked, [s.key]: !st.picked[s.key] } }))
+      })),
+      why: WHY.map((w) => ({ title: w[lang].title, body: w[lang].body, icon: w.icon }))
     };
   }
 }
