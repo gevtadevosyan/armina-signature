@@ -107,6 +107,35 @@
   @media (prefers-reduced-motion: reduce) {
     .svc-tile:hover, .why-tile:hover { transform: none; }
   }
+  .c-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 32px 56px; align-items: start; }
+  .c-steps { list-style: none; margin: 0; padding: 0; }
+  .c-step { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 18px; padding-bottom: 28px; }
+  .c-step:last-child { padding-bottom: 0; }
+  .c-step::before { content: ""; position: absolute; left: 21.5px; top: 50px; bottom: 6px; width: 1px; background: color-mix(in srgb, var(--color-accent) 50%, var(--color-divider)); }
+  .c-step:last-child::before { display: none; }
+  .c-node { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--color-accent); color: var(--color-accent-700); display: grid; place-items: center; font-family: var(--font-heading); font-weight: 500; font-size: 22px; font-variant-numeric: lining-nums; }
+  .c-step:first-child .c-node { background: var(--color-accent-700); border-color: var(--color-accent-700); color: #fff8ee; }
+  .c-when { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-700); padding-top: 5px; }
+  .c-title { margin: 4px 0 6px; font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1.2; }
+  .c-body { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--color-neutral-800); max-width: 52ch; }
+  .c-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .c-panel { margin-top: 44px; padding: clamp(20px, 3.5vw, 34px); border-radius: var(--radius-md); background: var(--color-accent-100); border: 1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-divider)); border-top: 3px solid var(--color-accent); box-shadow: var(--shadow-md); display: flex; flex-direction: column; gap: 20px; }
+  .c-panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; }
+  .c-panel-title { font-family: var(--font-heading); font-weight: 500; font-size: clamp(24px, 2.6vw, 30px); line-height: 1.15; }
+  .c-open { display: inline-flex; align-items: center; gap: 10px; font-size: 13.5px; line-height: 1.5; color: var(--color-neutral-800); font-variant-numeric: tabular-nums; }
+  .c-open::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: #4d7a4a; box-shadow: 0 0 0 3px color-mix(in srgb, #4d7a4a 20%, transparent); }
+  .c-open.is-closed::before { background: var(--color-neutral-500); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-neutral-500) 22%, transparent); }
+  .c-items { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 18px 28px; }
+  .c-item { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 14px; align-items: start; min-width: 0; }
+  .c-ico { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent); }
+  .c-ico img { display: block; }
+  .c-k { font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-700); margin-bottom: 3px; }
+  .c-val { display: block; font-family: var(--font-heading); font-weight: 500; font-size: 21px; line-height: 1.3; color: var(--color-text); overflow-wrap: anywhere; font-variant-numeric: lining-nums tabular-nums; }
+  a.c-val { color: var(--color-accent-700); }
+  .c-val.small { font-family: var(--font-body); font-weight: 400; font-size: 14.5px; line-height: 1.6; color: var(--color-neutral-800); }
+  @media (max-width: 1000px) { .c-items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 820px) { .c-grid { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 540px) { .c-items { grid-template-columns: minmax(0, 1fr); } }
   .om-navrow { scrollbar-width: none; }
   .om-navrow::-webkit-scrollbar { display: none; }
   :root {
@@ -323,30 +352,58 @@
     </section>
 
     <section id="contact" style="padding: clamp(52px, 6vw, 96px) 0 clamp(48px, 6vw, 88px); scroll-margin-top: 96px">
-      <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secContactKicker }}</div>
-      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secContact }}</h2>
-      <div class="hr" style="margin: 30px 0 40px"></div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 44px; align-items: start">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap">
         <div>
-          <p style="font-size: 16.5px; line-height: 1.8; text-align: justify; hyphens: auto; color: var(--color-neutral-800); margin: 0 0 28px; max-width: 46ch">{{ c.contactLead }}</p>
-          <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaWhatsApp }}</a>
+          <div style="font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700); font-variant-numeric: tabular-nums">{{ c.secContactKicker }}</div>
+          <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 52px); margin: 14px 0 0; line-height: 1.08">{{ c.secContact }}</h2>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 20px">
-          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
-            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelEmail }}</div>
-            <a href="mailto:info@armina-signature.travel" style="font-family: var(--font-heading); font-size: 23px">info@armina-signature.travel</a>
+        <p style="font-size: 15.5px; line-height: 1.7; max-width: 40ch; text-align: justify; color: var(--color-neutral-700); margin: 0">{{ c.contactIntro }}</p>
+      </div>
+      <div class="hr" style="margin: 30px 0 40px"></div>
+      <div class="c-grid">
+        <div class="plate" style="padding: 9px">
+          <image-slot id="contact-photo" shape="rect" style="width: 100%; height: clamp(260px, 42vw, 470px)" placeholder="Khor Virap beneath Mount Ararat" src="/assets/photos/tour-khorvirap.jpg" credit="Vyacheslav Argenberg / Wikimedia Commons (CC BY 4.0)" credit-href="https://commons.wikimedia.org/wiki/File:Mount_Ararat_and_Khor_Virap,_Ararat_Plain,_Armenia.jpg"></image-slot>
+        </div>
+        <ol class="c-steps">
+          <sc-for list="{{ steps }}" as="st" hint-placeholder-count="4">
+            <li class="c-step">
+              <span class="c-node" aria-hidden="true">{{ st.n }}</span>
+              <div>
+                <div class="c-when">{{ st.when }}</div>
+                <h3 class="c-title">{{ st.title }}</h3>
+                <p class="c-body">{{ st.body }}</p>
+                <sc-if value="{{ st.first }}">
+                  <div class="c-cta">
+                    <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaWhatsApp }}</a>
+                    <a class="btn btn-secondary" href="{{ mailLink }}" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaEmail }}</a>
+                  </div>
+                </sc-if>
+              </div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+      <div class="c-panel">
+        <div class="c-panel-head">
+          <div class="c-panel-title">{{ c.reachUs }}</div>
+          <span class="{{ officeClass }}" id="office-status">{{ officeText }}</span>
+        </div>
+        <div class="c-items">
+          <div class="c-item">
+            <span class="c-ico"><img src="/assets/icons/c-mail.svg" alt="" width="22" height="22"></span>
+            <div><div class="c-k">{{ c.labelEmail }}</div><a class="c-val" href="{{ mailLink }}">info@armina-signature.travel</a></div>
           </div>
-          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
-            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelWhatsApp }}</div>
-            <a href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-heading); font-size: 23px; font-variant-numeric: tabular-nums">{{ phoneDisplay }}</a>
+          <div class="c-item">
+            <span class="c-ico"><img src="/assets/icons/c-chat.svg" alt="" width="22" height="22"></span>
+            <div><div class="c-k">{{ c.labelWhatsApp }}</div><a class="c-val" href="{{ waLink }}" target="_blank" rel="noopener">{{ phoneDisplay }}</a></div>
           </div>
-          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
-            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelOffice }}</div>
-            <div style="font-family: var(--font-heading); font-size: 23px">{{ c.office }}</div>
+          <div class="c-item">
+            <span class="c-ico"><img src="/assets/icons/why-local.svg" alt="" width="22" height="22"></span>
+            <div><div class="c-k">{{ c.labelOffice }}</div><span class="c-val">{{ c.office }}</span></div>
           </div>
-          <div style="border-top: 1px solid var(--color-divider); padding-top: 14px">
-            <div style="font-size: 11.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-neutral-600)">{{ c.labelHours }}</div>
-            <div style="font-size: 15.5px; line-height: 1.7; color: var(--color-neutral-800); font-variant-numeric: tabular-nums">{{ c.hours }}</div>
+          <div class="c-item">
+            <span class="c-ico"><img src="/assets/icons/c-clock.svg" alt="" width="22" height="22"></span>
+            <div><div class="c-k">{{ c.labelHours }}</div><span class="c-val small">{{ c.hours }}</span></div>
           </div>
         </div>
       </div>
@@ -464,7 +521,20 @@ const S = {
     statTours: ["Private day tour", "Private day tours"],
     statPackages: ["Multi-day package", "Multi-day packages"],
     secMapKicker: "Map", secMap: "Where we go",
-    secMapLead: "Every tour starts in Yerevan. Hover over or tap a tour to draw its route, or tap a place to see which tours go there."
+    secMapLead: "Every tour starts in Yerevan. Hover over or tap a tour to draw its route, or tap a place to see which tours go there.",
+    contactIntro: "From your first message to your first morning in Armenia, this is how a journey with us comes together.",
+    ctaEmail: "Email us", reachUs: "Reach us directly", contactSee: "We'd like to see",
+    mailSubject: "Trip enquiry — Armina Signature Travel",
+    mailBody: "Hello,\n\nWe're planning a trip to Armenia.\nTravellers: \nWhen: \nWe'd like to see: \n",
+    officeOpen: "Office open now", officeClosed: "Office closed now", officeIn: "in Yerevan", officeOpens: "opens {d} at 09:00",
+    officeToday: "today", officeTomorrow: "tomorrow",
+    officeDays: ["on Sunday", "on Monday", "on Tuesday", "on Wednesday", "on Thursday", "on Friday", "on Saturday"],
+    steps: [
+      ["Today", "You write to us", "Your dates, how many of you, and what you'd like to see. Rough is fine."],
+      ["Within a few hours", "A draft itinerary and a clear price", "Read it at your own pace. There is no obligation."],
+      ["Back and forth", "We shape it together", "Swap a day, change a hotel, slow the pace. One person handles your trip from first message to departure."],
+      ["In Armenia", "You travel, we stay close", "Every day is private to your party, and the person who planned your trip stays reachable while you are here."]
+    ]
   },
   ru: {
     metaTitle: "Armina Signature Travel — Индивидуальные туры по Армении",
@@ -500,7 +570,20 @@ const S = {
     statTours: ["однодневный тур", "однодневных тура", "однодневных туров"],
     statPackages: ["многодневный пакет", "многодневных пакета", "многодневных пакетов"],
     secMapKicker: "Карта", secMap: "Куда мы едем",
-    secMapLead: "Все туры начинаются в Ереване. Наведите на тур или нажмите на него, чтобы увидеть маршрут, или выберите место — узнаете, какие туры туда едут."
+    secMapLead: "Все туры начинаются в Ереване. Наведите на тур или нажмите на него, чтобы увидеть маршрут, или выберите место — узнаете, какие туры туда едут.",
+    contactIntro: "От первого сообщения до первого утра в Армении — вот как складывается путешествие с нами.",
+    ctaEmail: "Написать на почту", reachUs: "Связаться напрямую", contactSee: "Хотим увидеть",
+    mailSubject: "Запрос на поездку — Armina Signature Travel",
+    mailBody: "Здравствуйте!\n\nПланируем поездку в Армению.\nПутешественников: \nКогда: \nХотим увидеть: \n",
+    officeOpen: "Офис открыт", officeClosed: "Офис сейчас закрыт", officeIn: "в Ереване", officeOpens: "откроется {d} в 09:00",
+    officeToday: "сегодня", officeTomorrow: "завтра",
+    officeDays: ["в воскресенье", "в понедельник", "во вторник", "в среду", "в четверг", "в пятницу", "в субботу"],
+    steps: [
+      ["Сегодня", "Вы пишете нам", "Даты, сколько вас и что хотите увидеть. Можно примерно."],
+      ["В течение нескольких часов", "Черновой маршрут и понятная цена", "Читайте не спеша — без обязательств."],
+      ["Обсуждаем", "Доводим маршрут вместе", "Поменять день, отель или темп — не проблема. Один человек ведёт вашу поездку от первого письма до отъезда."],
+      ["В Армении", "Вы путешествуете, мы рядом", "Каждый день — только для вашей группы, а тот, кто готовил поездку, остаётся на связи, пока вы здесь."]
+    ]
   }
 };
 
@@ -1137,12 +1220,32 @@ function upcomingMonths(lang, count) {
   return out;
 }
 
+// "Office open now · 14:20 in Yerevan" (Armenia is GMT+4 all year, office Mon-Sat 09:00-19:00).
+function officeStatus(c) {
+  const y = new Date(Date.now() + 4 * 3600000);
+  const day = y.getUTCDay(), h = y.getUTCHours(), m = y.getUTCMinutes();
+  const open = day >= 1 && day <= 6 && h >= 9 && h < 19;
+  const pad = (n) => (n < 10 ? "0" : "") + n;
+  let text = (open ? c.officeOpen : c.officeClosed) + " · " + pad(h) + ":" + pad(m) + " " + c.officeIn;
+  if (!open) {
+    let when;
+    if (day >= 1 && day <= 6 && h < 9) when = c.officeToday;
+    else {
+      const next = day === 6 ? 1 : (day + 1) % 7;          // Sunday is closed
+      when = next === (day + 1) % 7 ? c.officeTomorrow : c.officeDays[next];
+    }
+    text += " · " + c.officeOpens.replace("{d}", when);
+  }
+  return { text, cls: open ? "c-open" : "c-open is-closed" };
+}
+
 class Component extends DCLogic {
   state = { lang: Component.langFromUrl(), openTour: null, openPackage: null, picked: {}, travellers: 2, month: "" };
 
   componentDidMount() {
     this.countUpStats();
     this.mountRouteMap();
+    this.startOfficeClock();
   }
 
   // The "Where we go" map lives in /assets/route-map.js; titles come from here so they match the site copy.
@@ -1172,6 +1275,20 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     if (this.statsObserver) this.statsObserver.disconnect();
+    if (this.officeTimer) clearInterval(this.officeTimer);
+  }
+
+  // Keep the contact panel's "open now" line current without re-rendering the page.
+  startOfficeClock() {
+    if (typeof document === "undefined") return;
+    this.officeTimer = setInterval(() => {
+      const el = document.getElementById("office-status");
+      if (!el) return;
+      const s = officeStatus(S[this.lang] || S.en);
+      el.className = s.cls;
+      const node = document.createTreeWalker(el, NodeFilter.SHOW_TEXT).nextNode();
+      if (node) node.nodeValue = s.text; else el.textContent = s.text;
+    }, 60000);
   }
 
   // Count the About figures up from 0 the first time they scroll into view.
@@ -1295,13 +1412,22 @@ class Component extends DCLogic {
     const stats = [[years, c.statYears], [3, c.statLanguages], [TOURS.length, c.statTours], [PACKAGES.length, c.statPackages]]
       .map(([value, forms]) => ({ value, caption: plural(lang, value, forms) }));
 
+    const waPrefill = c.pickMsgHello + "\n" + c.pickMsgTravellers + ": \n" + c.pickMsgWhen + ": \n" + c.contactSee + ": ";
+    const mailLink = "mailto:info@armina-signature.travel?subject=" + encodeURIComponent(c.mailSubject) +
+      "&body=" + encodeURIComponent(c.mailBody);
+    const office = officeStatus(c);
+
     return {
       c,
       modal,
       packageModal,
       picker,
       stats,
-      waLink: this.wa(brand + " — " + c.secContact),
+      mailLink,
+      officeText: office.text,
+      officeClass: office.cls,
+      steps: c.steps.map((s, i) => ({ n: String(i + 1), when: s[0], title: s[1], body: s[2], first: i === 0 })),
+      waLink: this.wa(waPrefill),
       phoneDisplay: this.props.whatsappNumber || "+374 94 965 509",
       langs: [["en", "EN"], ["ru", "RU"]].map(([code, label]) => ({
         label,
