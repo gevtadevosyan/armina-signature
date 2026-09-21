@@ -136,6 +136,10 @@
   @media (max-width: 1000px) { .c-items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 820px) { .c-grid { grid-template-columns: minmax(0, 1fr); } }
   @media (max-width: 540px) { .c-items { grid-template-columns: minmax(0, 1fr); } }
+  .c-fallback { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; margin-top: 10px; font-size: 13.5px; line-height: 1.5; color: var(--color-neutral-700); }
+  .c-flink { background: none; border: 0; padding: 0; font-family: var(--font-body); font-size: 13.5px; color: var(--color-accent-700); cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--color-accent) 40%, transparent); text-underline-offset: 3px; }
+  .c-flink:hover { text-decoration-color: currentColor; }
+  .c-fmail { color: var(--color-text); font-variant-numeric: lining-nums; overflow-wrap: anywhere; user-select: all; }
   .om-navrow { scrollbar-width: none; }
   .om-navrow::-webkit-scrollbar { display: none; }
   :root {
@@ -375,8 +379,17 @@
                 <sc-if value="{{ st.first }}">
                   <div class="c-cta">
                     <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaWhatsApp }}</a>
-                    <a class="btn btn-secondary" href="{{ mailLink }}" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaEmail }}</a>
+                    <a class="btn btn-secondary" href="{{ mailLink }}" onClick="{{ emailClick }}" style="font-family: var(--font-body); font-size: 14px; letter-spacing: 0.05em">{{ c.ctaEmail }}</a>
                   </div>
+                  <sc-if value="{{ mailFallback }}">
+                    <div class="c-fallback">
+                      <span>{{ c.mailNoApp }}</span>
+                      <span class="c-fmail">info@armina-signature.travel</span>
+                      <a class="c-flink" href="{{ gmailLink }}" target="_blank" rel="noopener">{{ c.mailGmail }}</a>
+                      <span aria-hidden="true">·</span>
+                      <button type="button" class="c-flink" onClick="{{ copyEmail }}">{{ copyLabel }}</button>
+                    </div>
+                  </sc-if>
                 </sc-if>
               </div>
             </li>
@@ -528,6 +541,7 @@ const S = {
     mailBody: "Hello,\n\nWe're planning a trip to Armenia.\nTravellers: \nWhen: \nWe'd like to see: \n",
     officeOpen: "Office open now", officeClosed: "Office closed now", officeIn: "in Yerevan", officeOpens: "opens {d} at 09:00",
     officeToday: "today", officeTomorrow: "tomorrow",
+    mailNoApp: "No mail app?", mailGmail: "Open Gmail", mailCopy: "Copy address", mailCopied: "Address copied",
     officeDays: ["on Sunday", "on Monday", "on Tuesday", "on Wednesday", "on Thursday", "on Friday", "on Saturday"],
     steps: [
       ["Today", "You write to us", "Your dates, how many of you, and what you'd like to see. Rough is fine."],
@@ -577,6 +591,7 @@ const S = {
     mailBody: "Здравствуйте!\n\nПланируем поездку в Армению.\nПутешественников: \nКогда: \nХотим увидеть: \n",
     officeOpen: "Офис открыт", officeClosed: "Офис сейчас закрыт", officeIn: "в Ереване", officeOpens: "откроется {d} в 09:00",
     officeToday: "сегодня", officeTomorrow: "завтра",
+    mailNoApp: "Нет почтового приложения?", mailGmail: "Открыть Gmail", mailCopy: "Скопировать адрес", mailCopied: "Адрес скопирован",
     officeDays: ["в воскресенье", "в понедельник", "во вторник", "в среду", "в четверг", "в пятницу", "в субботу"],
     steps: [
       ["Сегодня", "Вы пишете нам", "Даты, сколько вас и что хотите увидеть. Можно примерно."],
@@ -1221,6 +1236,8 @@ function upcomingMonths(lang, count) {
 }
 
 // "Office open now · 14:20 in Yerevan" (Armenia is GMT+4 all year, office Mon-Sat 09:00-19:00).
+const EMAIL = "info@armina-signature.travel";
+
 function officeStatus(c) {
   const y = new Date(Date.now() + 4 * 3600000);
   const day = y.getUTCDay(), h = y.getUTCHours(), m = y.getUTCMinutes();
@@ -1240,7 +1257,8 @@ function officeStatus(c) {
 }
 
 class Component extends DCLogic {
-  state = { lang: Component.langFromUrl(), openTour: null, openPackage: null, picked: {}, travellers: 2, month: "" };
+  state = { lang: Component.langFromUrl(), openTour: null, openPackage: null, picked: {}, travellers: 2, month: "",
+    mailFallback: false, mailCopied: false };
 
   componentDidMount() {
     this.countUpStats();
@@ -1276,6 +1294,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this.statsObserver) this.statsObserver.disconnect();
     if (this.officeTimer) clearInterval(this.officeTimer);
+    if (this.mailTimer) clearTimeout(this.mailTimer);
   }
 
   // Keep the contact panel's "open now" line current without re-rendering the page.
@@ -1413,8 +1432,11 @@ class Component extends DCLogic {
       .map(([value, forms]) => ({ value, caption: plural(lang, value, forms) }));
 
     const waPrefill = c.pickMsgHello + "\n" + c.pickMsgTravellers + ": \n" + c.pickMsgWhen + ": \n" + c.contactSee + ": ";
-    const mailLink = "mailto:info@armina-signature.travel?subject=" + encodeURIComponent(c.mailSubject) +
+    const mailLink = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(c.mailSubject) +
       "&body=" + encodeURIComponent(c.mailBody);
+    // mailto only works where a mail app is registered; if none opens, offer Gmail or the address.
+    const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=" + EMAIL +
+      "&su=" + encodeURIComponent(c.mailSubject) + "&body=" + encodeURIComponent(c.mailBody);
     const office = officeStatus(c);
 
     return {
@@ -1424,6 +1446,38 @@ class Component extends DCLogic {
       picker,
       stats,
       mailLink,
+      gmailLink,
+      mailFallback: this.state.mailFallback,
+      copyLabel: this.state.mailCopied ? c.mailCopied : c.mailCopy,
+      emailClick: () => {
+        if (typeof document === "undefined") return;
+        clearTimeout(this.mailTimer);
+        this.mailTimer = setTimeout(() => {
+          if (document.visibilityState === "visible" && document.hasFocus()) this.setState({ mailFallback: true });
+        }, 1200);
+      },
+      copyEmail: () => {
+        const done = () => {
+          this.setState({ mailCopied: true });
+          setTimeout(() => this.setState({ mailCopied: false }), 3000);
+        };
+        // execCommand is the fallback where the clipboard API is unavailable or refused
+        const legacy = () => {
+          try {
+            const ta = document.createElement("textarea");
+            ta.value = EMAIL;
+            ta.setAttribute("readonly", "");
+            ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+            document.body.appendChild(ta);
+            ta.select();
+            const ok = document.execCommand("copy");
+            document.body.removeChild(ta);
+            if (ok) done();
+          } catch (e) { /* the address is shown next to the button, so it can be selected */ }
+        };
+        if (navigator.clipboard) navigator.clipboard.writeText(EMAIL).then(done, legacy);
+        else legacy();
+      },
       officeText: office.text,
       officeClass: office.cls,
       steps: c.steps.map((s, i) => ({ n: String(i + 1), when: s[0], title: s[1], body: s[2], first: i === 0 })),
