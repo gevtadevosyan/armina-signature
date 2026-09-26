@@ -116,7 +116,16 @@
       ru: ["Озеро Кари", "Высокогорное озеро на Арагаце."] },
     wineries: { lat: 40.2758, lon: 44.2969, photo: null, time: "40 min", pkgOnly: true,
       en: ["Aragatsotn wineries", "Van Ardi and Voskevaz wineries."],
-      ru: ["Винодельни Арагацотна", "Винодельни Van Ardi и Voskevaz."] }
+      ru: ["Винодельни Арагацотна", "Винодельни Van Ardi и Voskevaz."] },
+    winemuseum: { lat: 40.2472, lon: 44.3381, photo: null, time: "30 min",
+      en: ["Wine History Museum", "Armenia's winemaking story in a hall 8 m underground, in Sasunik."],
+      ru: ["Музей истории вина", "История армянского виноделия в зале на глубине 8 м, в селе Сасуник."] },
+    voskevaz: { lat: 40.2758, lon: 44.2969, photo: "tour-voskevaz", time: "35 min",
+      en: ["Voskevaz Winery", "A long-established Aragatsotn winery, with tastings of local wines."],
+      ru: ["Винодельня Voskevaz", "Давно работающая винодельня Арагацотна, дегустация местных вин."] },
+    dashtadem: { lat: 40.3384, lon: 43.8569, photo: "tour-voskevaz-2", time: "1 h 15",
+      en: ["Dashtadem Fortress", "A medieval fortress on the Aragatsotn plain near Talin."],
+      ru: ["Крепость Даштадем", "Средневековая крепость на равнине Арагацотна близ Талина."] }
   };
 
   var PHOTO_CREDITS = {
@@ -145,7 +154,9 @@
     "tour-aparan": "Armina Signature Travel",
     "tour-amberd-2": "Vahagn Grigoryan / Wikimedia Commons (CC BY-SA 4.0)",
     "tour-amberd": "Vahagn Grigoryan / Wikimedia Commons (CC BY-SA 4.0)",
-    "tour-amberd-3": "GeoO / Wikimedia Commons (CC BY-SA 4.0)"
+    "tour-amberd-3": "GeoO / Wikimedia Commons (CC BY-SA 4.0)",
+    "tour-voskevaz": "Armineaghayan / Wikimedia Commons (CC BY-SA 4.0)",
+    "tour-voskevaz-2": "Armenak Margarian / Wikimedia Commons (CC BY-SA 4.0)"
   };
 
   /* stops (in order, after leaving Yerevan), rough length and themes, keyed by the site's tour slot */
@@ -166,7 +177,8 @@
     "tour-tatev": { stops: ["areni", "tatev", "khndzoresk", "karahunj"], hours: 14, themes: ["wine", "monasteries"] },
     "tour-geghard": { stops: ["garni", "geghard", "sevan", "tsaghkadzor"], hours: 10, themes: ["monasteries", "nature"] },
     "tour-tsaghkadzor": { stops: ["tsaghkadzor", "sevan", "dilijan", "haghartsin"], hours: 9, themes: ["adventure", "nature", "monasteries"] },
-    "tour-amberd": { stops: ["kasagh", "kari", "amberd"], hours: 8, themes: ["monasteries", "nature"] }
+    "tour-amberd": { stops: ["kasagh", "kari", "amberd"], hours: 8, themes: ["monasteries", "nature"] },
+    "tour-voskevaz": { stops: ["winemuseum", "voskevaz", "dashtadem"], hours: 10, themes: ["wine"] }
   };
 
   /* per-day stops and overnight place, keyed by the site's package slot (day titles come from the page) */

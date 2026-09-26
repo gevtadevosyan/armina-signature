@@ -59,6 +59,9 @@ All photographs in `assets/photos/` are sourced from Wikimedia Commons and used 
 | tour-amberd.jpg | Amberd Fortress on the slopes of Mount Aragats | Vahagn Grigoryan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:DJI_0013-amberd.jpg |
 | tour-amberd-2.jpg | Saghmosavank Monastery on the edge of the Kasagh gorge | Vahagn Grigoryan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:DJI_-Saghmosavanq.jpg |
 | tour-amberd-3.jpg | Lake Kari high on Mount Aragats | GeoO | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Lake_Kari,_Armenia_-_%D5%94%D5%A1%D6%80%D5%AB_%D5%AC%D5%AB%D5%B3,_%D5%80%D5%A1%D5%B5%D5%A1%D5%BD%D5%BF%D5%A1%D5%B6_02.jpg |
+| tour-voskevaz.jpg | Wine cellar with barrels and bottle racks | Armineaghayan | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Armenian_wine_cellar_with_wooden_barrels.jpg |
+| tour-voskevaz-2.jpg | Dashtadem Fortress gate tower | Armenak Margarian | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Dashtadem_fortress_22-10-2018.jpg |
+| tour-voskevaz-3.jpg | Apricots drying on racks at a fruit farm | Narek Avetisyan (Narek75) | CC BY-SA 4.0 | https://commons.wikimedia.org/wiki/File:Fruit_Drying_in_Armenia_02.jpg |
 | favicon-16.png, favicon-32.png, apple-touch-icon.png | Mountain mark cropped from the Armina Signature Travel logo | Armina Signature Travel | Original artwork, no external license | — |
 
 Images were resized/re-compressed for web delivery (`sips`); tour-gum-3.jpg was also center-cropped from a taller original. Originals are otherwise unmodified beyond resizing and JPEG re-encoding, which is permitted under all licenses above. tour-hayravank.jpg is an original photograph supplied by Armina Signature Travel (Mikayelyan Farm).
